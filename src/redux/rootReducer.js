@@ -1,7 +1,22 @@
 import { combineReducers } from "redux"
 
 const defaultState = {
-    user: null
+    user: null,
+    editMode: false
+}
+
+const editModeReducer = (
+    state = defaultState.editMode,
+    action
+) => {
+    switch (action.type){
+        case 'START_EDIT_MODE':
+            return true
+        case 'START_VIEW_MODE':
+            return false
+        default :
+            return state
+    }
 }
 
 const userReducer = (
@@ -10,8 +25,10 @@ const userReducer = (
 ) => {
     switch (action.type){
         case 'LOAD_USER':
-            // console.log(action.user)
             return action.user
+            
+        case 'UPDATE_USER':
+            return action.updatedUser
 
         default :
             return state
@@ -19,7 +36,8 @@ const userReducer = (
 }
 
 const rootReducer = combineReducers({
-    user: userReducer
+    user: userReducer,
+    editMode: editModeReducer
 })
 
 export default rootReducer

@@ -6,6 +6,7 @@ export default class ProjectsIndex extends React.Component{
     renderProjectLinks = () => {
         return this.props.projects.map( p => 
         <ProjectLinkCard 
+            key={p.title}
             project={p}
         /> )
     }

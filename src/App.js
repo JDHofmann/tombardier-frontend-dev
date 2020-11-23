@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 import ProjectsIndex from './containers/ProjectsIndex';
 import Contact from './components/Contact';
 import About from './components/About';
-import { fetchUser } from './redux/actions'
+import { fetchUser, startEditMode, startViewMode, editSiteInfo } from './redux/actions'
 
 
 class App extends React.Component{
@@ -18,7 +18,6 @@ class App extends React.Component{
   }
 
   render(){
-
     return (
       <div className="App">
         <Header />
@@ -29,6 +28,8 @@ class App extends React.Component{
               { this.props.user ? 
               <Contact 
                 user={this.props.user}
+                editMode={this.props.editMode}
+                editSiteInfo={this.props.editSiteInfo}
               /> 
                 : null
               }
@@ -54,6 +55,8 @@ class App extends React.Component{
                 <>
                 <Home 
                   user={this.props.user}
+                  editMode={this.props.editMode}
+                  editSiteInfo={this.props.editSiteInfo}
                 />
                 <ProjectsIndex 
                   projects={this.props.user.user_projects}
@@ -66,7 +69,11 @@ class App extends React.Component{
             }
           />
         </Switch>
-        <Footer />
+        <Footer 
+            user={this.props.user}
+            startEditMode={this.props.startEditMode}
+            startViewMode={this.props.startViewMode}
+        />
       </div>
     );
   }
@@ -74,13 +81,17 @@ class App extends React.Component{
 
 const mdp = dispatch => {
   return {
-    fetchUser: () => dispatch(fetchUser())
+    fetchUser: () => dispatch(fetchUser()),
+    startEditMode: () => dispatch(startEditMode()),
+    startViewMode: () => dispatch(startViewMode()),
+    editSiteInfo: (patchObj) => dispatch(editSiteInfo(patchObj))
   }
 }
 
 const msp = state => {
   return {
-    user: state.user
+    user: state.user,
+    editMode: state.editMode
   }
 }
 

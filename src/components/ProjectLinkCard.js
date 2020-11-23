@@ -5,7 +5,10 @@ const ProjectLinkCard = (props) => {
         <div>
             <h3>{props.project.title}</h3>
             <h4>{props.project.subtitle}</h4>
-            <img src={`http://localhost:3000/${props.project.image}`}></img>
+            <img 
+                className="pl-preview"
+                alt=""
+                src={`http://localhost:3000/${props.project.image}`}></img>
         </div>
     )
 }
