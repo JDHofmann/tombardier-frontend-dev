@@ -1,10 +1,10 @@
 import React from 'react'
 
-const About = () => {
+const About = ({user}) => {
     return(
         <div>
-            <h3>About Info</h3>
-            <p>things about me...</p>
+            <img src={`http://localhost:3000/${user.image}`}></img>
+            <p>{user.bio}</p>
         </div>
     )
 }

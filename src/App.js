@@ -25,11 +25,26 @@ class App extends React.Component{
         <Switch>
           <Route 
             path="/contact" 
-            render={ () => <Contact /> }
+            render={ () => <>
+              { this.props.user ? 
+              <Contact 
+                user={this.props.user}
+              /> 
+                : null
+              }
+              </>
+            }
           />
           <Route 
             path="/about" 
-            render={ () => <About /> }
+            render={ () => <>
+            {this.props.user ?
+            <About 
+              user={this.props.user}
+            /> 
+            :null}
+            </>
+            }
           />
           <Route 
             path="/"
@@ -40,7 +55,9 @@ class App extends React.Component{
                 <Home 
                   user={this.props.user}
                 />
-                <ProjectsIndex />
+                <ProjectsIndex 
+                  projects={this.props.user.user_projects}
+                />
                 </>
                 : null
 

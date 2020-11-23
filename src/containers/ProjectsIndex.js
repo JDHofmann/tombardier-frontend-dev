@@ -1,7 +1,14 @@
 import React from 'react'
+import ProjectLinkCard from '../components/ProjectLinkCard'
 
 export default class ProjectsIndex extends React.Component{
 
+    renderProjectLinks = () => {
+        return this.props.projects.map( p => 
+        <ProjectLinkCard 
+            project={p}
+        /> )
+    }
     
     render(){
         const styling = {
@@ -10,7 +17,7 @@ export default class ProjectsIndex extends React.Component{
         }
         return(
             <div style={styling}>
-                <p>render projects here</p>
+                {this.renderProjectLinks()}
             </div>
         )
     }
