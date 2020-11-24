@@ -31,9 +31,6 @@ class About extends React.Component{
     handleBioSubmit = (e) => {
         e.preventDefault()
         this.props.editSiteInfo({bio: this.state.bio})
-        this.setState({
-            bio: this.props.user.bio,
-        })
     }
 
     handleImageSubmit = (e) => {

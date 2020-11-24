@@ -16,10 +16,10 @@ class Home extends React.Component{
     submitHandler = (e) => {
         e.preventDefault()        
         this.props.editSiteInfo(this.state)
-        this.setState({
-            site_title: this.props.user.site_title,
-            site_subtitle: this.props.user.site_subtitle
-        })
+        // this.setState({
+        //     site_title: this.props.user.site_title,
+        //     site_subtitle: this.props.user.site_subtitle
+        // })
     } 
 
     render(){
@@ -37,12 +37,11 @@ class Home extends React.Component{
                     value={this.state.site_title}
                     onChange={this.onChangeHandler}
                 ></input>
-                <input
-                    type="text-area"
+                <textarea
                     name="site_subtitle"
                     value={this.state.site_subtitle}
                     onChange={this.onChangeHandler}
-                ></input>
+                />
                 <button type="submit">Submit Changes</button>
             </form>
             

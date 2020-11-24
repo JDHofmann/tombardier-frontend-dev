@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 import ProjectsIndex from './containers/ProjectsIndex';
 import Contact from './containers/Contact';
 import About from './components/About';
-import { fetchUser, startEditMode, startViewMode, editSiteInfo, newUserImage } from './redux/actions'
+import { fetchUser, startEditMode, startViewMode, editSiteInfo, newUserImage, createProject } from './redux/actions'
 
 
 class App extends React.Component{
@@ -63,6 +63,8 @@ class App extends React.Component{
                 />
                 <ProjectsIndex 
                   projects={this.props.user.user_projects}
+                  userId={this.props.user.id}
+                  createProject={this.props.createProject}
                 />
                 </>
                 : null
@@ -88,7 +90,8 @@ const mdp = dispatch => {
     startEditMode: () => dispatch(startEditMode()),
     startViewMode: () => dispatch(startViewMode()),
     editSiteInfo: (patchObj) => dispatch(editSiteInfo(patchObj)),
-    newUserImage: (imageFormData) => dispatch(newUserImage(imageFormData))
+    newUserImage: (imageFormData) => dispatch(newUserImage(imageFormData)),
+    createProject: (userId) => dispatch(createProject(userId))
   }
 }
 

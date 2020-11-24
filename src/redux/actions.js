@@ -80,3 +80,46 @@ export const newUserImage = (imageformData) => {
         .then(useless => dispatch(fetchUser()))
     }
 }
+
+export const createProject = (newProjObj) => {
+    console.log(newProjObj)
+    return (dispatch) => {
+        fetch("http://localhost:3000/projects", {
+            method: "POST",
+            headers: {
+                "content-type":"application/json",
+                "accept":"application/json"
+            },
+            body: JSON.stringify(newProjObj)
+        })
+        .then(resp => resp.json())
+        .then(console.log)
+    }
+}
+
+export const updateProject = (patchObj) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/projects/${patchObj.id}`, {
+            method: "PATCH",
+            headers: {
+                "content-type":"application/json",
+                "accept":"application/json"
+            },
+            body: JSON.stringify(patchObj)
+        })
+        .then(resp => resp.json())
+        .then(data => dispatch(fetchUser()))
+    }
+}
+
+export const newProjectImage = (newImage) => {
+    return (dispatch) => {
+        let options = {
+            method: "PATCH",
+            body: newImage
+        }
+        fetch("http://localhost:3000/project_images", options)
+        .then(resp => resp.json())
+        .then(useless => dispatch(fetchUser()))
+    }
+}
