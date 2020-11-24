@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { updateProject, newProjectImage } from '../redux/actions'
+import { updateProject, newProjectImage, brandnewProjectImage } from '../redux/actions'
+import NewProjectImage from './NewProjectImage'
 import ProjectImages from './ProjectImages'
 
 
@@ -39,12 +40,14 @@ class ProjectCard extends React.Component {
             image={img}
             editMode={this.props.editMode}
             newProjectImage={this.props.newProjectImage}
+            projectId={this.props.project.project_id}
         /> )
     }
 
     render(){
         return(<>
             { this.props.editMode ? 
+            <>
             <form onSubmit={this.handleSubmit} >
                 <input
                     name="title"
@@ -63,6 +66,12 @@ class ProjectCard extends React.Component {
                 />
                 <button type="Submit" >Update</button>
             </form>
+            <NewProjectImage 
+                brandnewProjectImage={this.props.brandnewProjectImage}
+                projectId={this.props.project.project_id}
+            />
+
+            </>
             :
             <>
             <h2>{this.props.project.title}</h2>
@@ -82,7 +91,8 @@ class ProjectCard extends React.Component {
 const mdp = dispatch => {
     return {
         updateProject: (updateObj) => dispatch(updateProject(updateObj)),
-        newProjectImage: (newImage) => dispatch(newProjectImage(newImage))
+        newProjectImage: (newImage, projectImageId) => dispatch(newProjectImage(newImage, projectImageId)),
+        brandnewProjectImage:(newImage) => dispatch(brandnewProjectImage(newImage))
     }
 }
 

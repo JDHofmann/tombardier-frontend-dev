@@ -40,10 +40,6 @@ class About extends React.Component{
           formData.append('user[image]', this.state.image)
         }
         this.props.newUserImage(formData)
-        this.setState({
-            image: null,
-            tempImage: `http://localhost:3000/${this.props.user.image}`
-        })
     }
 
     render(){

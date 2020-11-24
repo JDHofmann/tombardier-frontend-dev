@@ -112,14 +112,28 @@ export const updateProject = (patchObj) => {
     }
 }
 
-export const newProjectImage = (newImage) => {
+export const newProjectImage = (newImage, projectImageId) => {
+    console.log(projectImageId)
     return (dispatch) => {
         let options = {
             method: "PATCH",
             body: newImage
         }
-        fetch("http://localhost:3000/project_images", options)
+        fetch(`http://localhost:3000/project_images/${projectImageId}`, options)
         .then(resp => resp.json())
-        .then(useless => dispatch(fetchUser()))
+        .then(data => dispatch(fetchUser()))
+    }
+}
+
+export const brandnewProjectImage = (newImage) => {
+    // console.log(newImage)
+    return (dispatch) => {
+        let options = {
+            method: "POST",
+            body: newImage
+        }
+        fetch(`http://localhost:3000/project_images`, options)
+        .then(resp => resp.json())
+        .then(data => dispatch(fetchUser()))
     }
 }

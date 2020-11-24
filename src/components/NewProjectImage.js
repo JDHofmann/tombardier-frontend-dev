@@ -1,9 +1,9 @@
 import React from 'react'
 
-class ProjectImages extends React.Component {
+class NewProjectImage extends React.Component {
     state = {
         image: null,
-        tempImage: `http://localhost:3000/${this.props.image.image}`
+        tempImage: null
     }
 
     handleFileChange = (e) => {
@@ -22,17 +22,13 @@ class ProjectImages extends React.Component {
 
     handleImageSubmit = (e) => {
         e.preventDefault()
-        let projectImageId = this.props.image.id
-        console.log(projectImageId)
+        let projectId = this.props.projectId
         const formData = new FormData();
         if(this.state.image){
           formData.append('project_image[image]', this.state.image)
         }
-        this.props.newProjectImage(formData, projectImageId)
-        // this.setState({
-        //     image: null,
-        //     tempImage: `http://localhost:3000/${this.props.user.image}`
-        // })
+        formData.append('project_image[project_id]', projectId)
+        this.props.brandnewProjectImage(formData)
     }
 
     render(){
@@ -42,8 +38,7 @@ class ProjectImages extends React.Component {
         </div> : null
         return(
             <div>
-                { this.props.editMode ? 
-                <>
+                <h4>Add a New Image</h4>
                 <form onSubmit={this.handleImageSubmit}>
                     { preview }
                     <input
@@ -53,19 +48,8 @@ class ProjectImages extends React.Component {
                     ></input>
                     <button>Update</button>
                 </form>
-                
-                </>
-                :
-                 <>
-                <img
-                    className=""
-                    alt="" 
-                    src={`http://localhost:3000/${this.props.image.image}`}></img>
-                <p>{this.props.image.image_caption}</p>
-                </>
-                 }
             </div>
         )
     }
 }
-export default ProjectImages
+export default NewProjectImage
