@@ -2,7 +2,8 @@ import { combineReducers } from "redux"
 
 const defaultState = {
     user: null,
-    editMode: false
+    editMode: false,
+    // us
 }
 
 const editModeReducer = (
@@ -26,9 +27,9 @@ const userReducer = (
     switch (action.type){
         case 'LOAD_USER':
             return action.user
-            
-        case 'UPDATE_USER':
-            return action.updatedUser
+
+        // case 'UPDATE_USER':
+        //     return action.updatedUser
 
         default :
             return state

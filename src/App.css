@@ -2,10 +2,17 @@
   text-align: center;
 }
 
+img {
+  max-width: 400px;
+}
+
 .pl-preview {
   width: 300px;
 }
 
 .about-pic {
   width: 400px;
+}
+a, button {
+  margin: 20px;
 }

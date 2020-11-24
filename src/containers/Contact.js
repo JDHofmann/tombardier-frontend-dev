@@ -1,5 +1,9 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import UserLink from '../components/UserLink'
+import NewUserLink from '../components/NewUserLink';
+import { createUserLink } from '../redux/actions'
+import { connect } from 'react-redux';
+
 
 class Contact extends React.Component{
 
@@ -9,7 +13,14 @@ class Contact extends React.Component{
 
     renderUserLinks = () => {
     return this.props.user.user_links.map(ul =>
-    <NavLink key={ul.link_url} to="https://github.com/">{ul.link_text}</NavLink>
+        <li>
+
+            <UserLink 
+                key={ul.link_url}
+                link={ul}
+                // editMode={this.props.editMode}
+            />
+        </li>
     )}
 
     handleChange = (e) => {
@@ -31,7 +42,9 @@ class Contact extends React.Component{
 
         return(
             <>
+            <h2>Contact</h2>
             { this.props.editMode ? 
+                <>
                 <form onSubmit={this.submitHandler}>
                     <input
                         name="contact_email"
@@ -40,16 +53,31 @@ class Contact extends React.Component{
                     ></input>
                     <button type="submit">Submit Changes</button>
                 </form>
+                <NewUserLink 
+                        createUserLink={this.props.createUserLink}
+                        userId={this.props.user.id}
+                />
+                </>
             :
             <div>
                 <h3>Contact Info</h3>
                 <p>{this.props.user.contact_email}</p>
                 <h4>Links</h4>
-                {this.renderUserLinks()}
             </div>
             }
+            <ul>
+                {this.renderUserLinks()}
+            </ul>
+            
             </>
         )
     }
 }
-export default Contact
+
+const mdp = dispatch => {
+    return {
+        createUserLink: (newLink, userId) => dispatch(createUserLink(newLink, userId) )
+    }
+}
+
+export default connect(null, mdp)(Contact)
