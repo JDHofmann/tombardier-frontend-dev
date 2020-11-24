@@ -1,5 +1,7 @@
 import React from 'react'
+import { Route, Switch } from 'react-router-dom'
 import ProjectLinkCard from '../components/ProjectLinkCard'
+import ProjectCard from '../components/ProjectCard'
 
 export default class ProjectsIndex extends React.Component{
 
@@ -17,9 +19,33 @@ export default class ProjectsIndex extends React.Component{
             // display: "flex"
         }
         return(
-            <div style={styling}>
-                {this.renderProjectLinks()}
-            </div>
+            <Switch>
+                <Route 
+                    path="/projects/:id"
+                    render={ (routerProps) => 
+                        
+                        { let id = parseInt(routerProps.match.params.id)  
+                        let project;
+                        project = this.props.projects.find( proj => proj.project_id === id)
+                        console.log(this.props.projects)
+                        return (   // console.log(routerProps)
+                        <ProjectCard 
+                            project={project}
+                            key={project.project_id}
+                        />
+                        )
+                    }
+                    }
+                />
+                <Route 
+                    path="/"
+                    render={() => 
+                        <div style={styling}>
+                            {this.renderProjectLinks()}
+                        </div>
+                    }
+                />
+            </Switch>
         )
     }
 }

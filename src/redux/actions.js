@@ -33,7 +33,7 @@ export const editSiteInfo = (patchObj) => {
             body: JSON.stringify(patchObj)
         })
         .then(resp => resp.json())
-        .then(updatedLink => dispatch(fetchUser()))
+        .then(data => dispatch(fetchUser()))
     }
 }
 
@@ -77,6 +77,6 @@ export const newUserImage = (imageformData) => {
         }
         fetch("http://localhost:3000/users/8", options)
         .then(resp => resp.json())
-        .then(updatedLink => dispatch(fetchUser()))
+        .then(useless => dispatch(fetchUser()))
     }
 }
