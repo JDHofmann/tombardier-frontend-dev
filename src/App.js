@@ -42,7 +42,7 @@ class App extends React.Component{
             {this.props.user ?
             <About 
               user={this.props.user}
-              editMode={this.props.editMode}
+              // editMode={this.props.editMode}
               editSiteInfo={this.props.editSiteInfo}
               newUserImage={this.props.newUserImage}
             /> 
@@ -58,7 +58,7 @@ class App extends React.Component{
                 <>
                 <Home 
                   user={this.props.user}
-                  editMode={this.props.editMode}
+                  // editMode={this.props.editMode}
                   editSiteInfo={this.props.editSiteInfo}
                 />
                 <ProjectsIndex 

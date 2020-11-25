@@ -38,7 +38,7 @@ class ProjectImages extends React.Component {
     render(){
         const preview = this.state.tempImage ? <div>
         <h3>Here's how your image will look, cool?</h3>
-        <img src={this.state.tempImage}></img>
+        <img alt="" src={this.state.tempImage}></img>
         </div> : null
         return(
             <div>

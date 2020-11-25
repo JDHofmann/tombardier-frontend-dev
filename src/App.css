@@ -1,67 +1,119 @@
-* {
+
+input, textarea, div, h1, h2, h3, h4, h5, h6, p, label, button, ul, li {
   list-style-type: none;
   font-family: Arial, Helvetica, sans-serif;
   padding: 0;
   margin: 0;
   color: #202020;
+  border: none;
+  outline: none;
+  border-radius: 10px;
 }
 
-.flex-center {
+input:focus, textarea:focus {
+  outline: .25vh solid #0000a0;
+}
+
+button:focus {
+  outline: 2px solid #ffa000;
+}
+
+.page-title {
+  font-size: 1.5em;
+  line-height: 2em;
+  font-weight: 200;
+  color: #808080;
+  padding-left: 5vw;
 }
 
 .header {
-  background-color: #fff0f0;
-  height: 7.5vw;
+  background-color: #c0ffff;
+  min-height: 7.5vw;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 0 2.5vw;
+  padding: 1vh 2.5vw;
 }
 
 .header a {
-  font-size: 1.25em;
+  font-size: 1.13em;
   padding: 0 2.5vw;
   color: #404040;
+  text-decoration: none;
 }
+
 
 .header a:hover {
   color: #202020;
   font-weight: 400;
 }
 
-.titleDiv {
-  height: 15vh;
-  text-align: left;
+.title-div {
+  min-height: 15vh;
+  /* text-align: left; */
   padding: 5vh 5vw;
+  display: grid;
+  row-gap: .5vh;
 }
 
-.titleDiv h1 {
+.local-edit-btn {
+  /* position: absolute;
+  top: 5vh;
+  right: 0; */
+  width: 15vw;
+  font-size: 1em;
+}
+
+.site-title {
   font-size: 2.75em;
+  line-height: 2em;
+  font-weight: 600;
+  text-align: left;
+  width: 90vw;
 }
 
-.titleDiv h2 {
-  padding: 5vh 5vw 0 0;
-  font-size: 1.5em;
-  font-weight: 100;
+.site-subtitle {
+  font-size: 1.4em;
+  font-weight: 200;
+  text-align: left;
   color: #404040;
+  width: 90vw;
 }
 
-textarea {
-  font-family: Arial, Helvetica, sans-serif;
-  min-height: 100px;
+.local-submit-btn {
+  font-size: 1em;
+  height: 5vh;
 }
 
-ul {
-  padding: 0;
-  margin: 0;
+.user-image {
+  width: 100vw;
+  margin: auto;
 }
 
-.App {
-  text-align: center;
+.over-img {
+  position: absolute;
+  right: 5vw;
+  margin-top: 1.25vh; 
+
 }
 
-img {
-  max-width: 400px;
+.image-upload-input {
+  width: 90vw;
+  margin: 1.25vh 5vw;
+  font-size: 14px;
+}
+
+.update{
+  width: 90vw;
+  margin: 1.25vh 5vw;
+  font-size: 1em;
+  height: 5vh;
+}
+
+.user-bio {
+  width: 90vw;
+  margin: 1.25vh 5vw;
+  overflow: visible;
 }
 
 .pl-preview {
@@ -71,6 +123,10 @@ img {
 .about-pic {
   width: 400px;
 }
-button {
+/* button {
   margin: 20px;
+} */
+
+.red {
+  background-color: #ffc0ff;
 }

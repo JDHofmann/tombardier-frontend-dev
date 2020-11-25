@@ -1,11 +1,19 @@
 import React from 'react'
+import { LocalEditBtn } from './LocalEditBtn'
 
 class About extends React.Component{
 
     state = {
         bio: this.props.user.bio,
         image: null,
-        tempImage: `http://localhost:3000/${this.props.user.image}`
+        tempImage: `http://localhost:3000/${this.props.user.image}`,
+        editMode: false
+    }
+
+    toggleEditMode = () => {
+        this.setState( prevState => ({
+            editMode: !prevState.editMode
+        }) )
     }
 
     onChangeHandler = (e) => {
@@ -45,42 +53,57 @@ class About extends React.Component{
     render(){
 
         const preview = this.state.tempImage ? <div>
-        <h3>Here's how your image will look, cool?</h3>
-        <img src={this.state.tempImage}></img>
+        <img
+             alt="" 
+             src={this.state.tempImage}
+             className="user-image"
+             ></img>
+        {/* <h3>look good?</h3> */}
         </div> : null
 
         return(
             <>
-            <h2>About</h2>
-            { this.props.editMode ? 
+            {/* leave out for mobile */}
+            {/* <h2 className="page-title">About</h2> */}
+            <LocalEditBtn 
+                classAddition="over-img"
+                editMode={this.state.editMode}
+                toggleEditMode={this.toggleEditMode}
+            />
+            { this.state.editMode ? 
             <>
-                <form onSubmit={this.handleImageSubmit}>
-                    { preview }
-                    <input
-                        name="image"
-                        type="file"
-                        // value={}
-                        onChange={this.handleFileChange}
-                    ></input>
-                    <button>Update</button>
-                </form>
+            <form 
+                // className="user-image"
+                onSubmit={this.handleImageSubmit}
+            >
+                { preview }
+                <input
+                    className="image-upload-input"
+                    name="image"
+                    type="file"
+                    onChange={this.handleFileChange}
+                ></input>
+                <button className="update">Update</button>
+            </form>
             <form onSubmit={this.handleBioSubmit}>
                 <textarea
-                    
+                    className="user-bio"
                     name="bio"
                     value={this.state.bio}
                     onChange={this.onChangeHandler}
                 ></textarea>
-                <button>Update</button>
+                <button className="update">Update</button>
             </form> 
             </>
             : 
             <div>
                 <img
-                    className="about-pic"
+                    className="user-image"
                     alt="" 
                     src={`http://localhost:3000/${this.props.user.image}`}></img>
-                <p>{this.props.user.bio}</p>
+                <p 
+                    className="user-bio"
+                >{this.props.user.bio}</p>
             </div>
             }
             </>
