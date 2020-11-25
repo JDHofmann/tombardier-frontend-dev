@@ -30,7 +30,10 @@ class Home extends React.Component{
         return(
             <>
             { this.props.editMode ?
-            <form style={styling} onSubmit={this.submitHandler}>
+            <form 
+            // style={styling} 
+            className="titleDiv"
+            onSubmit={this.submitHandler}>
                 <input
                     type="text"
                     name="site_title"
@@ -47,7 +50,9 @@ class Home extends React.Component{
             
             : 
             
-            <div style={styling}>
+            <div 
+            // style={styling}
+            className="titleDiv">
                 <h1>{this.props.user.site_title}</h1>
                 <h2>{this.props.user.site_subtitle}</h2>
             </div>

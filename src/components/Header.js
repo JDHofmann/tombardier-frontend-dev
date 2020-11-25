@@ -12,7 +12,9 @@ const Header = () => {
     }
 
     return(
-        <header style={styling}>
+        <header 
+            // style={styling} 
+            className="header flex-center">
             <NavLink
                 to="/"
             >Projects</NavLink>
