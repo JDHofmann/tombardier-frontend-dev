@@ -1,12 +1,14 @@
 import React from 'react'
 import { LocalEditBtn } from './LocalEditBtn'
+import { connect } from 'react-redux';
+import { newUserImage } from '../redux/actions'
 
-class About extends React.Component{
+
+class UserImage extends React.Component{
 
     state = {
-        bio: this.props.user.bio,
         image: null,
-        tempImage: `http://localhost:3000/${this.props.user.image}`,
+        tempImage: `http://localhost:3000/${this.props.image}`,
         editMode: false
     }
 
@@ -14,12 +16,6 @@ class About extends React.Component{
         this.setState( prevState => ({
             editMode: !prevState.editMode
         }) )
-    }
-
-    onChangeHandler = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
     }
 
     handleFileChange = (e) => {
@@ -36,11 +32,6 @@ class About extends React.Component{
         } 
     }
 
-    handleBioSubmit = (e) => {
-        e.preventDefault()
-        this.props.editSiteInfo({bio: this.state.bio})
-    }
-
     handleImageSubmit = (e) => {
         e.preventDefault()
         const formData = new FormData();
@@ -51,8 +42,8 @@ class About extends React.Component{
     }
 
     render(){
-
-        const preview = this.state.tempImage ? <div>
+        const preview = this.state.tempImage ? 
+        <div>
         <img
              alt="" 
              src={this.state.tempImage}
@@ -62,20 +53,16 @@ class About extends React.Component{
         </div> : null
 
         return(
-            <>
-            {/* leave out for mobile */}
-            {/* <h2 className="page-title">About</h2> */}
+            <div className="user-image-container">
             <LocalEditBtn 
                 classAddition="over-img"
                 editMode={this.state.editMode}
                 toggleEditMode={this.toggleEditMode}
             />
             { this.state.editMode ? 
-            <>
             <form 
-                // className="user-image"
                 onSubmit={this.handleImageSubmit}
-            >
+                >
                 { preview }
                 <input
                     className="image-upload-input"
@@ -83,31 +70,29 @@ class About extends React.Component{
                     type="file"
                     onChange={this.handleFileChange}
                 ></input>
-                <button className="update">Update</button>
+                <button className="update margX-5">Update</button>
             </form>
-            <form onSubmit={this.handleBioSubmit}>
-                <textarea
-                    className="user-bio"
-                    name="bio"
-                    value={this.state.bio}
-                    onChange={this.onChangeHandler}
-                ></textarea>
-                <button className="update">Update</button>
-            </form> 
-            </>
             : 
-            <div>
-                <img
+            <img
                     className="user-image"
                     alt="" 
-                    src={`http://localhost:3000/${this.props.user.image}`}></img>
-                <p 
-                    className="user-bio"
-                >{this.props.user.bio}</p>
-            </div>
+                    src={`http://localhost:3000/${this.props.image}`}></img>
             }
-            </>
+            </div>
         )
     }
 }
-export default About
+
+const msp = state => {
+    return {
+        image: state.user.image
+    }
+}
+
+const mdp = dispatch => {
+    return {
+        newUserImage: (obj) => dispatch(newUserImage(obj))
+    }
+}
+
+export default connect(msp, mdp)(UserImage) 

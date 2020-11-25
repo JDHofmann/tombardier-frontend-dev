@@ -57,11 +57,22 @@ button:focus {
 }
 
 .local-edit-btn {
-  /* position: absolute;
-  top: 5vh;
-  right: 0; */
+  position: relative;
+  left: 80vw;
   width: 15vw;
   font-size: 1em;
+}
+
+.over-img {
+  position: absolute;
+  right: 5vw;
+  margin-top: 1.25vh; 
+}
+
+.logout {
+  width: 15vw;
+  font-size: 1em;
+  margin-right: 2.5vw;
 }
 
 .site-title {
@@ -85,16 +96,13 @@ button:focus {
   height: 5vh;
 }
 
+.user-image-container {
+  margin: 2.5vh 0;
+}
+
 .user-image {
   width: 100vw;
   margin: auto;
-}
-
-.over-img {
-  position: absolute;
-  right: 5vw;
-  margin-top: 1.25vh; 
-
 }
 
 .image-upload-input {
@@ -105,15 +113,20 @@ button:focus {
 
 .update{
   width: 90vw;
-  margin: 1.25vh 5vw;
+  margin: 1.25vh 0;
   font-size: 1em;
   height: 5vh;
 }
-
+.margX-5 {
+  margin: auto 5vw;
+}
+.text-wrapper {
+  margin: 1.25vh 5vw 5vh;
+}
 .user-bio {
   width: 90vw;
-  margin: 1.25vh 5vw;
   overflow: visible;
+  min-height: 20vh;
 }
 
 .pl-preview {
@@ -122,11 +135,4 @@ button:focus {
 
 .about-pic {
   width: 400px;
-}
-/* button {
-  margin: 20px;
-} */
-
-.red {
-  background-color: #ffc0ff;
 }
