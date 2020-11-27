@@ -47,9 +47,9 @@ class UserImage extends React.Component{
         <img
              alt="" 
              src={this.state.tempImage}
-             className="user-image"
+             className="user-image "
              ></img>
-        <h3>look good?</h3>
+        <p className="image-prev-statement">How does that look?</p>
         </div> : null
 
         return(
@@ -65,7 +65,7 @@ class UserImage extends React.Component{
                 >
                 { preview }
                 <input
-                    className="image-upload-input"
+                    className="image-upload-input margX-5"
                     name="image"
                     type="file"
                     onChange={this.handleFileChange}

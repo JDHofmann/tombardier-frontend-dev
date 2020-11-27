@@ -1,4 +1,6 @@
 import React from 'react'
+import ProjectImageForm from './ProjectImageForm';
+import ProjectImages from './ProjectImages';
 
 class NewProjectImage extends React.Component {
     state = {
@@ -31,23 +33,28 @@ class NewProjectImage extends React.Component {
         this.props.brandnewProjectImage(formData)
     }
 
-    render(){
-        const preview = this.state.tempImage ? <div>
-        <h3>Here's how your image will look, cool?</h3>
-        <img alt="" src={this.state.tempImage}></img>
+    renderPreview = () => {
+        return this.state.tempImage ? 
+        <div>
+        <img 
+            className="pj-image"
+            alt="" 
+            src={this.state.tempImage}>
+            </img>
+                <p className="image-prev-statement">How does that look?</p>
         </div> : null
+    }
+
+    render(){
         return(
             <div>
                 <h4>Add a New Image</h4>
-                <form onSubmit={this.handleImageSubmit}>
-                    { preview }
-                    <input
-                        name="image"
-                        type="file"
-                        onChange={this.handleFileChange}
-                    ></input>
-                    <button>Update</button>
-                </form>
+                {this.renderPreview()}
+                <ProjectImageForm 
+                    preview={this.preview}
+                    handleFileChange={this.handleFileChange}
+                    handleImageSubmit={this.handleImageSubmit}
+                />
             </div>
         )
     }

@@ -1,5 +1,5 @@
 
-input, textarea, div, h1, h2, h3, h4, h5, h6, p, label, button, ul, li {
+input, textarea, div, h1, h2, h3, h4, h5, h6, p, label, button, ul, li, a, form {
   list-style-type: none;
   font-family: Arial, Helvetica, sans-serif;
   padding: 0;
@@ -9,10 +9,11 @@ input, textarea, div, h1, h2, h3, h4, h5, h6, p, label, button, ul, li {
   outline: none;
   text-indent: 0;
   border-radius: 10px;
+  text-decoration: none;
 
 }
 
-input {
+input, textarea {
   border: 1px solid #d0d0d0;
   border-radius: 5px;
   /* text */
@@ -35,7 +36,7 @@ button:focus {
 }
 
 .header {
-  background-color: #c0ffff;
+  /* background-color: #c0ffff; */
   min-height: 7.5vw;
   display: flex;
   justify-content: flex-end;
@@ -54,6 +55,7 @@ button:focus {
 .header a:hover {
   color: #202020;
   font-weight: 400;
+  text-decoration: underline;
 }
 
 .title-div {
@@ -66,15 +68,18 @@ button:focus {
 
 .local-edit-btn {
   position: relative;
-  /* left: 80vw; */
-  /* float:right; */
   width: 15vw;
   font-size: 1em;
-
   position: absolute;
   right: 5vw;
   /* margin-top: 1.25vh;  */
+  transition: .5s;
 }
+
+.local-edit-btn:hover {
+  background-color:#00a0a0;
+}
+
 
 .over-img {
   margin-top: 1.25vh; 
@@ -118,7 +123,7 @@ button:focus {
 
 .image-upload-input {
   width: 90vw;
-  margin: 1.25vh 5vw;
+  margin: 1.25vh 0;
   font-size: 14px;
 }
 
@@ -127,9 +132,16 @@ button:focus {
   margin: 1.25vh 0;
   font-size: 1em;
   height: 5vh;
+  transition: .5s;
 }
+
+.update:hover {
+  background-color:#ffa000;
+}
+
 .margX-5 {
-  margin: auto 5vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
 }
 .text-wrapper {
   margin: 1.25vh 5vw 5vh;
@@ -140,17 +152,31 @@ button:focus {
   min-height: 20vh;
 }
 
+.pl-link:hover ~ a{
+  color: green;
+}
+
 .pl-preview {
-  width: 300px;
+  width: 60vw;
+  height: 60vw;
+  object-position: center;
+  object-fit: cover;
+  margin: 2.5vh 0 2.5vh 30vw;
+  border-radius: 10px;
+}
+
+.pl-title {
+  font-size: 1.37em;
+  font-weight: 600;
+}
+
+.pl-subtitle {
+  font-size: 1.12em;
+  font-weight: 100;
 }
 
 .about-pic {
   width: 400px;
-}
-
-.contact-info {
-  /* padding-left: 10vw; */
-  /* text-indent: 10vw; */
 }
 
 .ct-label {
@@ -167,4 +193,45 @@ button:focus {
 }
 .ct-row {
   margin: 1vh 0;
+}
+
+.pj-title {
+  font-size: 1.5em;
+  margin: 2.5vh 0 .75vh;
+  width: 100%;
+  font-weight: 600;
+  /* color: #606060; */
+}
+
+.pj-subtitle {
+  font-size: 1.25em;
+  font-weight: 100;
+  margin: .75vh 0;
+  width: 100%;
+  font-weight: 100;
+}
+
+.pj-descript {
+  margin: 2.5vh 0;
+  width: 100%;
+}
+
+.pj-image {
+  width: 90vw;
+  border-radius: 10px;
+  margin-bottom: 2.5vh;
+}
+
+.image-prev-statement {
+  position: absolute;
+  font-size: 1em;
+  line-height: 5vh;
+  background-color: #00000080;
+  text-align: center;
+  color: #ffffff;
+  margin-top: -8.05vh;
+  width: 90vw;
+}
+.image-container {
+  margin: 2.5vh auto;
 }

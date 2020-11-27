@@ -23,8 +23,9 @@ class UserLink extends React.Component{
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.editLinkInfo(this.state) 
-        // remove editMode from state here *******
+        let patchObj = {...this.state}    
+        delete patchObj.editMode   
+        this.props.editLinkInfo(patchObj) 
     }
 
     handleChange = (e) => {

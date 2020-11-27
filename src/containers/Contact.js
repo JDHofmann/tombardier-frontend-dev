@@ -38,7 +38,9 @@ class Contact extends React.Component{
 
     submitHandler = (e) => {
         e.preventDefault()
-        this.props.editSiteInfo(this.state)
+        let patchObj = {...this.state}    
+        delete patchObj.editMode   
+        this.props.editSiteInfo(patchObj)
     }
 
     render(){

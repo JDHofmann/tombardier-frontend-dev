@@ -52,19 +52,13 @@ class App extends React.Component{
             render={() => 
               <>
                 { this.props.user ? 
-                <>
-                <Home 
-                  user={this.props.user}
-                  editSiteInfo={this.props.editSiteInfo}
-                />
                 <ProjectsIndex 
                   projects={this.props.user.user_projects}
-                  userId={this.props.user.id}
+                  user={this.props.user}
                   createProject={this.props.createProject}
-                />
-                </>
+                  editSiteInfo={this.props.editSiteInfo}
+                  />
                 : null
-
                 }
               </>
             }
@@ -83,8 +77,6 @@ class App extends React.Component{
 const mdp = dispatch => {
   return {
     fetchUser: () => dispatch(fetchUser()),
-    startEditMode: () => dispatch(startEditMode()),
-    startViewMode: () => dispatch(startViewMode()),
     editSiteInfo: (patchObj) => dispatch(editSiteInfo(patchObj)),
     createProject: (userId) => dispatch(createProject(userId))
   }
@@ -93,7 +85,6 @@ const mdp = dispatch => {
 const msp = state => {
   return {
     user: state.user,
-    editMode: state.editMode
   }
 }
 

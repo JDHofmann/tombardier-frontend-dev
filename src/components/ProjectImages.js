@@ -1,9 +1,20 @@
 import React from 'react'
+import { LocalEditBtn } from '../components/LocalEditBtn'
+import ProjectImageForm from './ProjectImageForm';
+
+
 
 class ProjectImages extends React.Component {
     state = {
         image: null,
-        tempImage: `http://localhost:3000/${this.props.image.image}`
+        tempImage: `http://localhost:3000/${this.props.image.image}`,
+        editMode: false
+    }
+
+    toggleEditMode = () => {
+        this.setState( prevState => ({
+            editMode: !prevState.editMode
+        }) )
     }
 
     handleFileChange = (e) => {
@@ -29,39 +40,43 @@ class ProjectImages extends React.Component {
           formData.append('project_image[image]', this.state.image)
         }
         this.props.newProjectImage(formData, projectImageId)
-        // this.setState({
-        //     image: null,
-        //     tempImage: `http://localhost:3000/${this.props.user.image}`
-        // })
+    }
+
+    renderPreview = () => {
+        return this.state.tempImage ? 
+        <div>
+        <img 
+            className="pj-image"
+            alt="" 
+            src={this.state.tempImage}>
+            </img>
+                <p className="image-prev-statement">How does that look?</p>
+        </div> : null
     }
 
     render(){
-        const preview = this.state.tempImage ? <div>
-        <h3>Here's how your image will look, cool?</h3>
-        <img alt="" src={this.state.tempImage}></img>
-        </div> : null
         return(
-            <div>
-                { this.props.editMode ? 
+            <div className="image-container">
+                <LocalEditBtn 
+                editMode={this.state.editMode}
+                toggleEditMode={this.toggleEditMode}
+                />
+                { this.state.editMode ? 
                 <>
-                <form onSubmit={this.handleImageSubmit}>
-                    { preview }
-                    <input
-                        name="image"
-                        type="file"
-                        onChange={this.handleFileChange}
-                    ></input>
-                    <button>Update</button>
-                </form>
-                
+                    {this.renderPreview()}
+                    <ProjectImageForm 
+                    preview={this.preview}
+                    handleFileChange={this.onChange}
+                    handleImageSubmit={this.handleImageSubmit}
+                    />
                 </>
                 :
                  <>
                 <img
-                    className=""
+                    className="pj-image"
                     alt="" 
                     src={`http://localhost:3000/${this.props.image.image}`}></img>
-                <p>{this.props.image.image_caption}</p>
+                {/* <p>{this.props.image.image_caption}</p> */}
                 </>
                  }
             </div>
