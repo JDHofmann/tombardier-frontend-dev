@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 import ProjectsIndex from './containers/ProjectsIndex';
 import Contact from './containers/Contact';
 import About from './containers/About';
-import { fetchUser, startEditMode, startViewMode, editSiteInfo, newUserImage, createProject } from './redux/actions'
+import { fetchUser, startEditMode, startViewMode, editSiteInfo, createProject } from './redux/actions'
 
 
 class App extends React.Component{
@@ -28,7 +28,6 @@ class App extends React.Component{
               { this.props.user ? 
               <Contact 
                 user={this.props.user}
-                editMode={this.props.editMode}
                 editSiteInfo={this.props.editSiteInfo}
               /> 
                 : null

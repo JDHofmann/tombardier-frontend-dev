@@ -37,15 +37,15 @@ class Home extends React.Component{
     render(){
 
         return(
-            <>
+            <div className="text-wrapper">
             <LocalEditBtn 
                 editMode={this.state.editMode}
                 toggleEditMode={this.toggleEditMode}
             />
             { this.state.editMode ?
             <form 
-            className="title-div"
-            onSubmit={this.submitHandler}>
+                className="title-div"
+                onSubmit={this.submitHandler}>
                 <input
                     type="text"
                     name="site_title"
@@ -76,7 +76,7 @@ class Home extends React.Component{
                 >{this.props.user.site_subtitle}</h2>
             </div>
             }
-            </>
+            </div>
         )
     }
 }

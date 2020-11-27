@@ -49,7 +49,7 @@ class UserImage extends React.Component{
              src={this.state.tempImage}
              className="user-image"
              ></img>
-        {/* <h3>look good?</h3> */}
+        <h3>look good?</h3>
         </div> : null
 
         return(

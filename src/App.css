@@ -7,7 +7,15 @@ input, textarea, div, h1, h2, h3, h4, h5, h6, p, label, button, ul, li {
   color: #202020;
   border: none;
   outline: none;
+  text-indent: 0;
   border-radius: 10px;
+
+}
+
+input {
+  border: 1px solid #d0d0d0;
+  border-radius: 5px;
+  /* text */
 }
 
 input:focus, textarea:focus {
@@ -51,21 +59,24 @@ button:focus {
 .title-div {
   min-height: 15vh;
   /* text-align: left; */
-  padding: 5vh 5vw;
-  display: grid;
-  row-gap: .5vh;
+  /* margin: 5vh 5vw; */
+  /* display: grid;
+  row-gap: .5vh; */
 }
 
 .local-edit-btn {
   position: relative;
-  left: 80vw;
+  /* left: 80vw; */
+  /* float:right; */
   width: 15vw;
   font-size: 1em;
+
+  position: absolute;
+  right: 5vw;
+  /* margin-top: 1.25vh;  */
 }
 
 .over-img {
-  position: absolute;
-  right: 5vw;
   margin-top: 1.25vh; 
 }
 
@@ -135,4 +146,25 @@ button:focus {
 
 .about-pic {
   width: 400px;
+}
+
+.contact-info {
+  /* padding-left: 10vw; */
+  /* text-indent: 10vw; */
+}
+
+.ct-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #606060;
+  display: block;
+}
+.ct-input{
+  font-size: 14px;
+  font-weight: 400;
+  /* color: #606060; */
+  display: block;
+}
+.ct-row {
+  margin: 1vh 0;
 }
