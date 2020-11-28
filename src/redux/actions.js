@@ -10,18 +10,6 @@ export const fetchUser = () => {
     }
 }
 
-export const startEditMode = () => {
-    return {
-        type: 'START_EDIT_MODE'
-    }
-}
-
-export const startViewMode = () => {
-    return {
-        type: 'START_VIEW_MODE'
-    }
-}
-
 export const editSiteInfo = (patchObj) => {
     return (dispatch) => {
         fetch("http://localhost:3000/users/8", {
@@ -50,6 +38,16 @@ export const editLinkInfo = (patchObj) => {
         })
         .then(resp => resp.json())
         .then(updatedLink => dispatch(fetchUser()))
+    }
+}
+
+export const deleteUserLink = (id) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/user_links/${id}`, {
+            method: "DELETE"
+        })
+        .then(resp => resp.json())
+        .then(data => dispatch(fetchUser()))
     }
 }
 

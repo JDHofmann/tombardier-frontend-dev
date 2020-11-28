@@ -22,7 +22,9 @@ class Contact extends React.Component{
 
     renderUserLinks = () => {
     return this.props.user.user_links.map(ul =>
-        <li className="ct-row">
+        <li 
+            className="ct-row"
+            key={ul.id}>
             <UserLink 
                 key={ul.link_url}
                 link={ul}

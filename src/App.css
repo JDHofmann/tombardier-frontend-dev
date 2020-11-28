@@ -80,6 +80,18 @@ button:focus {
   background-color:#00a0a0;
 }
 
+.local-delete-btn {
+  position: relative;
+  width: 15vw;
+  font-size: 1em;
+  position: absolute;
+  right: 25vw;
+  transition: .5s;
+}
+
+.local-delete-btn:hover {
+  background-color:#ffa0a0;
+}
 
 .over-img {
   margin-top: 1.25vh; 

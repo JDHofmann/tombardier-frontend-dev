@@ -1,9 +1,10 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux';
-import { editLinkInfo, createUserLink } from '../redux/actions'
+import { editLinkInfo, createUserLink, deleteUserLink } from '../redux/actions'
 import { LocalEditBtn } from '../components/LocalEditBtn'
 import LinkForm from './LinkForm';
+import { LocalDeleteBtn } from './LocalDeleteBtn';
 
 
 class UserLink extends React.Component{
@@ -34,12 +35,19 @@ class UserLink extends React.Component{
         })
     }
 
+    handleDelete = () => {
+        this.props.deleteUserLink(this.state.id)
+    }
+
     render(){
         return(
             <>
             <LocalEditBtn 
                 editMode={this.state.editMode}
                 toggleEditMode={this.toggleEditMode}
+            />
+            <LocalDeleteBtn 
+                handleDelete={this.handleDelete}
             />
             {
                 this.state.editMode ? 
@@ -63,7 +71,8 @@ class UserLink extends React.Component{
 const mdp = dispatch => {
     return {
         editLinkInfo: (patchObj) => dispatch(editLinkInfo(patchObj)),
-        createUserLink: (newLink, userId) => dispatch(createUserLink(newLink, userId) )
+        createUserLink: (newLink, userId) => dispatch(createUserLink(newLink, userId) ),
+        deleteUserLink: (id) => dispatch(deleteUserLink(id))
     }
 }
 

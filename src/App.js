@@ -3,12 +3,12 @@ import React from 'react'
 import { connect } from 'react-redux';
 import {  Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
-import Home from './components/Home';
+// import Home from './components/Home';
 import Footer from './components/Footer';
 import ProjectsIndex from './containers/ProjectsIndex';
 import Contact from './containers/Contact';
 import About from './containers/About';
-import { fetchUser, startEditMode, startViewMode, editSiteInfo, createProject } from './redux/actions'
+import { fetchUser, editSiteInfo, createProject } from './redux/actions'
 
 
 class App extends React.Component{
