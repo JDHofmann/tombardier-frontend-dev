@@ -126,7 +126,6 @@ export const newProjectImage = (newImage, projectImageId) => {
 }
 
 export const brandnewProjectImage = (newImage) => {
-    // console.log(newImage)
     return (dispatch) => {
         let options = {
             method: "POST",

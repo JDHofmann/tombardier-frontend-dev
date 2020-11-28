@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import { updateProject, newProjectImage, brandnewProjectImage } from '../redux/actions'
 import NewProjectImage from './NewProjectImage'
 import ProjectImages from './ProjectImages'
+import { LocalEditBtn } from '../components/LocalEditBtn'
+
 
 
 class ProjectCard extends React.Component {
@@ -12,7 +14,14 @@ class ProjectCard extends React.Component {
         title: this.props.project.title,
         subtitle: this.props.project.subtitle,
         description: this.props.project.description,
-        id: this.props.project.project_id
+        id: this.props.project.project_id,
+        editMode: false
+    }
+
+    toggleEditMode = () => {
+        this.setState( prevState => ({
+            editMode: !prevState.editMode
+        }) )
     }
 
     handleChange = (e) => {
@@ -23,7 +32,9 @@ class ProjectCard extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.updateProject(this.state)
+        let patchObj = {...this.state}    
+        delete patchObj.editMode   
+        this.props.updateProject(patchObj)
     }
 
     renderLinks = () => {
@@ -45,45 +56,55 @@ class ProjectCard extends React.Component {
     }
 
     render(){
-        return(<>
-            { this.props.editMode ? 
+        return(
+            <div className="text-wrapper">
+                <LocalEditBtn 
+                editMode={this.state.editMode}
+                toggleEditMode={this.toggleEditMode}
+                />
+            { this.state.editMode ? 
             <>
             <form onSubmit={this.handleSubmit} >
                 <input
+                    className="pj-title"
                     name="title"
                     value={this.state.title}
                     onChange={this.handleChange}
                 />
                 <input
+                    className="pj-subtitle"
                     name="subtitle"
                     value={this.state.subtitle}
                     onChange={this.handleChange}
                 />
                 <textarea
+                    className="pj-descript"
                     name="description"
                     value={this.state.description}
                     onChange={this.handleChange}
                 />
-                <button type="Submit" >Update</button>
+                <button 
+                    type="Submit" 
+                    className="update"
+                    >Update</button>
             </form>
+            </>
+            :
+            <div>
+            <h2 className="pj-title">{this.props.project.title}</h2>
+            <h3 className="pj-subtitle">{this.props.project.subtitle}</h3>
+            <p className="pj-descript">{this.props.project.description}</p>
+            <ul>
+                <h4>Links</h4>
+                {this.renderLinks()}</ul>
+            </div>
+            }
+            { this.renderProjectImages() }
             <NewProjectImage 
                 brandnewProjectImage={this.props.brandnewProjectImage}
                 projectId={this.props.project.project_id}
             />
-
-            </>
-            :
-            <>
-            <h2>{this.props.project.title}</h2>
-            <h3>{this.props.project.subtitle}</h3>
-            <p>{this.props.project.description}</p>
-            <ul>
-                <h4>Links</h4>
-                {this.renderLinks()}</ul>
-            </>
-            }
-            { this.renderProjectImages() }
-            </>
+            </div>
         )
     }
 }

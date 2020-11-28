@@ -2,15 +2,19 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import ProjectLinkCard from '../components/ProjectLinkCard'
 import ProjectCard from '../components/ProjectCard'
+import Home from '../components/Home';
+
 
 export default class ProjectsIndex extends React.Component{
 
     renderProjectLinks = () => {
         return this.props.projects.map( p => 
-        <ProjectLinkCard 
-            key={p.title}
-            project={p}
-        /> )
+            <div className="pl-link">
+                <ProjectLinkCard
+                    key={p.title}
+                    project={p}
+                /> 
+            </div>)
     }
     
     addNewProject = () => {
@@ -18,15 +22,12 @@ export default class ProjectsIndex extends React.Component{
             title: "New Project",
             subtitle: "subtitle",
             description: "Add your project's description here",
-            user_id: this.props.userId
+            user_id: this.props.user.id
         }
         this.props.createProject(newProjObj)
     }
 
     render(){
-        const styling = {
-            backgroundColor: "#fffff0",
-        }
         return(
             <Switch>
                 <Route 
@@ -47,11 +48,18 @@ export default class ProjectsIndex extends React.Component{
                 <Route 
                     path="/"
                     render={() =>
-                        <> 
-                        <div style={styling}>
+                        <>
+                        <Home 
+                            user={this.props.user}
+                            editSiteInfo={this.props.editSiteInfo}
+                        />
+                        <div className="text-wrapper">
                             {this.renderProjectLinks()}
+                        <button 
+                            onClick={this.addNewProject}
+                            className="update"
+                        >Add New Project</button>
                         </div>
-                        <button onClick={this.addNewProject}>Add a new Project</button>
                         </>
                     }
                 />

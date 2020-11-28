@@ -1,4 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux';
+import { createUserLink } from '../redux/actions'
+import LinkForm from './LinkForm';
 
 class NewUserLink extends React.Component{
 
@@ -25,22 +28,21 @@ class NewUserLink extends React.Component{
 
     render(){
         return(
-
-                <form onSubmit={this.handleSubmit}>
-                <input
-                    name="link_url"
-                    value={this.state.link_url}
-                    onChange={this.handleChange}
-                />
-                <input
-                name="link_text"
-                value={this.state.link_text}
-                onChange={this.handleChange}
-                />
-                <button type="submit">New Link</button>
-                </form>
-
+            <LinkForm 
+                link_url={this.state.link_url}
+                link_text={this.state.link_text}
+                handleChange={this.handleChange}
+                handleSubmit={this.handleSubmit}
+                new
+            />
         )
     }
 }
-export default NewUserLink
+
+const mdp = dispatch => {
+    return {
+        createUserLink: (newLink, userId) => dispatch(createUserLink(newLink, userId) )
+    }
+}
+
+export default connect(null, mdp)(NewUserLink) 

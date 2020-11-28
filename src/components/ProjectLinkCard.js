@@ -8,12 +8,17 @@ const ProjectLinkCard = (props) => {
             to={`/projects/${props.project.project_id}`}
         >
             <div>
-                <h3>{props.project.title}</h3>
-                <h4>{props.project.subtitle}</h4>
-                <img 
-                    className="pl-preview"
-                    alt=""
-                    src={`http://localhost:3000/${props.project.image}`}></img>
+                <h3 className="pl-title">{props.project.title}</h3>
+                <h4 className="pl-subtitle">{props.project.subtitle}</h4>
+                {
+                    props.project.images.length > 0 ?
+
+                    <img 
+                        className="pl-preview"
+                        alt=""
+                        src={`http://localhost:3000/${props.project.images[0].image}`}></img>
+                    : null
+                }
             </div>
         </NavLink>
     )

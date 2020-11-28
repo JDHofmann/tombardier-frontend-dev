@@ -7,8 +7,8 @@ import Home from './components/Home';
 import Footer from './components/Footer';
 import ProjectsIndex from './containers/ProjectsIndex';
 import Contact from './containers/Contact';
-import About from './components/About';
-import { fetchUser, startEditMode, startViewMode, editSiteInfo, newUserImage, createProject } from './redux/actions'
+import About from './containers/About';
+import { fetchUser, startEditMode, startViewMode, editSiteInfo, createProject } from './redux/actions'
 
 
 class App extends React.Component{
@@ -28,7 +28,6 @@ class App extends React.Component{
               { this.props.user ? 
               <Contact 
                 user={this.props.user}
-                editMode={this.props.editMode}
                 editSiteInfo={this.props.editSiteInfo}
               /> 
                 : null
@@ -42,9 +41,7 @@ class App extends React.Component{
             {this.props.user ?
             <About 
               user={this.props.user}
-              editMode={this.props.editMode}
               editSiteInfo={this.props.editSiteInfo}
-              newUserImage={this.props.newUserImage}
             /> 
             :null}
             </>
@@ -55,20 +52,13 @@ class App extends React.Component{
             render={() => 
               <>
                 { this.props.user ? 
-                <>
-                <Home 
-                  user={this.props.user}
-                  editMode={this.props.editMode}
-                  editSiteInfo={this.props.editSiteInfo}
-                />
                 <ProjectsIndex 
                   projects={this.props.user.user_projects}
-                  userId={this.props.user.id}
+                  user={this.props.user}
                   createProject={this.props.createProject}
-                />
-                </>
+                  editSiteInfo={this.props.editSiteInfo}
+                  />
                 : null
-
                 }
               </>
             }
@@ -87,10 +77,7 @@ class App extends React.Component{
 const mdp = dispatch => {
   return {
     fetchUser: () => dispatch(fetchUser()),
-    startEditMode: () => dispatch(startEditMode()),
-    startViewMode: () => dispatch(startViewMode()),
     editSiteInfo: (patchObj) => dispatch(editSiteInfo(patchObj)),
-    newUserImage: (imageFormData) => dispatch(newUserImage(imageFormData)),
     createProject: (userId) => dispatch(createProject(userId))
   }
 }
@@ -98,7 +85,6 @@ const mdp = dispatch => {
 const msp = state => {
   return {
     user: state.user,
-    editMode: state.editMode
   }
 }
 
