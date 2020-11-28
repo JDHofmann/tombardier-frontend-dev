@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { updateProject, newProjectImage, brandnewProjectImage, deleteProject } from '../redux/actions'
+import { updateProject, newProjectImage, brandnewProjectImage, deleteProject, deleteProjectImage } from '../redux/actions'
 import NewProjectImage from './NewProjectImage'
 import ProjectImages from './ProjectImages'
 import { LocalEditBtn } from '../components/LocalEditBtn'
@@ -38,18 +38,8 @@ class ProjectCard extends React.Component {
         this.props.updateProject(patchObj)
     }
 
-    handleDelete = (routerProps) => {
+    handleDelete = () => {
         this.props.deleteProject(this.state.id)
-
-        // console.log(this.props.history)
-        // const history = useHistory
-        // this.props.history.push(`/projects`)
-    }
-
-    renderDelete = () => {
-        return (
-            <button>Delete Project</button>
-        )
     }
 
     renderLinks = () => {
@@ -67,6 +57,7 @@ class ProjectCard extends React.Component {
             editMode={this.props.editMode}
             newProjectImage={this.props.newProjectImage}
             projectId={this.props.project.project_id}
+            deleteProjectImage={this.props.deleteProjectImage}
         /> )
     }
 
@@ -125,9 +116,6 @@ class ProjectCard extends React.Component {
                 classAddition="delete-project"
                 deleteProject
             />
-            {/* { this.props.project ? console.log("cool") : <Redirect 
-                to="/projects"
-            /> } */}
             </div>
         )
     }
@@ -138,7 +126,8 @@ const mdp = dispatch => {
         updateProject: (updateObj) => dispatch(updateProject(updateObj)),
         newProjectImage: (newImage, projectImageId) => dispatch(newProjectImage(newImage, projectImageId)),
         brandnewProjectImage:(newImage) => dispatch(brandnewProjectImage(newImage)),
-        deleteProject: (id) => dispatch(deleteProject(id))
+        deleteProject: (id) => dispatch(deleteProject(id)),
+        deleteProjectImage:(id) => dispatch(deleteProjectImage(id))
     }
 }
 

@@ -144,3 +144,13 @@ export const brandnewProjectImage = (newImage) => {
         .then(data => dispatch(fetchUser()))
     }
 }
+
+export const deleteProjectImage = (id) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/project_images/${id}`, {
+            method: "DELETE"
+        })
+        .then(resp => resp.json())
+        .then(data => dispatch(fetchUser()))
+    }
+}

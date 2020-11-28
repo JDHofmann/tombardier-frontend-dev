@@ -1,5 +1,6 @@
 import React from 'react'
 import { LocalEditBtn } from '../components/LocalEditBtn'
+import { LocalDeleteBtn } from '../components/LocalDeleteBtn'
 import ProjectImageForm from './ProjectImageForm';
 
 
@@ -42,6 +43,10 @@ class ProjectImages extends React.Component {
         this.props.newProjectImage(formData, projectImageId)
     }
 
+    handleDelete = () => {
+        this.props.deleteProjectImage(this.props.image.id)
+    }
+
     renderPreview = () => {
         return this.state.tempImage ? 
         <div>
@@ -60,6 +65,9 @@ class ProjectImages extends React.Component {
                 <LocalEditBtn 
                 editMode={this.state.editMode}
                 toggleEditMode={this.toggleEditMode}
+                />
+                <LocalDeleteBtn 
+                    handleDelete={this.handleDelete}
                 />
                 { this.state.editMode ? 
                 <>
