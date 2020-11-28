@@ -5,6 +5,6 @@ export const LocalDeleteBtn = (props) => {
         <button
             className={`local-delete-btn ${props.classAddition}`} 
             onClick={props.handleDelete}
-        >Delete</button>
+        >{ props.deleteProject ? "Delete Project" : "Delete" }</button>
     )
 }

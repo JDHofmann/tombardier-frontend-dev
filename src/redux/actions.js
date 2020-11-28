@@ -110,6 +110,16 @@ export const updateProject = (patchObj) => {
     }
 }
 
+export const deleteProject = (id) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/projects/${id}`, {
+            method: "DELETE"
+        })
+        .then(resp => resp.json())
+        .then(data => dispatch(fetchUser()))
+    }
+}
+
 export const newProjectImage = (newImage, projectImageId) => {
     console.log(projectImageId)
     return (dispatch) => {

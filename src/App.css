@@ -90,7 +90,16 @@ button:focus {
 }
 
 .local-delete-btn:hover {
-  background-color:#ffa0a0;
+  background-color:#ff5000;
+}
+
+.delete-project {
+  left: 5vw;
+  width: 90vw;
+  margin: 1.25vh 0;
+  font-size: 1em;
+  height: 5vh;
+  transition: .5s;
 }
 
 .over-img {

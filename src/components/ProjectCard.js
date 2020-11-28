@@ -1,10 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { updateProject, newProjectImage, brandnewProjectImage } from '../redux/actions'
+import { updateProject, newProjectImage, brandnewProjectImage, deleteProject } from '../redux/actions'
 import NewProjectImage from './NewProjectImage'
 import ProjectImages from './ProjectImages'
 import { LocalEditBtn } from '../components/LocalEditBtn'
+import { LocalDeleteBtn } from '../components/LocalDeleteBtn'
 
 
 
@@ -37,6 +38,20 @@ class ProjectCard extends React.Component {
         this.props.updateProject(patchObj)
     }
 
+    handleDelete = (routerProps) => {
+        this.props.deleteProject(this.state.id)
+
+        // console.log(this.props.history)
+        // const history = useHistory
+        // this.props.history.push(`/projects`)
+    }
+
+    renderDelete = () => {
+        return (
+            <button>Delete Project</button>
+        )
+    }
+
     renderLinks = () => {
         return this.props.project.links.map(pl =>
             <li key={pl.link_url}>
@@ -62,6 +77,7 @@ class ProjectCard extends React.Component {
                 editMode={this.state.editMode}
                 toggleEditMode={this.toggleEditMode}
                 />
+
             { this.state.editMode ? 
             <>
             <form onSubmit={this.handleSubmit} >
@@ -104,6 +120,14 @@ class ProjectCard extends React.Component {
                 brandnewProjectImage={this.props.brandnewProjectImage}
                 projectId={this.props.project.project_id}
             />
+            <LocalDeleteBtn 
+                handleDelete={this.handleDelete}
+                classAddition="delete-project"
+                deleteProject
+            />
+            {/* { this.props.project ? console.log("cool") : <Redirect 
+                to="/projects"
+            /> } */}
             </div>
         )
     }
@@ -113,7 +137,8 @@ const mdp = dispatch => {
     return {
         updateProject: (updateObj) => dispatch(updateProject(updateObj)),
         newProjectImage: (newImage, projectImageId) => dispatch(newProjectImage(newImage, projectImageId)),
-        brandnewProjectImage:(newImage) => dispatch(brandnewProjectImage(newImage))
+        brandnewProjectImage:(newImage) => dispatch(brandnewProjectImage(newImage)),
+        deleteProject: (id) => dispatch(deleteProject(id))
     }
 }
 
