@@ -1,11 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { updateProject, newProjectImage, brandnewProjectImage, deleteProject, deleteProjectImage } from '../redux/actions'
+import { updateProject, createProjectLink, newProjectImage, brandnewProjectImage, deleteProject, deleteProjectImage } from '../redux/actions'
 import NewProjectImage from './NewProjectImage'
 import ProjectImages from './ProjectImages'
 import { LocalEditBtn } from '../components/LocalEditBtn'
 import { LocalDeleteBtn } from '../components/LocalDeleteBtn'
+import ProjectLinkCard from './ProjectLinkCard'
+import Link from './Link'
+import NewLink from './NewLink'
 
 
 
@@ -44,9 +46,11 @@ class ProjectCard extends React.Component {
 
     renderLinks = () => {
         return this.props.project.links.map(pl =>
-            <li key={pl.link_url}>
-                <Link  to={pl.link_url}>{pl.link_text}</Link>
-            </li> 
+            <Link 
+                key={pl.id}
+                link={pl}
+                project
+            />
          )
     }
 
@@ -103,7 +107,13 @@ class ProjectCard extends React.Component {
             <p className="pj-descript">{this.props.project.description}</p>
             <ul>
                 <h4>Links</h4>
-                {this.renderLinks()}</ul>
+                {this.renderLinks()}
+            </ul>
+            <NewLink 
+                projectId={this.props.project.project_id}
+                createProjectLink={this.props.createProjectLink}
+                project
+            />
             </div>
             }
             { this.renderProjectImages() }
@@ -127,6 +137,7 @@ const mdp = dispatch => {
         newProjectImage: (newImage, projectImageId) => dispatch(newProjectImage(newImage, projectImageId)),
         brandnewProjectImage:(newImage) => dispatch(brandnewProjectImage(newImage)),
         deleteProject: (id) => dispatch(deleteProject(id)),
+        createProjectLink: (newLink, projectId) => dispatch(createProjectLink(newLink, projectId)),
         deleteProjectImage:(id) => dispatch(deleteProjectImage(id))
     }
 }

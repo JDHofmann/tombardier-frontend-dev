@@ -7,13 +7,13 @@ const Footer = (props) => {
     //     display: "flex"
     // }
 
-    const startEditModeHandler = () => {
-        props.startEditMode()
-    }
+    // const startEditModeHandler = () => {
+    //     props.startEditMode()
+    // }
 
-    const startViewModeHandler = () => {
-        props.startViewMode()
-    }
+    // const startViewModeHandler = () => {
+    //     props.startViewMode()
+    // }
 
     return (
         <footer className="header">

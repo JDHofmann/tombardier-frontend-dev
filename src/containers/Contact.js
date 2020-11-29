@@ -1,7 +1,6 @@
 import React from 'react'
-import UserLink from '../components/UserLink'
-import NewUserLink from '../components/NewUserLink';
-
+import Link from '../components/Link'
+import NewLink from '../components/NewLink';
 
 import { LocalEditBtn } from '../components/LocalEditBtn'
 
@@ -25,7 +24,7 @@ class Contact extends React.Component{
         <li 
             className="ct-row"
             key={ul.id}>
-            <UserLink 
+            <Link 
                 key={ul.link_url}
                 link={ul}
             />
@@ -82,7 +81,7 @@ class Contact extends React.Component{
                 <h4 className="ct-label">Links</h4>
                 {this.renderUserLinks()}
             </ul>           
-            <NewUserLink 
+            <NewLink 
                 createUserLink={this.props.createUserLink}
                 userId={this.props.user.id}
             />
