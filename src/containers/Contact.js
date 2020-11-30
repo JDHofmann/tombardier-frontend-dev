@@ -1,7 +1,6 @@
 import React from 'react'
-import UserLink from '../components/UserLink'
-import NewUserLink from '../components/NewUserLink';
-
+import Link from '../components/Link'
+import NewLink from '../components/NewLink';
 
 import { LocalEditBtn } from '../components/LocalEditBtn'
 
@@ -11,7 +10,8 @@ class Contact extends React.Component{
 
     state = {
         contact_email: this.props.user.contact_email,
-        editMode: false
+        editMode: false,
+        showNewLink: false
     }
 
     toggleEditMode = () => {
@@ -20,10 +20,20 @@ class Contact extends React.Component{
         }) )
     }
 
+    showNewLinkForm = () => {
+        this.setState({ showNewLink: true })
+    }
+
+    hideNewLinkForm = () => {
+        this.setState({ showNewLink: false })
+    }
+
     renderUserLinks = () => {
     return this.props.user.user_links.map(ul =>
-        <li className="ct-row">
-            <UserLink 
+        <li 
+            className="ct-row"
+            key={ul.id}>
+            <Link 
                 key={ul.link_url}
                 link={ul}
             />
@@ -39,7 +49,8 @@ class Contact extends React.Component{
     submitHandler = (e) => {
         e.preventDefault()
         let patchObj = {...this.state}    
-        delete patchObj.editMode   
+        delete patchObj.editMode
+        delete patchObj.showNewLink   
         this.props.editSiteInfo(patchObj)
     }
 
@@ -79,21 +90,22 @@ class Contact extends React.Component{
             <ul className="contact-info">
                 <h4 className="ct-label">Links</h4>
                 {this.renderUserLinks()}
-            </ul>           
-            <NewUserLink 
+            </ul>
+            { this.state.showNewLink ?
+            <NewLink 
                 createUserLink={this.props.createUserLink}
                 userId={this.props.user.id}
+                hideNewLinkForm={this.hideNewLinkForm}
             />
+            :
+            <button
+                className="update"
+                onClick={this.showNewLinkForm}
+            >Add New Link</button>
+            }           
             </div>
         )
     }
 }
 
-// const mdp = dispatch => {
-//     return {
-//         createUserLink: (newLink, userId) => dispatch(createUserLink(newLink, userId) )
-//     }
-// }
-
-// export default connect(null, mdp)(Contact)
 export default Contact

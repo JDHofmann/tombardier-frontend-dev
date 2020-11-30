@@ -1,6 +1,6 @@
 import React from 'react'
 import ProjectImageForm from './ProjectImageForm';
-import ProjectImages from './ProjectImages';
+// import ProjectImages from './ProjectImages';
 
 class NewProjectImage extends React.Component {
     state = {
@@ -31,6 +31,7 @@ class NewProjectImage extends React.Component {
         }
         formData.append('project_image[project_id]', projectId)
         this.props.brandnewProjectImage(formData)
+        this.props.hideNewImageForm()
     }
 
     renderPreview = () => {

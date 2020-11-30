@@ -1,10 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { updateProject, newProjectImage, brandnewProjectImage } from '../redux/actions'
+import { updateProject, createProjectLink, newProjectImage, brandnewProjectImage, deleteProject, deleteProjectImage } from '../redux/actions'
 import NewProjectImage from './NewProjectImage'
 import ProjectImages from './ProjectImages'
 import { LocalEditBtn } from '../components/LocalEditBtn'
+import { LocalDeleteBtn } from '../components/LocalDeleteBtn'
+import ProjectLinkCard from './ProjectLinkCard'
+import Link from './Link'
+import NewLink from './NewLink'
 
 
 
@@ -15,13 +18,31 @@ class ProjectCard extends React.Component {
         subtitle: this.props.project.subtitle,
         description: this.props.project.description,
         id: this.props.project.project_id,
-        editMode: false
+        editMode: false,
+        showNewLink: false,
+        showNewImage: false
     }
 
     toggleEditMode = () => {
         this.setState( prevState => ({
             editMode: !prevState.editMode
         }) )
+    }
+
+    showNewLinkForm = () => {
+        this.setState({ showNewLink: true })
+    }
+
+    hideNewLinkForm = () => {
+        this.setState({ showNewLink: false })
+    }
+
+    showNewImageForm = () => {
+        this.setState({ showNewImage: true })
+    }
+
+    hideNewImageForm = () => {
+        this.setState({ showNewImage: false })
     }
 
     handleChange = (e) => {
@@ -33,15 +54,29 @@ class ProjectCard extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault()
         let patchObj = {...this.state}    
-        delete patchObj.editMode   
+        delete patchObj.editMode
+        delete patchObj.showNewLink
+        delete patchObj.showNewImage   
         this.props.updateProject(patchObj)
+    }
+
+    handleDelete = () => {
+        this.props.deleteProject(this.state.id)
     }
 
     renderLinks = () => {
         return this.props.project.links.map(pl =>
-            <li key={pl.link_url}>
-                <Link  to={pl.link_url}>{pl.link_text}</Link>
-            </li> 
+            <li
+                className="ct-row"
+                key={pl.id}
+            >
+                <Link 
+                key={pl.id}
+                link={pl}
+                project
+                />
+            </li>
+            
          )
     }
 
@@ -52,6 +87,7 @@ class ProjectCard extends React.Component {
             editMode={this.props.editMode}
             newProjectImage={this.props.newProjectImage}
             projectId={this.props.project.project_id}
+            deleteProjectImage={this.props.deleteProjectImage}
         /> )
     }
 
@@ -62,6 +98,7 @@ class ProjectCard extends React.Component {
                 editMode={this.state.editMode}
                 toggleEditMode={this.toggleEditMode}
                 />
+
             { this.state.editMode ? 
             <>
             <form onSubmit={this.handleSubmit} >
@@ -96,13 +133,40 @@ class ProjectCard extends React.Component {
             <p className="pj-descript">{this.props.project.description}</p>
             <ul>
                 <h4>Links</h4>
-                {this.renderLinks()}</ul>
+                {this.renderLinks()}
+            </ul>
+            { this.state.showNewLink ? 
+            <NewLink 
+                projectId={this.props.project.project_id}
+                createProjectLink={this.props.createProjectLink}
+                project
+                hideNewLinkForm={this.hideNewLinkForm}
+            />
+            :
+            <button
+                className="update"
+                onClick={this.showNewLinkForm}
+            >Add New Link</button>
+             }
             </div>
             }
             { this.renderProjectImages() }
+            { this.state.showNewImage ?
             <NewProjectImage 
                 brandnewProjectImage={this.props.brandnewProjectImage}
                 projectId={this.props.project.project_id}
+                hideNewImageForm={this.hideNewImageForm}
+            />
+            :
+            <button
+                className="update"
+                onClick={this.showNewImageForm}
+            >Add New Image</button>
+             }
+            <LocalDeleteBtn 
+                handleDelete={this.handleDelete}
+                classAddition="delete-project"
+                deleteProject
             />
             </div>
         )
@@ -113,7 +177,10 @@ const mdp = dispatch => {
     return {
         updateProject: (updateObj) => dispatch(updateProject(updateObj)),
         newProjectImage: (newImage, projectImageId) => dispatch(newProjectImage(newImage, projectImageId)),
-        brandnewProjectImage:(newImage) => dispatch(brandnewProjectImage(newImage))
+        brandnewProjectImage:(newImage) => dispatch(brandnewProjectImage(newImage)),
+        deleteProject: (id) => dispatch(deleteProject(id)),
+        createProjectLink: (newLink, projectId) => dispatch(createProjectLink(newLink, projectId)),
+        deleteProjectImage:(id) => dispatch(deleteProjectImage(id))
     }
 }
 

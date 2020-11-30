@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { createUserLink } from '../redux/actions'
 import LinkForm from './LinkForm';
 
-class NewUserLink extends React.Component{
+class NewLink extends React.Component{
 
     state = {
         link_url: "",
@@ -12,12 +12,18 @@ class NewUserLink extends React.Component{
 
     handleSubmit = (e) => {
         e.preventDefault()
-        let userId = this.props.userId
-        this.props.createUserLink(this.state, userId) 
+        if(this.props.project){
+            let projectId = this.props.projectId
+            this.props.createProjectLink(this.state, projectId)
+        }else{
+            let userId = this.props.userId
+            this.props.createUserLink(this.state, userId) 
+        }
         this.setState({
             link_url: "",
             link_text: ""
         })
+        this.props.hideNewLinkForm() 
     }
 
     handleChange = (e) => {
@@ -28,6 +34,8 @@ class NewUserLink extends React.Component{
 
     render(){
         return(
+            <>
+            <h4 className="ct-label">Add a New Link</h4>
             <LinkForm 
                 link_url={this.state.link_url}
                 link_text={this.state.link_text}
@@ -35,6 +43,7 @@ class NewUserLink extends React.Component{
                 handleSubmit={this.handleSubmit}
                 new
             />
+            </>
         )
     }
 }
@@ -45,4 +54,4 @@ const mdp = dispatch => {
     }
 }
 
-export default connect(null, mdp)(NewUserLink) 
+export default connect(null, mdp)(NewLink) 

@@ -1,12 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux';
-import { editLinkInfo, createUserLink } from '../redux/actions'
-import { LocalEditBtn } from '../components/LocalEditBtn'
+import { editLinkInfo, createUserLink, deleteUserLink, editProjectLink, deleteProjectLink } from '../redux/actions'
+import { LocalEditBtn } from './LocalEditBtn'
+import { LocalDeleteBtn } from './LocalDeleteBtn';
 import LinkForm from './LinkForm';
 
 
-class UserLink extends React.Component{
+class Link extends React.Component{
 
     state = {
         link_url: this.props.link.link_url,
@@ -24,8 +25,13 @@ class UserLink extends React.Component{
     handleSubmit = (e) => {
         e.preventDefault()
         let patchObj = {...this.state}    
-        delete patchObj.editMode   
-        this.props.editLinkInfo(patchObj) 
+        delete patchObj.editMode 
+        if(this.props.project){
+            this.props.editProjectLink(patchObj)
+        } else {
+            this.props.editLinkInfo(patchObj) 
+        }
+        
     }
 
     handleChange = (e) => {
@@ -34,12 +40,23 @@ class UserLink extends React.Component{
         })
     }
 
+    handleDelete = () => {
+        if(this.props.project){
+            this.props.deleteProjectLink(this.state.id)
+        } else {
+            this.props.deleteUserLink(this.state.id)
+        }
+    }
+
     render(){
         return(
             <>
             <LocalEditBtn 
                 editMode={this.state.editMode}
                 toggleEditMode={this.toggleEditMode}
+            />
+            <LocalDeleteBtn 
+                handleDelete={this.handleDelete}
             />
             {
                 this.state.editMode ? 
@@ -52,7 +69,7 @@ class UserLink extends React.Component{
                 :
                 <NavLink
                     key={this.props.link.link_url} 
-                    to="https://github.com/">{this.props.link.link_text}</NavLink>
+                    to={this.props.link.link_url}>{this.props.link.link_text}</NavLink>
                 }
             </>
 
@@ -63,8 +80,11 @@ class UserLink extends React.Component{
 const mdp = dispatch => {
     return {
         editLinkInfo: (patchObj) => dispatch(editLinkInfo(patchObj)),
-        createUserLink: (newLink, userId) => dispatch(createUserLink(newLink, userId) )
+        createUserLink: (newLink, userId) => dispatch(createUserLink(newLink, userId) ),
+        deleteUserLink: (id) => dispatch(deleteUserLink(id)),
+        editProjectLink: (patchObj) => dispatch(editProjectLink(patchObj)),
+        deleteProjectLink: (id) => dispatch(deleteProjectLink(id))
     }
 }
 
-export default connect(null, mdp)(UserLink)
+export default connect(null, mdp)(Link)

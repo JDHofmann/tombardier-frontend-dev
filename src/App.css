@@ -27,6 +27,7 @@ button:focus {
   outline: 2px solid #ffa000;
 }
 
+
 .page-title {
   font-size: 1.5em;
   line-height: 2em;
@@ -80,6 +81,27 @@ button:focus {
   background-color:#00a0a0;
 }
 
+.local-delete-btn {
+  position: relative;
+  width: 15vw;
+  font-size: 1em;
+  position: absolute;
+  right: 25vw;
+  transition: .5s;
+}
+
+.local-delete-btn:hover {
+  background-color:#ff5000;
+}
+
+.delete-project {
+  left: 5vw;
+  width: 90vw;
+  margin: 1.25vh 0;
+  font-size: 1em;
+  height: 5vh;
+  transition: .5s;
+}
 
 .over-img {
   margin-top: 1.25vh; 
@@ -128,6 +150,7 @@ button:focus {
 }
 
 .update{
+  display: block;
   width: 90vw;
   margin: 1.25vh 0;
   font-size: 1em;
@@ -137,6 +160,14 @@ button:focus {
 
 .update:hover {
   background-color:#ffa000;
+}
+
+.add {
+  width: 90vw;
+  margin: 1.25vh 5vh;
+  font-size: 1em;
+  height: 5vh;
+  transition: .5s;
 }
 
 .margX-5 {

@@ -10,18 +10,6 @@ export const fetchUser = () => {
     }
 }
 
-export const startEditMode = () => {
-    return {
-        type: 'START_EDIT_MODE'
-    }
-}
-
-export const startViewMode = () => {
-    return {
-        type: 'START_VIEW_MODE'
-    }
-}
-
 export const editSiteInfo = (patchObj) => {
     return (dispatch) => {
         fetch("http://localhost:3000/users/8", {
@@ -50,6 +38,16 @@ export const editLinkInfo = (patchObj) => {
         })
         .then(resp => resp.json())
         .then(updatedLink => dispatch(fetchUser()))
+    }
+}
+
+export const deleteUserLink = (id) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/user_links/${id}`, {
+            method: "DELETE"
+        })
+        .then(resp => resp.json())
+        .then(data => dispatch(fetchUser()))
     }
 }
 
@@ -112,6 +110,16 @@ export const updateProject = (patchObj) => {
     }
 }
 
+export const deleteProject = (id) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/projects/${id}`, {
+            method: "DELETE"
+        })
+        .then(resp => resp.json())
+        .then(data => dispatch(fetchUser()))
+    }
+}
+
 export const newProjectImage = (newImage, projectImageId) => {
     console.log(projectImageId)
     return (dispatch) => {
@@ -132,6 +140,58 @@ export const brandnewProjectImage = (newImage) => {
             body: newImage
         }
         fetch(`http://localhost:3000/project_images`, options)
+        .then(resp => resp.json())
+        .then(data => dispatch(fetchUser()))
+    }
+}
+
+export const deleteProjectImage = (id) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/project_images/${id}`, {
+            method: "DELETE"
+        })
+        .then(resp => resp.json())
+        .then(data => dispatch(fetchUser()))
+    }
+}
+
+export const createProjectLink = (newObj, projectId) => {
+    return (dispatch) => {
+        console.log(newObj, projectId)
+        fetch(`http://localhost:3000/project_links`, {
+            method: "POST",
+            headers: {
+                "content-type":"application/json",
+                "accept":"application/json"
+            },
+            body: JSON.stringify({...newObj, project_id: projectId})
+        })
+        .then(resp => resp.json())
+        .then(updatedLink => dispatch(fetchUser()))
+    }
+}
+
+export const editProjectLink = (patchObj) => {
+    return (dispatch) => {
+        console.log(patchObj)
+        fetch(`http://localhost:3000/project_links/${patchObj.id}`, {
+            method: "PATCH",
+            headers: {
+                "content-type":"application/json",
+                "accept":"application/json"
+            },
+            body: JSON.stringify(patchObj)
+        })
+        .then(resp => resp.json())
+        .then(updatedLink => dispatch(fetchUser()))
+    }
+}
+
+export const deleteProjectLink = (id) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/project_links/${id}`, {
+            method: "DELETE"
+        })
         .then(resp => resp.json())
         .then(data => dispatch(fetchUser()))
     }
