@@ -10,13 +10,22 @@ class Contact extends React.Component{
 
     state = {
         contact_email: this.props.user.contact_email,
-        editMode: false
+        editMode: false,
+        showNewLink: false
     }
 
     toggleEditMode = () => {
         this.setState( prevState => ({
             editMode: !prevState.editMode
         }) )
+    }
+
+    showNewLinkForm = () => {
+        this.setState({ showNewLink: true })
+    }
+
+    hideNewLinkForm = () => {
+        this.setState({ showNewLink: false })
     }
 
     renderUserLinks = () => {
@@ -40,7 +49,8 @@ class Contact extends React.Component{
     submitHandler = (e) => {
         e.preventDefault()
         let patchObj = {...this.state}    
-        delete patchObj.editMode   
+        delete patchObj.editMode
+        delete patchObj.showNewLink   
         this.props.editSiteInfo(patchObj)
     }
 
@@ -80,21 +90,22 @@ class Contact extends React.Component{
             <ul className="contact-info">
                 <h4 className="ct-label">Links</h4>
                 {this.renderUserLinks()}
-            </ul>           
+            </ul>
+            { this.state.showNewLink ?
             <NewLink 
                 createUserLink={this.props.createUserLink}
                 userId={this.props.user.id}
+                hideNewLinkForm={this.hideNewLinkForm}
             />
+            :
+            <button
+                className="update"
+                onClick={this.showNewLinkForm}
+            >Add New Link</button>
+            }           
             </div>
         )
     }
 }
 
-// const mdp = dispatch => {
-//     return {
-//         createUserLink: (newLink, userId) => dispatch(createUserLink(newLink, userId) )
-//     }
-// }
-
-// export default connect(null, mdp)(Contact)
 export default Contact

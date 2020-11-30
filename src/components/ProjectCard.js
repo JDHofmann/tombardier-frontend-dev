@@ -18,13 +18,31 @@ class ProjectCard extends React.Component {
         subtitle: this.props.project.subtitle,
         description: this.props.project.description,
         id: this.props.project.project_id,
-        editMode: false
+        editMode: false,
+        showNewLink: false,
+        showNewImage: false
     }
 
     toggleEditMode = () => {
         this.setState( prevState => ({
             editMode: !prevState.editMode
         }) )
+    }
+
+    showNewLinkForm = () => {
+        this.setState({ showNewLink: true })
+    }
+
+    hideNewLinkForm = () => {
+        this.setState({ showNewLink: false })
+    }
+
+    showNewImageForm = () => {
+        this.setState({ showNewImage: true })
+    }
+
+    hideNewImageForm = () => {
+        this.setState({ showNewImage: false })
     }
 
     handleChange = (e) => {
@@ -36,7 +54,9 @@ class ProjectCard extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault()
         let patchObj = {...this.state}    
-        delete patchObj.editMode   
+        delete patchObj.editMode
+        delete patchObj.showNewLink
+        delete patchObj.showNewImage   
         this.props.updateProject(patchObj)
     }
 
@@ -46,11 +66,17 @@ class ProjectCard extends React.Component {
 
     renderLinks = () => {
         return this.props.project.links.map(pl =>
-            <Link 
+            <li
+                className="ct-row"
+                key={pl.id}
+            >
+                <Link 
                 key={pl.id}
                 link={pl}
                 project
-            />
+                />
+            </li>
+            
          )
     }
 
@@ -109,18 +135,34 @@ class ProjectCard extends React.Component {
                 <h4>Links</h4>
                 {this.renderLinks()}
             </ul>
+            { this.state.showNewLink ? 
             <NewLink 
                 projectId={this.props.project.project_id}
                 createProjectLink={this.props.createProjectLink}
                 project
+                hideNewLinkForm={this.hideNewLinkForm}
             />
+            :
+            <button
+                className="update"
+                onClick={this.showNewLinkForm}
+            >Add New Link</button>
+             }
             </div>
             }
             { this.renderProjectImages() }
+            { this.state.showNewImage ?
             <NewProjectImage 
                 brandnewProjectImage={this.props.brandnewProjectImage}
                 projectId={this.props.project.project_id}
+                hideNewImageForm={this.hideNewImageForm}
             />
+            :
+            <button
+                className="update"
+                onClick={this.showNewImageForm}
+            >Add New Image</button>
+             }
             <LocalDeleteBtn 
                 handleDelete={this.handleDelete}
                 classAddition="delete-project"

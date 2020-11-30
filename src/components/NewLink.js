@@ -14,7 +14,6 @@ class NewLink extends React.Component{
         e.preventDefault()
         if(this.props.project){
             let projectId = this.props.projectId
-            // console.log(projectId)
             this.props.createProjectLink(this.state, projectId)
         }else{
             let userId = this.props.userId
@@ -24,6 +23,7 @@ class NewLink extends React.Component{
             link_url: "",
             link_text: ""
         })
+        this.props.hideNewLinkForm() 
     }
 
     handleChange = (e) => {
