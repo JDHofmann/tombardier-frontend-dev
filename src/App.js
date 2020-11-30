@@ -3,12 +3,12 @@ import React from 'react'
 import { connect } from 'react-redux';
 import {  Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
-import Home from './components/Home';
+// import Home from './components/Home';
 import Footer from './components/Footer';
 import ProjectsIndex from './containers/ProjectsIndex';
-import Contact from './components/Contact';
-import About from './components/About';
-import { fetchUser } from './redux/actions'
+import Contact from './containers/Contact';
+import About from './containers/About';
+import { fetchUser, editSiteInfo, createProject } from './redux/actions'
 
 
 class App extends React.Component{
@@ -18,38 +18,57 @@ class App extends React.Component{
   }
 
   render(){
-
     return (
       <div className="App">
         <Header />
         <Switch>
           <Route 
             path="/contact" 
-            render={ () => <Contact /> }
+            render={ () => <>
+              { this.props.user ? 
+              <Contact 
+                user={this.props.user}
+                editSiteInfo={this.props.editSiteInfo}
+              /> 
+                : null
+              }
+              </>
+            }
           />
           <Route 
             path="/about" 
-            render={ () => <About /> }
+            render={ () => <>
+            {this.props.user ?
+            <About 
+              user={this.props.user}
+              editSiteInfo={this.props.editSiteInfo}
+            /> 
+            :null}
+            </>
+            }
           />
           <Route 
             path="/"
             render={() => 
               <>
                 { this.props.user ? 
-                <>
-                <Home 
+                <ProjectsIndex 
+                  projects={this.props.user.user_projects}
                   user={this.props.user}
-                />
-                <ProjectsIndex />
-                </>
+                  createProject={this.props.createProject}
+                  editSiteInfo={this.props.editSiteInfo}
+                  />
                 : null
-
                 }
               </>
             }
           />
         </Switch>
-        <Footer />
+        <Footer 
+            user={this.props.user}
+            startEditMode={this.props.startEditMode}
+            startViewMode={this.props.startViewMode}
+        />
       </div>
     );
   }
@@ -57,13 +76,15 @@ class App extends React.Component{
 
 const mdp = dispatch => {
   return {
-    fetchUser: () => dispatch(fetchUser())
+    fetchUser: () => dispatch(fetchUser()),
+    editSiteInfo: (patchObj) => dispatch(editSiteInfo(patchObj)),
+    createProject: (userId) => dispatch(createProject(userId))
   }
 }
 
 const msp = state => {
   return {
-    user: state.user
+    user: state.user,
   }
 }
 
