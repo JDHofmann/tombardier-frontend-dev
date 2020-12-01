@@ -67,9 +67,14 @@ class Link extends React.Component{
                     link_text={this.state.link_text}
                 />
                 :
-                <NavLink
-                    key={this.props.link.link_url} 
-                    to={this.props.link.link_url}>{this.props.link.link_text}</NavLink>
+                // <NavLink
+                //     key={this.props.link.link_url} 
+                //     to={this.props.link.link_url}>{this.props.link.link_text}</NavLink>
+                <p
+                    className="ct-input link-hover"
+                    onClick={()=>{window.open(this.props.link.link_url, '_blank');}}
+                >{this.props.link.link_text}</p>
+                    
                 }
             </>
 

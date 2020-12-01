@@ -37,6 +37,7 @@ class App extends React.Component{
             render={ () =>
               <Login 
               submitLogin={this.props.submitLogin}
+              currentUser={this.props.currentUser}
               />
             }
           />

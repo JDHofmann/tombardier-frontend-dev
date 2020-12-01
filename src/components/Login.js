@@ -1,4 +1,6 @@
 import React from 'react'
+import { Redirect } from "react-router-dom";
+
 
 class Login extends React.Component{
 
@@ -16,9 +18,14 @@ class Login extends React.Component{
     handleSubmit = (e) => {
         e.preventDefault()
         this.props.submitLogin(this.state)
+        
     }
 
+    
     render(){
+        if(this.props.currentUser ){
+            return <Redirect to="/"/>
+        }
         return(
             <>
                 <form 
