@@ -15,7 +15,7 @@ const Footer = (props) => {
          <NavLink 
          className="log"
          to="/login"
-         >Admin Login</NavLink>
+         >Admin</NavLink>
         }
         <p className="tombar">powered by Tombardier</p>
         </footer>

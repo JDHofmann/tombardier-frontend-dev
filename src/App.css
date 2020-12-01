@@ -2,7 +2,7 @@
 input, textarea, div, h1, h2, h3, h4, h5, h6, p, label, button, ul, li, a, form {
   list-style-type: none;
   font-family: Arial, Helvetica, sans-serif;
-  font-family: 'Prompt', sans-serif;
+  font-family: 'Poppins', sans-serif;
   padding: 0;
   margin: 0;
   color: #202020;
@@ -21,7 +21,7 @@ input, textarea {
 }
 
 input:focus, textarea:focus {
-  outline: .25vh solid #0000a0;
+  border: .25vh solid #0000a0;
 }
 
 button:focus {
@@ -77,7 +77,8 @@ button:focus {
   font-size: 1em;
   position: absolute;
   right: 5vw;
-  /* margin-top: 1.25vh;  */
+  background: #ffffff;
+  border: .1vh solid #606060;
   transition: .5s;
 }
 
@@ -92,6 +93,8 @@ button:focus {
   position: absolute;
   right: 25vw;
   transition: .5s;
+  background: #ffffff;
+  border: .1vh solid #606060;
 }
 
 .local-delete-btn:hover {
@@ -106,6 +109,8 @@ button:focus {
   font-size: 1em;
   height: 5vh;
   transition: .5s;
+  border: .1vh solid #ff5000;
+  background: none;
 }
 
 .over-img {
@@ -129,7 +134,7 @@ button:focus {
 
 .site-subtitle {
   font-size: 1.4em;
-  font-weight: 200;
+  font-weight: 300;
   text-align: left;
   color: #404040;
   width: 90vw;
@@ -162,6 +167,8 @@ button:focus {
   font-size: 1em;
   height: 5vh;
   transition: .5s;
+  background: none;
+  border: .1vh solid #606060;
 }
 
 .update:hover {
@@ -209,7 +216,7 @@ button:focus {
 
 .pl-subtitle {
   font-size: 1.12em;
-  font-weight: 100;
+  font-weight: 300;
 }
 
 .about-pic {
@@ -308,21 +315,21 @@ button:focus {
   right: 5vw;
   display: block;
   text-align: center;
-  width: 25vw;
+  width: 15vw;
   min-width: 100px;
   max-width: 125px;
   height: 3vh;
-  font-size: 1em;
-  line-height: 2.75vh;
-  margin: .75vh auto;
+  font-size: .75em;
+  line-height: 3vh;
+  margin: 1vh auto;
   /* padding: auto 5vw; */
   /* background: #ffffff; */
-  border: .25vh solid #c0c0c0;
+  /* border: .25vh solid #c0c0c0; */
   color: #c0c0c0;
 }
 .log:hover {
   /* background: #404040; */
-  border: .25vh solid #ffa000;
+  /* border: .25vh solid #ffa000; */
   color: #ffa000;
 }
 

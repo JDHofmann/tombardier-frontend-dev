@@ -35,6 +35,7 @@ class UserImage extends React.Component{
     handleImageSubmit = (e) => {
         e.preventDefault()
         const formData = new FormData();
+        // append toke header here
         if(this.state.image){
           formData.append('user[image]', this.state.image)
         }

@@ -51,6 +51,7 @@ class Contact extends React.Component{
         let patchObj = {...this.state}    
         delete patchObj.editMode
         delete patchObj.showNewLink   
+        console.log(patchObj)
         this.props.editSiteInfo(patchObj)
     }
 
@@ -71,7 +72,7 @@ class Contact extends React.Component{
                 <label className="ct-label ct-row">Email</label>
                 <input
                     className="ct-input ct-row"
-                    name="contact_email ct-row"
+                    name="contact_email"
                     value={this.state.contact_email}
                     onChange={this.handleChange}
                 ></input>
