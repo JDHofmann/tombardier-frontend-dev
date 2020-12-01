@@ -27,6 +27,9 @@ button:focus {
   outline: 2px solid #ffa000;
 }
 
+.App {
+  min-height: 95vh;
+}
 
 .page-title {
   font-size: 1.5em;
@@ -265,4 +268,57 @@ button:focus {
 }
 .image-container {
   margin: 2.5vh auto;
+}
+
+.footer {
+  background: #202020;
+  padding: 1vh auto;
+  min-height: 5vh;
+}
+
+.login-form {
+  margin: 10vh 5vw;
+}
+
+.lgin-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #606060;
+  display: block;
+  /* text-align: center; */
+}
+.lgin-input{
+  font-size: 14px;
+  font-weight: 400;
+  /* color: #606060; */
+  display: block;
+}
+.lgin-row {
+  margin: 1vh 0;
+  width: 25vw;
+  min-width: 125px;
+  max-width: 200px;
+}
+
+.log {
+  position: absolute;
+  right: 5vw;
+  display: block;
+  text-align: center;
+  width: 25vw;
+  min-width: 100px;
+  max-width: 125px;
+  height: 3vh;
+  font-size: 1em;
+  line-height: 2.75vh;
+  margin: .75vh auto;
+  /* padding: auto 5vw; */
+  /* background: #ffffff; */
+  border: .25vh solid #c0c0c0;
+  color: #c0c0c0;
+}
+.log:hover {
+  /* background: #404040; */
+  border: .25vh solid #ffa000;
+  color: #ffa000;
 }

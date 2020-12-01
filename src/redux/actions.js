@@ -1,7 +1,7 @@
 export const fetchUser = () => {
     // console.log("fetching user")
     return (dispatch) => {
-        fetch("http://localhost:3000/users/8")
+        fetch("http://localhost:3000/users/10")
         .then(resp => resp.json())
         .then(userData => dispatch({
             type: 'LOAD_USER',
@@ -10,9 +10,54 @@ export const fetchUser = () => {
     }
 }
 
+export const submitLogin = (loginObj) => {
+    return (dispatch) => {
+        fetch("http://localhost:3000/login", {
+            method: "POST",
+            headers: {
+                "content-type":"application/json",
+                "accepts":"application/json"
+            },
+            body: JSON.stringify({
+                user: loginObj
+            })
+            })
+            .then(r => r.json())
+            .then(data => {
+            console.log("data", data)
+            // console.log("token: ", data.jwt)
+            localStorage.setItem("token", data.jwt)
+            dispatch({
+                type: 'SET_CURRENT_USER',
+                currentUser: data.user
+            })
+        })
+    }
+}
+
+export const handleLogout = () => {
+    return {
+        type: 'REMOVE_CURRENT_USER'
+    }
+}
+
+export const fetchCurrentUser = (token) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/profile`,{
+            method: "GET",
+            headers: { Authorization: `Bearer ${token}`}
+        })
+        .then(resp => resp.json())
+        .then(data => dispatch({
+            type: 'SET_CURRENT_USER',
+            currentUser: data
+        }))
+    }
+}
+
 export const editSiteInfo = (patchObj) => {
     return (dispatch) => {
-        fetch("http://localhost:3000/users/8", {
+        fetch("http://localhost:3000/users/10", {
             method: "PATCH",
             headers: {
                 "content-type":"application/json",
@@ -73,7 +118,7 @@ export const newUserImage = (imageformData) => {
             method: "PATCH",
             body: imageformData
         }
-        fetch("http://localhost:3000/users/8", options)
+        fetch("http://localhost:3000/users/10", options)
         .then(resp => resp.json())
         .then(useless => dispatch(fetchUser()))
     }

@@ -62,6 +62,7 @@ class ProjectCard extends React.Component {
 
     handleDelete = () => {
         this.props.deleteProject(this.state.id)
+        this.props.history.push('/')
     }
 
     renderLinks = () => {
