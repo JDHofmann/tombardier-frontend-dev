@@ -8,15 +8,16 @@ const Footer = (props) => {
         <footer className="footer">
          { props.currentUser ? 
          <button 
-            className="log" 
-            onClick={props.handleLogout}
-        >Logout</button>
+         className="log" 
+         onClick={props.handleLogout}
+         >Logout</button>
          :
          <NavLink 
-            className="log"
-            to="/login"
+         className="log"
+         to="/login"
          >Admin Login</NavLink>
-          }
+        }
+        <p className="tombar">powered by Tombardier</p>
         </footer>
     )
 }
