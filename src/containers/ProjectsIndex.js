@@ -57,10 +57,12 @@ export default class ProjectsIndex extends React.Component{
                         />
                         <div className="text-wrapper">
                             {this.renderProjectLinks()}
+                        {this.props.currentUser ?
                         <button 
                             onClick={this.addNewProject}
                             className="update"
                         >Add New Project</button>
+                        : null }
                         </div>
                         </>
                     }

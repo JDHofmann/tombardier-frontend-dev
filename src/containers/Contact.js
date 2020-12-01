@@ -2,7 +2,7 @@ import React from 'react'
 import Link from '../components/Link'
 import NewLink from '../components/NewLink';
 
-import { LocalEditBtn } from '../components/LocalEditBtn'
+import LocalEditBtn from '../components/LocalEditBtn'
 
 
 
@@ -99,11 +99,13 @@ class Contact extends React.Component{
                 hideNewLinkForm={this.hideNewLinkForm}
             />
             :
-            <button
-                className="update"
-                onClick={this.showNewLinkForm}
-            >Add New Link</button>
-            }           
+            this.props.currrentUser ?
+                <button
+                    className="update"
+                    onClick={this.showNewLinkForm}
+                >Add New Link</button>
+                : null
+            }         
             </div>
         )
     }

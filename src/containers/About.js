@@ -1,5 +1,5 @@
 import React from 'react'
-import { LocalEditBtn } from '../components/LocalEditBtn'
+import LocalEditBtn from '../components/LocalEditBtn'
 import UserImage from '../components/UserImage'
 
 class About extends React.Component{

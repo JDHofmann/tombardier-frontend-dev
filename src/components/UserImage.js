@@ -1,5 +1,5 @@
 import React from 'react'
-import { LocalEditBtn } from './LocalEditBtn'
+import LocalEditBtn from './LocalEditBtn'
 import { connect } from 'react-redux';
 import { newUserImage } from '../redux/actions'
 

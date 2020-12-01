@@ -15,10 +15,10 @@ import Login from './components/Login';
 class App extends React.Component{
 
   componentDidMount(){
+    console.log(this.props)
     this.props.fetchUser()
     const token = localStorage.getItem("token")
     if(token){
-      // console.log(token)
       this.props.fetchCurrentUser(token)
     }
     else {
@@ -47,6 +47,7 @@ class App extends React.Component{
               { this.props.user ? 
               <Contact 
                 user={this.props.user}
+                currentUser={this.props.currentUser}
                 editSiteInfo={this.props.editSiteInfo}
               /> 
                 : null
@@ -74,6 +75,7 @@ class App extends React.Component{
                 <ProjectsIndex 
                   projects={this.props.user.user_projects}
                   user={this.props.user}
+                  currentUser={this.props.currentUser}
                   createProject={this.props.createProject}
                   editSiteInfo={this.props.editSiteInfo}
                   />

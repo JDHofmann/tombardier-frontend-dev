@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { updateProject, createProjectLink, newProjectImage, brandnewProjectImage, deleteProject, deleteProjectImage } from '../redux/actions'
 import NewProjectImage from './NewProjectImage'
 import ProjectImages from './ProjectImages'
-import { LocalEditBtn } from '../components/LocalEditBtn'
-import { LocalDeleteBtn } from '../components/LocalDeleteBtn'
+import LocalEditBtn from '../components/LocalEditBtn'
+import LocalDeleteBtn from '../components/LocalDeleteBtn'
 import ProjectLinkCard from './ProjectLinkCard'
 import Link from './Link'
 import NewLink from './NewLink'
@@ -136,19 +136,21 @@ class ProjectCard extends React.Component {
                 <h4>Links</h4>
                 {this.renderLinks()}
             </ul>
-            { this.state.showNewLink ? 
-            <NewLink 
-                projectId={this.props.project.project_id}
-                createProjectLink={this.props.createProjectLink}
-                project
-                hideNewLinkForm={this.hideNewLinkForm}
-            />
-            :
-            <button
-                className="update"
-                onClick={this.showNewLinkForm}
-            >Add New Link</button>
-             }
+            {this.props.currentUser ?
+                 this.state.showNewLink ? 
+                <NewLink 
+                    projectId={this.props.project.project_id}
+                    createProjectLink={this.props.createProjectLink}
+                    project
+                    hideNewLinkForm={this.hideNewLinkForm}
+                />
+                :
+                <button
+                    className="update"
+                    onClick={this.showNewLinkForm}
+                >Add New Link</button>
+                
+            : null }
             </div>
             }
             { this.renderProjectImages() }
@@ -159,10 +161,12 @@ class ProjectCard extends React.Component {
                 hideNewImageForm={this.hideNewImageForm}
             />
             :
+            this.props.currentUser ?
             <button
                 className="update"
                 onClick={this.showNewImageForm}
             >Add New Image</button>
+            : null
              }
             <LocalDeleteBtn 
                 handleDelete={this.handleDelete}
@@ -187,7 +191,8 @@ const mdp = dispatch => {
 
 const msp = state => {
     return {
-        editMode: state.editMode
+        editMode: state.editMode,
+        currentUser: state.currentUser
     }
 }
 

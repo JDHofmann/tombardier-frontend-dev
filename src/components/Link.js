@@ -2,8 +2,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { editLinkInfo, createUserLink, deleteUserLink, editProjectLink, deleteProjectLink } from '../redux/actions'
-import { LocalEditBtn } from './LocalEditBtn'
-import { LocalDeleteBtn } from './LocalDeleteBtn';
+import LocalEditBtn from './LocalEditBtn'
+import LocalDeleteBtn from './LocalDeleteBtn';
 import LinkForm from './LinkForm';
 
 

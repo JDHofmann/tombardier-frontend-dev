@@ -1,5 +1,5 @@
 import React from 'react'
-import { LocalEditBtn } from './LocalEditBtn'
+import LocalEditBtn from './LocalEditBtn'
 
 class Home extends React.Component{
 

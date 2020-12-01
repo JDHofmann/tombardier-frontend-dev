@@ -1,6 +1,6 @@
 import React from 'react'
-import { LocalEditBtn } from '../components/LocalEditBtn'
-import { LocalDeleteBtn } from '../components/LocalDeleteBtn'
+import LocalEditBtn from '../components/LocalEditBtn'
+import LocalDeleteBtn from '../components/LocalDeleteBtn'
 import ProjectImageForm from './ProjectImageForm';
 
 

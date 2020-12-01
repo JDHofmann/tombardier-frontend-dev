@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { LocalEditBtn } from '../components/LocalEditBtn'
-import { LocalDeleteBtn } from '../components/LocalDeleteBtn'
+import LocalEditBtn from '../components/LocalEditBtn'
+import LocalDeleteBtn from '../components/LocalDeleteBtn'
 import LinkForm from './LinkForm'
 
 
