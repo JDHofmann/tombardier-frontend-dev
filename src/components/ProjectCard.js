@@ -5,7 +5,6 @@ import NewProjectImage from './NewProjectImage'
 import ProjectImages from './ProjectImages'
 import LocalEditBtn from '../components/LocalEditBtn'
 import LocalDeleteBtn from '../components/LocalDeleteBtn'
-import ProjectLinkCard from './ProjectLinkCard'
 import Link from './Link'
 import NewLink from './NewLink'
 

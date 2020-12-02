@@ -68,10 +68,11 @@ class App extends React.Component{
           />
           <Route 
             path="/"
-            render={() => 
+            render={(routerProps) => 
               <>
                 { this.props.user ? 
                 <ProjectsIndex 
+                  history={routerProps.history}
                   projects={this.props.user.user_projects}
                   user={this.props.user}
                   currentUser={this.props.currentUser}

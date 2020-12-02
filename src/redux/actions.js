@@ -153,7 +153,7 @@ export const createProject = (newProjObj) => {
             body: JSON.stringify(newProjObj)
         })
         .then(resp => resp.json())
-        .then(console.log)
+        .then(useless => dispatch(fetchUser()))
     }
 }
 
