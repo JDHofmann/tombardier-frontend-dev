@@ -53,7 +53,30 @@ class Contact extends React.Component{
         delete patchObj.showNewLink   
         console.log(patchObj)
         this.props.editSiteInfo(patchObj)
+        this.setState({
+            editMode: false
+        })
     }
+
+    renderNewLink = () => {
+        if(this.props.currentUser){
+            if(this.state.showNewLink){
+                return <NewLink 
+                        createUserLink={this.props.createUserLink}
+                        userId={this.props.user.id}
+                        hideNewLinkForm={this.hideNewLinkForm}
+                    />
+            } else {
+                return <button
+                        className="update"
+                        onClick={this.showNewLinkForm}
+                    >Add New Link</button>
+            }   
+        }
+
+    }
+  
+
 
     render(){
 
@@ -88,24 +111,13 @@ class Contact extends React.Component{
                 <p className="ct-input ct-row">{this.props.user.contact_email}</p>
             </div>
             }
+            
             <ul className="contact-info">
                 <h4 className="ct-label">Links</h4>
                 {this.renderUserLinks()}
             </ul>
-            { this.state.showNewLink ?
-            <NewLink 
-                createUserLink={this.props.createUserLink}
-                userId={this.props.user.id}
-                hideNewLinkForm={this.hideNewLinkForm}
-            />
-            :
-            this.props.currrentUser ?
-                <button
-                    className="update"
-                    onClick={this.showNewLinkForm}
-                >Add New Link</button>
-                : null
-            }         
+            {this.renderNewLink()}
+            
             </div>
         )
     }

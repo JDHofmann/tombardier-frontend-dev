@@ -11,7 +11,7 @@ class LocalDeleteBtn extends React.Component{
                 <button
                     className={`local-delete-btn ${this.props.classAddition}`} 
                     onClick={this.props.handleDelete}
-                >{ this.props.deleteProject ? "Delete Project" : "Delete" }</button>
+                >{ this.props.deleteProject ? "Delete Project" : <i class="far fa-trash-alt"></i> }</button>
                 : null
         )
     }

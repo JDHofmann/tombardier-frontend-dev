@@ -26,7 +26,8 @@ class ProjectLink extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault()
         let patchObj = {...this.state}    
-        delete patchObj.editMode   
+        delete patchObj.editMode  
+        console.log("ProjectLink.js handleSubmit") 
         // this.props.updateProject(patchObj)
     }
 

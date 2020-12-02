@@ -41,6 +41,9 @@ class ProjectImages extends React.Component {
           formData.append('project_image[image]', this.state.image)
         }
         this.props.newProjectImage(formData, projectImageId)
+        this.setState({
+            editMode: false
+        })
     }
 
     handleDelete = () => {
@@ -74,7 +77,7 @@ class ProjectImages extends React.Component {
                     {this.renderPreview()}
                     <ProjectImageForm 
                     preview={this.preview}
-                    handleFileChange={this.onChange}
+                    handleFileChange={this.handleFileChange}
                     handleImageSubmit={this.handleImageSubmit}
                     />
                 </>

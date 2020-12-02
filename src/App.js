@@ -15,7 +15,6 @@ import Login from './components/Login';
 class App extends React.Component{
 
   componentDidMount(){
-    console.log(this.props)
     this.props.fetchUser()
     const token = localStorage.getItem("token")
     if(token){

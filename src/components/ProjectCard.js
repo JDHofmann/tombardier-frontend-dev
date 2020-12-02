@@ -58,6 +58,9 @@ class ProjectCard extends React.Component {
         delete patchObj.showNewLink
         delete patchObj.showNewImage   
         this.props.updateProject(patchObj)
+        this.setState({
+            editMode: false
+        })
     }
 
     handleDelete = () => {

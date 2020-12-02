@@ -124,9 +124,14 @@ export const createUserLink = (newObj, userId) => {
 }
 
 export const newUserImage = (imageformData) => {
+    const token = localStorage.getItem("token")
+
     return (dispatch) => {
         let options = {
             method: "PATCH",
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
             body: imageformData
         }
         fetch("http://localhost:3000/users/10", options)
@@ -184,9 +189,13 @@ export const deleteProject = (id) => {
 }
 
 export const newProjectImage = (newImage, projectImageId) => {
+    const token = localStorage.getItem("token")
     return (dispatch) => {
         let options = {
             method: "PATCH",
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
             body: newImage
         }
         fetch(`http://localhost:3000/project_images/${projectImageId}`, options)
@@ -197,8 +206,12 @@ export const newProjectImage = (newImage, projectImageId) => {
 
 export const brandnewProjectImage = (newImage) => {
     return (dispatch) => {
+        const token = localStorage.getItem("token")
         let options = {
             method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
             body: newImage
         }
         fetch(`http://localhost:3000/project_images`, options)

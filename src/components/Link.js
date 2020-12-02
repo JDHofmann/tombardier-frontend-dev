@@ -31,7 +31,9 @@ class Link extends React.Component{
         } else {
             this.props.editLinkInfo(patchObj) 
         }
-        
+        this.setState({
+            editMode: false
+        })
     }
 
     handleChange = (e) => {

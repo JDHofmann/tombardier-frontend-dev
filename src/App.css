@@ -73,7 +73,9 @@ button:focus {
 
 .local-edit-btn {
   position: relative;
-  width: 15vw;
+  min-width: 25px;
+  border-radius: 5px;
+  padding: .25vh .5vw;
   font-size: 1em;
   position: absolute;
   right: 5vw;
@@ -84,14 +86,18 @@ button:focus {
 
 .local-edit-btn:hover {
   background-color:#00a0a0;
+  background: #606060;
+  color: #ffffff;
 }
 
 .local-delete-btn {
   position: relative;
-  width: 15vw;
+  min-width: 25px;
+  border-radius: 5px;
+  padding: .25vh .5vw;
   font-size: 1em;
   position: absolute;
-  right: 25vw;
+  right: 12.5vw;
   transition: .5s;
   background: #ffffff;
   border: .1vh solid #606060;
@@ -99,17 +105,22 @@ button:focus {
 
 .local-delete-btn:hover {
   background-color:#ff5000;
+  background: #606060;
+  color: #ffffff;
 }
 
 .delete-project {
   position: relative;
   left: 0;
   width: 90vw;
-  margin: 1.25vh 0;
+  min-width: 100px;
+  max-width: 350px;
+  display: block;
+  margin: 1.25vh auto;
   font-size: 1em;
   height: 5vh;
   transition: .5s;
-  border: .1vh solid #ff5000;
+  border: .1vh solid #606060;
   background: none;
 }
 
@@ -163,7 +174,7 @@ button:focus {
 .update{
   display: block;
   width: 90vw;
-  margin: 1.25vh 0;
+  margin: 2.5vh 0;
   font-size: 1em;
   height: 5vh;
   transition: .5s;
@@ -173,6 +184,8 @@ button:focus {
 
 .update:hover {
   background-color:#ffa000;
+  background: #606060;
+  color: #ffffff;
 }
 
 .add {
@@ -323,7 +336,7 @@ button:focus {
   line-height: 3vh;
   margin: 1vh auto;
   /* padding: auto 5vw; */
-  /* background: #ffffff; */
+  background: none;
   /* border: .25vh solid #c0c0c0; */
   color: #c0c0c0;
 }

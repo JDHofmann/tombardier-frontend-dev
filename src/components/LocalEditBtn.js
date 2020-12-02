@@ -11,7 +11,7 @@ class LocalEditBtn extends React.Component{
             <button
                 className={`local-edit-btn ${this.props.classAddition}`} 
                 onClick={this.props.toggleEditMode}
-            >{ this.props.editMode ? "view" : "edit" }</button>
+            >{ this.props.editMode ? "view" : <i class="fas fa-pencil-alt"></i> }</button>
             : null
         )
     }
