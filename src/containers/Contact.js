@@ -82,7 +82,7 @@ class Contact extends React.Component{
 
         return(
             <div className="text-wrapper">
-            <h2>Contact</h2>
+            <h2 className="contact">Contact</h2>
             <LocalEditBtn 
                 editMode={this.state.editMode}
                 toggleEditMode={this.toggleEditMode}
@@ -108,7 +108,9 @@ class Contact extends React.Component{
             :
             <div className="contact-info">
                 <h4 className="ct-label ct-row">Email</h4>
-                <p className="ct-input ct-row">{this.props.user.contact_email}</p>
+                <a 
+                    href={`mailTo:${this.props.user.contact_email}`}
+                    className="ct-input ct-row link-hover">{this.props.user.contact_email}</a>
             </div>
             }
             

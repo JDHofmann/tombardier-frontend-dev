@@ -109,23 +109,26 @@ class ProjectCard extends React.Component {
                     className="pj-title"
                     name="title"
                     value={this.state.title}
+                    placeholder="Your project title"
                     onChange={this.handleChange}
                 />
                 <input
                     className="pj-subtitle"
                     name="subtitle"
                     value={this.state.subtitle}
+                    placeholder="project sub-title"
                     onChange={this.handleChange}
                 />
                 <textarea
                     className="pj-descript"
                     name="description"
                     value={this.state.description}
+                    placeholder="tell us about your project"
                     onChange={this.handleChange}
                 />
                 <button 
                     type="Submit" 
-                    className="update"
+                    className="update star"
                     >Update</button>
             </form>
             </>

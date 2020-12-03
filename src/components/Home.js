@@ -32,6 +32,9 @@ class Home extends React.Component{
         let patchObj = {...this.state}    
         delete patchObj.editMode   
         this.props.editSiteInfo(patchObj)
+        this.setState({
+            editMode: false
+        })
     } 
 
     render(){
@@ -61,7 +64,7 @@ class Home extends React.Component{
                 />
                 <button 
                     type="submit"
-                    className="local-submit-btn"
+                    className="update"
                 >Update</button>
             </form>
             

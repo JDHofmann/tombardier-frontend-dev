@@ -32,6 +32,19 @@ button:focus {
   min-height: 95vh;
 }
 
+.site-header {
+  width: 100%;
+  margin-left: 2.5vw;
+  font-family: Bebas;
+  font-size: 1em;
+  color: #606060;
+}
+.site-header span {
+  font-size: 1.5em;
+  margin-right: 5px;
+  color: #202020;
+}
+
 .page-title {
   font-size: 1.5em;
   line-height: 2em;
@@ -121,6 +134,7 @@ button:focus {
   height: 5vh;
   transition: .5s;
   border: .1vh solid #606060;
+  border-radius: 10px;
   background: none;
 }
 
@@ -140,7 +154,11 @@ button:focus {
   font-weight: 600;
   text-align: left;
   width: 90vw;
-  
+  margin: 2.5vh auto;
+}
+
+.solo {
+  margin-left: 5vw;
 }
 
 .site-subtitle {
@@ -163,25 +181,38 @@ button:focus {
 .user-image {
   width: 100vw;
   margin: auto;
+  max-width: 500px;
+  display: block;   
 }
 
 .image-upload-input {
   width: 90vw;
-  margin: 1.25vh 0;
+  min-width: 100px;
+  max-width: 350px;
+  margin: 1.25vh auto;
   font-size: 14px;
+  display: block;
 }
 
 .update{
+  border-radius: 10px;
   display: block;
   width: 90vw;
-  margin: 2.5vh 0;
+  margin: 2.5vh auto;
   font-size: 1em;
   height: 5vh;
   transition: .5s;
   background: none;
   border: .1vh solid #606060;
+  min-width: 100px;
+  max-width: 350px;
+  display: block;
+  /* margin: 1.25vh auto; */
 }
 
+.star {
+  background: #d8d8d8;
+}
 .update:hover {
   background-color:#ffa000;
   background: #606060;
@@ -209,17 +240,29 @@ button:focus {
   min-height: 20vh;
 }
 
+.link-hover {
+  text-decoration: underline;
+}
+
+.link-hover:hover {
+  font-weight: 600;
+}
+
 .pl-link:hover ~ a{
   color: green;
 }
 
 .pl-preview {
   width: 60vw;
+  max-width: 300px;
   height: 60vw;
+  max-height: 300px;
   object-position: center;
   object-fit: cover;
-  margin: 2.5vh 0 2.5vh 30vw;
+  margin: 2.5vh 0;
   border-radius: 10px;
+  justify-self: right;
+  box-shadow: 1px 1px 6px #c0c0c0;
 }
 
 .pl-title {
@@ -237,13 +280,13 @@ button:focus {
 }
 
 .ct-label {
-  font-size: 16px;
+  font-size: 1.15em;
   font-weight: 600;
   color: #606060;
   display: block;
 }
 .ct-input{
-  font-size: 14px;
+  font-size: 1.05em;
   font-weight: 400;
   /* color: #606060; */
   display: block;
@@ -252,20 +295,38 @@ button:focus {
   margin: 1vh 0;
 }
 
+.contact {
+  margin: 2.5vh auto;
+}
+
+.pj-link-card {
+  margin-bottom: 5vh;
+  border-bottom: 2px solid #c0c0c0;
+  border-radius: 0;
+  display: grid;
+}
+
+.pj-header {
+  margin: 7.5vh 5vw 2.5vh;
+
+  border-bottom: 2px solid #606060;
+  border-radius: 0;
+}
+
 .pj-title {
   font-size: 1.5em;
+  /* letter-spacing: 2px; */
   margin: 2.5vh 0 .75vh;
   width: 100%;
   font-weight: 600;
-  /* color: #606060; */
 }
 
 .pj-subtitle {
-  font-size: 1.25em;
-  font-weight: 100;
+  font-size: 1.20em;
+  font-weight: 200;
   margin: .75vh 0;
   width: 100%;
-  font-weight: 100;
+  color: #606060;
 }
 
 .pj-descript {
@@ -274,20 +335,32 @@ button:focus {
 }
 
 .pj-image {
+  display: block;
+  margin: auto;
   width: 90vw;
+  min-width: 100px;
+  max-width: 500px;
   border-radius: 10px;
-  margin-bottom: 2.5vh;
+  /* margin-bottom: 2.5vh; */
+  max-height: 500px;
+  object-position: center;
+  object-fit: cover;
 }
 
 .image-prev-statement {
-  position: absolute;
+  position: relative;
   font-size: 1em;
   line-height: 5vh;
   background-color: #00000080;
   text-align: center;
   color: #ffffff;
-  margin-top: -8.05vh;
   width: 90vw;
+  min-width: 100px;
+  max-width: 500px;
+  display: block;
+  display: block;
+  z-index: 10;
+  margin: -5vh auto 2.5vh;
 }
 .image-container {
   margin: 2.5vh auto;

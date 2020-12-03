@@ -25,11 +25,19 @@ class App extends React.Component{
     }
   }
 
+  renderTitle = () => {
+    return  <h1 className="site-title solo">{this.props.user.site_title}</h1>
+  }
+
   render(){
     return (
       <>
       <div className="App">
         <Header />
+        {/* <Home 
+                    user={this.props.user}
+                    editSiteInfo={this.props.editSiteInfo}
+                /> */}
         <Switch>
           <Route 
             path="/login"
@@ -44,11 +52,14 @@ class App extends React.Component{
             path="/contact" 
             render={ () => <>
               { this.props.user ? 
+              <>
+              {this.renderTitle()}
               <Contact 
                 user={this.props.user}
                 currentUser={this.props.currentUser}
                 editSiteInfo={this.props.editSiteInfo}
-              /> 
+              />
+              </> 
                 : null
               }
               </>
@@ -58,10 +69,13 @@ class App extends React.Component{
             path="/about" 
             render={ () => <>
             {this.props.user ?
+            <>
+            {this.renderTitle()}
             <About 
               user={this.props.user}
               editSiteInfo={this.props.editSiteInfo}
             /> 
+            </>
             :null}
             </>
             }
@@ -71,7 +85,13 @@ class App extends React.Component{
             render={(routerProps) => 
               <>
                 { this.props.user ? 
+                <>
+                {/* <Home 
+                    user={this.props.user}
+                    editSiteInfo={this.props.editSiteInfo}
+                /> */}
                 <ProjectsIndex 
+                  renderTitle={this.renderTitle}
                   history={routerProps.history}
                   projects={this.props.user.user_projects}
                   user={this.props.user}
@@ -79,6 +99,7 @@ class App extends React.Component{
                   createProject={this.props.createProject}
                   editSiteInfo={this.props.editSiteInfo}
                   />
+                  </>
                 : null
                 }
               </>

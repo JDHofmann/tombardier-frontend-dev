@@ -39,11 +39,14 @@ export default class ProjectsIndex extends React.Component{
                         project = this.props.projects.find( proj => proj.project_id === id)
                         if(project){
                             return ( 
+                                <>
+                                {this.props.renderTitle()}
                             <ProjectCard 
                                 history={this.props.history}
                                 project={project}
                                 key={project.project_id}
                             />
+                            </>
                             )
                         } 
                     }
@@ -57,6 +60,7 @@ export default class ProjectsIndex extends React.Component{
                             user={this.props.user}
                             editSiteInfo={this.props.editSiteInfo}
                         />
+                        <h3 className="pj-header">Projects</h3>
                         <div className="text-wrapper">
                             {this.renderProjectLinks()}
                         {this.props.currentUser ?

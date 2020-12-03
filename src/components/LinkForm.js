@@ -22,7 +22,7 @@ const LinkForm = (props) => {
                     placeholder="link text"
                 />
                 <button 
-                    className="update"
+                    className="update star"
                     type="submit">
                         {props.new ? "Submit" : "Update"}
                         </button>

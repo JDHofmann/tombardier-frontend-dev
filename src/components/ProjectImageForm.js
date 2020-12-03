@@ -16,7 +16,7 @@ const ProjectImageForm = props => {
                 onChange={changeHandle}
             ></input>
             <button 
-                className="update"
+                className="update star"
             >Update</button>
         </form>
     )
