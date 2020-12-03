@@ -30,6 +30,9 @@ button:focus {
 
 .App {
   min-height: 95vh;
+  /* display: block;
+  max-width: 768px;
+  margin: auto; */
 }
 
 .site-header {
