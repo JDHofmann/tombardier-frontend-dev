@@ -1,9 +1,8 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { editLinkInfo, createUserLink, deleteUserLink, editProjectLink, deleteProjectLink } from '../redux/actions'
-import { LocalEditBtn } from './LocalEditBtn'
-import { LocalDeleteBtn } from './LocalDeleteBtn';
+import LocalEditBtn from './LocalEditBtn'
+import LocalDeleteBtn from './LocalDeleteBtn';
 import LinkForm from './LinkForm';
 
 
@@ -31,7 +30,9 @@ class Link extends React.Component{
         } else {
             this.props.editLinkInfo(patchObj) 
         }
-        
+        this.setState({
+            editMode: false
+        })
     }
 
     handleChange = (e) => {
@@ -67,9 +68,14 @@ class Link extends React.Component{
                     link_text={this.state.link_text}
                 />
                 :
-                <NavLink
-                    key={this.props.link.link_url} 
-                    to={this.props.link.link_url}>{this.props.link.link_text}</NavLink>
+                // <NavLink
+                //     key={this.props.link.link_url} 
+                //     to={this.props.link.link_url}>{this.props.link.link_text}</NavLink>
+                <p
+                    className="ct-input link-hover"
+                    onClick={()=>{window.open(this.props.link.link_url, '_blank');}}
+                >{this.props.link.link_text}</p>
+                    
                 }
             </>
 

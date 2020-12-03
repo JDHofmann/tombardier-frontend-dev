@@ -1,5 +1,5 @@
 import React from 'react'
-import { LocalEditBtn } from './LocalEditBtn'
+import LocalEditBtn from './LocalEditBtn'
 import { connect } from 'react-redux';
 import { newUserImage } from '../redux/actions'
 
@@ -39,6 +39,9 @@ class UserImage extends React.Component{
           formData.append('user[image]', this.state.image)
         }
         this.props.newUserImage(formData)
+        this.setState({
+            editMode: false
+        })
     }
 
     render(){
@@ -49,7 +52,7 @@ class UserImage extends React.Component{
              src={this.state.tempImage}
              className="user-image "
              ></img>
-        <p className="image-prev-statement">How does that look?</p>
+        <p className="image-prev-statement solo">How does that look?</p>
         </div> : null
 
         return(
@@ -65,12 +68,12 @@ class UserImage extends React.Component{
                 >
                 { preview }
                 <input
-                    className="image-upload-input margX-5"
+                    className="image-upload-input"
                     name="image"
                     type="file"
                     onChange={this.handleFileChange}
                 ></input>
-                <button className="update margX-5">Update</button>
+                <button className="update">Update</button>
             </form>
             : 
             <img

@@ -3,9 +3,8 @@ import { connect } from 'react-redux'
 import { updateProject, createProjectLink, newProjectImage, brandnewProjectImage, deleteProject, deleteProjectImage } from '../redux/actions'
 import NewProjectImage from './NewProjectImage'
 import ProjectImages from './ProjectImages'
-import { LocalEditBtn } from '../components/LocalEditBtn'
-import { LocalDeleteBtn } from '../components/LocalDeleteBtn'
-import ProjectLinkCard from './ProjectLinkCard'
+import LocalEditBtn from '../components/LocalEditBtn'
+import LocalDeleteBtn from '../components/LocalDeleteBtn'
 import Link from './Link'
 import NewLink from './NewLink'
 
@@ -58,10 +57,14 @@ class ProjectCard extends React.Component {
         delete patchObj.showNewLink
         delete patchObj.showNewImage   
         this.props.updateProject(patchObj)
+        this.setState({
+            editMode: false
+        })
     }
 
     handleDelete = () => {
         this.props.deleteProject(this.state.id)
+        this.props.history.push('/')
     }
 
     renderLinks = () => {
@@ -106,23 +109,26 @@ class ProjectCard extends React.Component {
                     className="pj-title"
                     name="title"
                     value={this.state.title}
+                    placeholder="Your project title"
                     onChange={this.handleChange}
                 />
                 <input
                     className="pj-subtitle"
                     name="subtitle"
                     value={this.state.subtitle}
+                    placeholder="project sub-title"
                     onChange={this.handleChange}
                 />
                 <textarea
                     className="pj-descript"
                     name="description"
                     value={this.state.description}
+                    placeholder="tell us about your project"
                     onChange={this.handleChange}
                 />
                 <button 
                     type="Submit" 
-                    className="update"
+                    className="update star"
                     >Update</button>
             </form>
             </>
@@ -135,19 +141,21 @@ class ProjectCard extends React.Component {
                 <h4>Links</h4>
                 {this.renderLinks()}
             </ul>
-            { this.state.showNewLink ? 
-            <NewLink 
-                projectId={this.props.project.project_id}
-                createProjectLink={this.props.createProjectLink}
-                project
-                hideNewLinkForm={this.hideNewLinkForm}
-            />
-            :
-            <button
-                className="update"
-                onClick={this.showNewLinkForm}
-            >Add New Link</button>
-             }
+            {this.props.currentUser ?
+                 this.state.showNewLink ? 
+                <NewLink 
+                    projectId={this.props.project.project_id}
+                    createProjectLink={this.props.createProjectLink}
+                    project
+                    hideNewLinkForm={this.hideNewLinkForm}
+                />
+                :
+                <button
+                    className="update"
+                    onClick={this.showNewLinkForm}
+                >Add New Link</button>
+                
+            : null }
             </div>
             }
             { this.renderProjectImages() }
@@ -158,10 +166,12 @@ class ProjectCard extends React.Component {
                 hideNewImageForm={this.hideNewImageForm}
             />
             :
+            this.props.currentUser ?
             <button
                 className="update"
                 onClick={this.showNewImageForm}
             >Add New Image</button>
+            : null
              }
             <LocalDeleteBtn 
                 handleDelete={this.handleDelete}
@@ -186,7 +196,8 @@ const mdp = dispatch => {
 
 const msp = state => {
     return {
-        editMode: state.editMode
+        editMode: state.editMode,
+        currentUser: state.currentUser
     }
 }
 

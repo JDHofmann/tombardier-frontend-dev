@@ -10,7 +10,7 @@ const LinkForm = (props) => {
                     value={props.link_url}
                     onChange={props.handleChange}
                     className="ct-input"
-                    placeholder="link url"
+                    placeholder="https://github.com/"
                 />
                 <label htmlFor="link_text">Link Text</label>
                 <input
@@ -22,7 +22,7 @@ const LinkForm = (props) => {
                     placeholder="link text"
                 />
                 <button 
-                    className="update"
+                    className="update star"
                     type="submit">
                         {props.new ? "Submit" : "Update"}
                         </button>

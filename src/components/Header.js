@@ -13,8 +13,9 @@ const Header = () => {
 
     return(
         <header 
-            // style={styling} 
             className="header flex-center">
+                
+                <p className="site-header"><span>Tombardier</span> portfolio building made simple</p>
             <NavLink
                 exact
                 to="/"
