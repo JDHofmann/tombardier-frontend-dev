@@ -7,7 +7,9 @@ const ProjectImageForm = props => {
     }
 
     return(
-        <form onSubmit={props.handleImageSubmit}>
+        <form 
+        className="grid-1-4"
+        onSubmit={props.handleImageSubmit}>
             { props.preview }
             <input
                 className="image-upload-input"

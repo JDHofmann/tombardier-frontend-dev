@@ -9,7 +9,7 @@ class LocalEditBtn extends React.Component{
         return(
             this.props.currentUser ?
             <button
-                className={`local-edit-btn ${this.props.classAddition}`} 
+                className={`local-edit-btn grid-3-4 grid-row-1 ${this.props.classAddition}`} 
                 onClick={this.props.toggleEditMode}
             >{ this.props.editMode ? <i className="far fa-eye"></i> : <i className="fas fa-pencil-alt"></i> }</button>
             : null

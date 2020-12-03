@@ -52,7 +52,7 @@ class ProjectImages extends React.Component {
 
     renderPreview = () => {
         return this.state.tempImage ? 
-        <div>
+        <div className="grid-1-4">
         <img 
             className="pj-image"
             alt="" 
@@ -64,7 +64,7 @@ class ProjectImages extends React.Component {
 
     render(){
         return(
-            <div className="image-container">
+            <div className="image-container edit-btn-grid">
                 <LocalEditBtn 
                 editMode={this.state.editMode}
                 toggleEditMode={this.toggleEditMode}
@@ -84,7 +84,7 @@ class ProjectImages extends React.Component {
                 :
                  <>
                 <img
-                    className="pj-image"
+                    className="pj-image grid-1-4"
                     alt="" 
                     src={`http://localhost:3000/${this.props.image.image}`}></img>
                 {/* <p>{this.props.image.image_caption}</p> */}

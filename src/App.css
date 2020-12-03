@@ -30,9 +30,9 @@ button:focus {
 
 .App {
   min-height: 95vh;
-  /* display: block;
+  display: block;
   max-width: 768px;
-  margin: auto; */
+  margin: auto;
 }
 
 .site-header {
@@ -88,13 +88,17 @@ button:focus {
 }
 
 .local-edit-btn {
-  position: relative;
-  min-width: 25px;
+  /* position: relative; */
+  /* min-width: 25px; */
+  width: 4vw;
+  min-width: 30px;
+  height: 3vh;
+  min-height: 30px;
   border-radius: 5px;
   padding: .25vh .5vw;
   font-size: 1em;
-  position: absolute;
-  right: 5vw;
+  /* position: absolute; */
+  /* right: 5vw; */
   background: #ffffff;
   border: .1vh solid #606060;
   transition: .5s;
@@ -107,13 +111,15 @@ button:focus {
 }
 
 .local-delete-btn {
-  position: relative;
-  min-width: 25px;
+  width: 4vw;
+  min-width: 30px;
+  height: 3vh;
+  min-height: 30px;
   border-radius: 5px;
   padding: .25vh .5vw;
   font-size: 1em;
-  position: absolute;
-  right: 12.5vw;
+  /* position: absolute; */
+  /* right: 12.5vw; */
   transition: .5s;
   background: #ffffff;
   border: .1vh solid #606060;
@@ -123,6 +129,29 @@ button:focus {
   background-color:#ff5000;
   background: #606060;
   color: #ffffff;
+}
+
+.edit-btn-grid {
+  display: grid;
+  grid-template-columns: auto minmax(30px, 4vw) minmax(30px, 4vw);
+  grid-template-rows: minmax(30px, 3vw) auto;
+  grid-column-gap: 1vw;
+}
+
+.grid-2-3 {
+  grid-column: 2/3;
+}
+
+.grid-3-4 {
+  grid-column: 3/4;
+}
+
+.grid-1-4 {
+  grid-column: 1/4;
+}
+
+.grid-row-1 {
+  grid-row: 1/2;
 }
 
 .delete-project {
@@ -153,7 +182,7 @@ button:focus {
 
 .site-title {
   font-size: 2.75em;
-  line-height: 2em;
+  line-height: 1em;
   font-weight: 600;
   text-align: left;
   width: 90vw;
@@ -182,10 +211,11 @@ button:focus {
 }
 
 .user-image {
-  width: 100vw;
+  width: 100%;
   margin: auto;
   max-width: 500px;
-  display: block;   
+  display: block; 
+  border-radius: 10px;  
 }
 
 .image-upload-input {
@@ -296,6 +326,7 @@ button:focus {
 }
 .ct-row {
   margin: 1vh 0;
+  /* display: grid; */
 }
 
 .contact {
@@ -335,6 +366,10 @@ button:focus {
 .pj-descript {
   margin: 2.5vh 0;
   width: 100%;
+}
+
+.min-h-50{
+  min-height: 150px
 }
 
 .pj-image {
@@ -404,21 +439,17 @@ button:focus {
   right: 5vw;
   display: block;
   text-align: center;
-  width: 15vw;
-  min-width: 100px;
-  max-width: 125px;
+  /* width: 15vw; */
+  /* min-width: 100px;
+  max-width: 125px; */
   height: 3vh;
   font-size: .75em;
   line-height: 3vh;
   margin: 1vh auto;
-  /* padding: auto 5vw; */
   background: none;
-  /* border: .25vh solid #c0c0c0; */
   color: #c0c0c0;
 }
 .log:hover {
-  /* background: #404040; */
-  /* border: .25vh solid #ffa000; */
   color: #ffa000;
 }
 

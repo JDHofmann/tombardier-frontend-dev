@@ -31,7 +31,7 @@ class Contact extends React.Component{
     renderUserLinks = () => {
     return this.props.user.user_links.map(ul =>
         <li 
-            className="ct-row"
+            className="ct-row edit-btn-grid"
             key={ul.id}>
             <Link 
                 key={ul.link_url}
@@ -68,7 +68,7 @@ class Contact extends React.Component{
                     />
             } else {
                 return <button
-                        className="update"
+                        className="update grid-1-4"
                         onClick={this.showNewLinkForm}
                     >Add New Link</button>
             }   
@@ -81,7 +81,7 @@ class Contact extends React.Component{
     render(){
 
         return(
-            <div className="text-wrapper">
+            <div className="text-wrapper edit-btn-grid">
             <h2 className="contact">Contact</h2>
             <LocalEditBtn 
                 editMode={this.state.editMode}
@@ -91,7 +91,7 @@ class Contact extends React.Component{
             <>
             <form 
                 onSubmit={this.submitHandler}
-                className="contact-info">
+                className="contact-info grid-1-4">
                 <label className="ct-label ct-row">Email</label>
                 <input
                     className="ct-input ct-row"
@@ -106,15 +106,15 @@ class Contact extends React.Component{
             </form>
             </>
             :
-            <div className="contact-info">
-                <h4 className="ct-label ct-row">Email</h4>
+            <div className="contact-info grid-1-4">
+                <h4 className="ct-label ct-row  ">Email</h4>
                 <a 
                     href={`mailTo:${this.props.user.contact_email}`}
                     className="ct-input ct-row link-hover">{this.props.user.contact_email}</a>
             </div>
             }
             
-            <ul className="contact-info">
+            <ul className="contact-info grid-1-4">
                 <h4 className="ct-label">Links</h4>
                 {this.renderUserLinks()}
             </ul>

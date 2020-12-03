@@ -40,14 +40,14 @@ class Home extends React.Component{
     render(){
 
         return(
-            <div className="text-wrapper">
+            <div className="text-wrapper edit-btn-grid">
             <LocalEditBtn 
                 editMode={this.state.editMode}
                 toggleEditMode={this.toggleEditMode}
             />
             { this.state.editMode ?
             <form 
-                className="title-div"
+                className="title-div grid-1-4"
                 onSubmit={this.submitHandler}>
                 <input
                     type="text"
@@ -70,7 +70,7 @@ class Home extends React.Component{
             
             : 
             
-            <div className="title-div">
+            <div className="title-div grid-1-4">
                 <h1
                     className="site-title"
                 >{this.props.user.site_title}</h1>

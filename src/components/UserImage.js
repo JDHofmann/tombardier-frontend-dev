@@ -56,14 +56,15 @@ class UserImage extends React.Component{
         </div> : null
 
         return(
-            <div className="user-image-container">
+            <div className="user-image-container edit-btn-grid">
             <LocalEditBtn 
-                classAddition="over-img"
+                // classAddition="over-img"
                 editMode={this.state.editMode}
                 toggleEditMode={this.toggleEditMode}
             />
             { this.state.editMode ? 
             <form 
+                className="grid-1-4"
                 onSubmit={this.handleImageSubmit}
                 >
                 { preview }
@@ -77,7 +78,8 @@ class UserImage extends React.Component{
             </form>
             : 
             <img
-                    className="user-image"
+                    className="user-image
+                    grid-1-4"
                     alt="" 
                     src={`http://localhost:3000/${this.props.image}`}></img>
             }

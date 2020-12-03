@@ -70,7 +70,7 @@ class ProjectCard extends React.Component {
     renderLinks = () => {
         return this.props.project.links.map(pl =>
             <li
-                className="ct-row"
+                className="ct-row edit-btn-grid"
                 key={pl.id}
             >
                 <Link 
@@ -97,10 +97,12 @@ class ProjectCard extends React.Component {
     render(){
         return(
             <div className="text-wrapper">
+                <div className="edit-btn-grid">
                 <LocalEditBtn 
                 editMode={this.state.editMode}
                 toggleEditMode={this.toggleEditMode}
                 />
+                </div>
 
             { this.state.editMode ? 
             <>
@@ -120,7 +122,7 @@ class ProjectCard extends React.Component {
                     onChange={this.handleChange}
                 />
                 <textarea
-                    className="pj-descript"
+                    className="pj-descript min-h-50"
                     name="description"
                     value={this.state.description}
                     placeholder="tell us about your project"
@@ -133,7 +135,7 @@ class ProjectCard extends React.Component {
             </form>
             </>
             :
-            <div>
+            <div className="grid-1-4">
             <h2 className="pj-title">{this.props.project.title}</h2>
             <h3 className="pj-subtitle">{this.props.project.subtitle}</h3>
             <p className="pj-descript">{this.props.project.description}</p>

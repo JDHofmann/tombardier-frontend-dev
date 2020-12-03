@@ -31,18 +31,21 @@ class About extends React.Component{
 
     render(){
         return(
-            <>
+            <div                 className="text-wrapper"
+            >
             {/* leave out for mobile */}
             {/* <h2 className="page-title">About</h2> */}
             < UserImage />
+            <div className="edit-btn-grid">
             <LocalEditBtn 
                 editMode={this.state.editMode}
                 toggleEditMode={this.toggleEditMode}
             />
+            </div>
             { this.state.editMode ? 
             <>
             <form 
-                className="text-wrapper"
+                // className="text-wrapper"
                 onSubmit={this.handleBioSubmit}>
                 <textarea
                     wrap="on"
@@ -55,12 +58,12 @@ class About extends React.Component{
             </form> 
             </>
             : 
-            <div className="text-wrapper">
+            <div>
                 <p className="user-bio"
                 >{this.props.user.bio}</p>
             </div>
             }
-            </>
+            </div>
         )
     }
 }
