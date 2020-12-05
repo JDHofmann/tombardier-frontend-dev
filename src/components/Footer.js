@@ -7,10 +7,16 @@ const Footer = (props) => {
     return (
         <footer className="footer">
          { props.currentUser ? 
-         <button 
-         className="log" 
-         onClick={props.handleLogout}
-         >Logout</button>
+         <>
+            <button 
+            className="log" 
+            onClick={props.handleLogout}
+            >Logout</button>
+            <NavLink 
+            className="log edit"
+            to="/admin"
+            >Edit Account</NavLink>
+         </>
          :
          <NavLink 
          className="log"

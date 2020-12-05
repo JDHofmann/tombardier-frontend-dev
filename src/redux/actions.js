@@ -57,6 +57,24 @@ export const fetchCurrentUser = (token) => {
     }
 }
 
+export const editAccountInfo = (patchObj) => {
+    const token = localStorage.getItem("token")
+    console.log(patchObj)
+    return (dispatch) => {
+        fetch("http://localhost:3000/users/10", {
+            method: "PATCH",
+            headers: {
+                "content-type":"application/json",
+                "accept":"application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify(patchObj)
+        })
+        .then(resp => resp.json())
+        .then(data => dispatch(fetchUser()))
+    }
+}
+
 export const editSiteInfo = (patchObj) => {
     const token = localStorage.getItem("token")
     console.log(patchObj)

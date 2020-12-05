@@ -1,5 +1,6 @@
 import React from 'react'
 import { Redirect } from "react-router-dom";
+import { AdminForm } from './AdminForm';
 
 
 class Login extends React.Component{
@@ -28,43 +29,12 @@ class Login extends React.Component{
         }
         return(
             <>
-                <form 
-                    className="login-form"
-                    onSubmit={this.handleSubmit}
-                >
-                    <legend className="login-legend">Admin Login</legend>
-                    <label
-                        className="lgin-label lgin-row"
-                        htmlFor="login-email"
-                    >email</label>
-                    <input
-                        type="email"
-                        name="email"
-                        title="Please provide a valid email address"
-                        value={this.state.email}
-                        onChange={this.handleChange}
-                        id="login-email"
-                        className="lgin-input lgin-row"
-                    ></input>
-                    <label
-                        className="lgin-label lgin-row"
-                        htmlFor="login-password"
-                    >password</label>
-                    <input
-                        type="password"
-                        name="password"
-                        value={this.state.password}
-                        title="Please provide a password with at least 1 number"
-                        onChange={this.handleChange}
-                        id="login-password"
-                        className="lgin-input lgin-row"
-                    ></input>
-                    <button
-                        className="update"
-                        type="submit"
-                    >Login</button>
-                </form>
-                {/* <div className="modal-mask"></div> */}
+                <AdminForm 
+                    handleSubmit={this.handleSubmit}
+                    handleChange={this.handleChange}
+                    email={this.state.email}
+                    password={this.state.password}
+                />
             </>
         )
     }

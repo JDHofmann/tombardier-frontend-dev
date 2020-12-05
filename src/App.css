@@ -442,15 +442,15 @@ display: block; */
   font-size: .75em;
   line-height: 3vh;
   margin: 1vh auto;
-  /* padding: auto 5vw; */
   background: none;
-  /* border: .25vh solid #c0c0c0; */
   color: #c0c0c0;
 }
 .log:hover {
-  /* background: #404040; */
-  /* border: .25vh solid #ffa000; */
   color: #ffa000;
+}
+
+.edit {
+  right: 20vw;
 }
 
 .tombar {
