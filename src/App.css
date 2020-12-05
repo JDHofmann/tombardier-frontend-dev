@@ -18,11 +18,13 @@ input, textarea {
   border: 1px solid #d0d0d0;
   border-radius: 5px;
   box-shadow: none;
+  filter: none;
 }
 
 input:focus, textarea:focus {
   border: .25vh solid #00a000;
   box-shadow: none;
+  /* background: #ff0000; */
 }
 
 input:invalid {
@@ -32,7 +34,25 @@ input:invalid {
 button:focus {
   outline: 2px solid #ffa000;
 }
-
+input:-webkit-autofill,
+input:-moz-autofill,
+input:-webkit-autofill:hover,
+input:-moz-autofill:hover, 
+input:-webkit-autofill:focus,
+input:-moz-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid green;
+  -webkit-text-fill-color: green;
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  background-color: green;
+  /* filter: none; */
+  /* transition: background-color 5000s ease-in-out 0s; */
+}
 .App {
   min-height: 95vh;
   /* display: block;
@@ -62,7 +82,6 @@ button:focus {
 }
 
 .header {
-  /* background-color: #c0ffff; */
   min-height: 7.5vw;
   display: flex;
   justify-content: flex-end;

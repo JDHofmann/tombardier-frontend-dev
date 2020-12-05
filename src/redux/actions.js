@@ -27,12 +27,17 @@ export const submitLogin = (loginObj) => {
             .then(r => r.json())
             .then(data => {
             console.log("data", data)
-            // console.log("token: ", data.jwt)
-            localStorage.setItem("token", data.jwt)
-            dispatch({
-                type: 'SET_CURRENT_USER',
-                currentUser: data.user
-            })
+            if(!data.message === "Invalid username or password"){
+                localStorage.setItem("token", data.jwt)
+                dispatch({
+                    type: 'SET_CURRENT_USER',
+                    currentUser: data.user
+                })
+            } else {
+                dispatch({
+                    type: 'REMOVE_CURRENT_USER'
+                })
+            }
         })
     }
 }
