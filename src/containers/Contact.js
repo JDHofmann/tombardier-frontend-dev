@@ -82,45 +82,46 @@ class Contact extends React.Component{
 
         return(
             <div className="text-wrapper">
-            <h2 className="contact">Contact</h2>
-            <LocalEditBtn 
-                editMode={this.state.editMode}
-                toggleEditMode={this.toggleEditMode}
-            />
-            { this.state.editMode ? 
-            <>
-            <form 
-                onSubmit={this.submitHandler}
-                className="contact-info">
-                <label className="ct-label ct-row">Email</label>
-                <input
-                    type="email"
-                    title="Please provide a valid email address"
-                    className="ct-input ct-row"
-                    name="contact_email"
-                    value={this.state.contact_email}
-                    onChange={this.handleChange}
-                ></input>
-                <button 
-                    type="submit"
-                    className="update"
-                    >Submit Changes</button>
-            </form>
-            </>
-            :
-            <div className="contact-info">
-                <h4 className="ct-label ct-row">Email</h4>
-                <a 
-                    href={`mailTo:${this.props.user.contact_email}`}
-                    className="ct-input ct-row link-hover">{this.props.user.contact_email}</a>
-            </div>
-            }
+                <h2 className="contact">Contact</h2>
+                <LocalEditBtn 
+                    editMode={this.state.editMode}
+                    toggleEditMode={this.toggleEditMode}
+                />
+                { this.state.editMode ? 
+                    <>
+                    <form 
+                        onSubmit={this.submitHandler}
+                        className="contact-info">
+                        <label className="ct-label ct-row">Email</label>
+                        <input
+                            type="email"
+                            title="Please provide a valid email address"
+                            className="ct-input ct-row"
+                            name="contact_email"
+                            value={this.state.contact_email}
+                            onChange={this.handleChange}
+                        ></input>
+                        <button 
+                            type="submit"
+                            className="update"
+                            >Submit Changes</button>
+                    </form>
+                    </>
+                    :
+                    <div className="contact-info">
+                        <h4 className="ct-label ct-row">Email</h4>
+                        <a 
+                            href={`mailTo:${this.props.user.contact_email}`}
+                            className="ct-input ct-row link-hover">{this.props.user.contact_email}</a>
+                    </div>
+                }
             
-            <ul className="contact-info">
-                <h4 className="ct-label">Links</h4>
-                {this.renderUserLinks()}
-            </ul>
-            {this.renderNewLink()}
+                <ul className="contact-info">
+                    <h4 className="ct-label">Links</h4>
+                    {this.renderUserLinks()}
+                </ul>
+                
+                {this.renderNewLink()}
             
             </div>
         )
