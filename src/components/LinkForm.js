@@ -5,6 +5,8 @@ const LinkForm = (props) => {
         <form onSubmit={props.handleSubmit}>
                 <label htmlFor="link_url">Link URL</label>
                 <input
+                    type="url"
+                    title="Please provide a valid url address"
                     id="link_url"
                     name="link_url"
                     value={props.link_url}

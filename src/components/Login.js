@@ -32,12 +32,15 @@ class Login extends React.Component{
                     className="login-form"
                     onSubmit={this.handleSubmit}
                 >
+                    <legend className="login-legend">Admin Login</legend>
                     <label
                         className="lgin-label lgin-row"
                         htmlFor="login-email"
                     >email</label>
                     <input
+                        type="email"
                         name="email"
+                        title="Please provide a valid email address"
                         value={this.state.email}
                         onChange={this.handleChange}
                         id="login-email"
@@ -48,8 +51,10 @@ class Login extends React.Component{
                         htmlFor="login-password"
                     >password</label>
                     <input
+                        type="password"
                         name="password"
                         value={this.state.password}
+                        title="Please provide a password with at least 1 number"
                         onChange={this.handleChange}
                         id="login-password"
                         className="lgin-input lgin-row"
@@ -59,7 +64,7 @@ class Login extends React.Component{
                         type="submit"
                     >Login</button>
                 </form>
-                <div className="modal-mask"></div>
+                {/* <div className="modal-mask"></div> */}
             </>
         )
     }

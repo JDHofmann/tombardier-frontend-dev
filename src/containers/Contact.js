@@ -94,6 +94,8 @@ class Contact extends React.Component{
                 className="contact-info">
                 <label className="ct-label ct-row">Email</label>
                 <input
+                    type="email"
+                    title="Please provide a valid email address"
                     className="ct-input ct-row"
                     name="contact_email"
                     value={this.state.contact_email}
