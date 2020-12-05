@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import '../css/LocalBtn.css'
+
 
 
 class LocalDeleteBtn extends React.Component{

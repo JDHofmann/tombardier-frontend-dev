@@ -83,44 +83,47 @@ class Contact extends React.Component{
         return(
             <div className="text-wrapper">
                 <h2 className="contact">Contact</h2>
-                <LocalEditBtn 
+                {/* <LocalEditBtn 
                     editMode={this.state.editMode}
                     toggleEditMode={this.toggleEditMode}
-                />
+                /> */}
                 { this.state.editMode ? 
                     <>
                     <form 
                         onSubmit={this.submitHandler}
-                        className="contact-info">
-                        <label className="ct-label ct-row">Email</label>
+                        className="contact-info edit-grid">
+                        <label className="ct-label ct-row grid-cl-1-4">Email</label>
                         <input
                             type="email"
                             title="Please provide a valid email address"
-                            className="ct-input ct-row"
+                            className="ct-input ct-row grid-cl-1-4"
                             name="contact_email"
                             value={this.state.contact_email}
                             onChange={this.handleChange}
                         ></input>
                         <button 
                             type="submit"
-                            className="update"
-                            >Submit Changes</button>
+                            className="update grid-cl-1-3"
+                        >Update</button>
                     </form>
                     </>
                     :
-                    <div className="contact-info">
+                    <div className="contact-info edit-grid">
                         <h4 className="ct-label ct-row">Email</h4>
                         <a 
                             href={`mailTo:${this.props.user.contact_email}`}
                             className="ct-input ct-row link-hover">{this.props.user.contact_email}</a>
                     </div>
                 }
-            
+                <LocalEditBtn 
+                    editMode={this.state.editMode}
+                    toggleEditMode={this.toggleEditMode}
+                />
                 <ul className="contact-info">
                     <h4 className="ct-label">Links</h4>
                     {this.renderUserLinks()}
                 </ul>
-                
+
                 {this.renderNewLink()}
             
             </div>

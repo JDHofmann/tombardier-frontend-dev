@@ -1,0 +1,36 @@
+
+.local-edit-btn {
+    border-radius: 5px;
+    padding: .25vh .5vw;
+    font-size: 1em;
+    background: #ffffff;
+    border: .1vh solid #606060;
+    transition: .5s;
+    grid-column: 3/4;
+  }
+  
+  .local-edit-btn:hover {
+    background-color:#00a0a0;
+    background: #606060;
+    color: #ffffff;
+  }
+  
+  .local-delete-btn {
+    position: relative;
+    min-width: 25px;
+    border-radius: 5px;
+    padding: .25vh .5vw;
+    font-size: 1em;
+    position: absolute;
+    right: 12.5vw;
+    transition: .5s;
+    background: #ffffff;
+    border: .1vh solid #606060;
+  }
+  
+  .local-delete-btn:hover {
+    background-color:#ff5000;
+    background: #606060;
+    color: #ffffff;
+  }
+
