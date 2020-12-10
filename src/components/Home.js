@@ -40,43 +40,49 @@ class Home extends React.Component{
     render(){
 
         return(
-            <div className="text-wrapper">
-            <LocalEditBtn 
-                editMode={this.state.editMode}
-                toggleEditMode={this.toggleEditMode}
-            />
+            <div 
+                // className="text-wrapper"
+            >
             { this.state.editMode ?
             <form 
-                className="title-div"
+                className="title-div content-sub-div"
                 onSubmit={this.submitHandler}>
                 <input
                     type="text"
                     name="site_title"
                     value={this.state.site_title}
                     onChange={this.onChangeHandler}
-                    className="site-title"
+                    className="site-title grid-1-4"
                 ></input>
                 <textarea
                     name="site_subtitle"
                     value={this.state.site_subtitle}
                     onChange={this.onChangeHandler}
-                    className="site-subtitle"
+                    className="site-subtitle grid-1-3"
                 />
                 <button 
                     type="submit"
-                    className="update"
+                    className="update grid-1-3"
                 >Update</button>
+                <LocalEditBtn 
+                editMode={this.state.editMode}
+                toggleEditMode={this.toggleEditMode}
+                />
             </form>
             
             : 
             
-            <div className="title-div">
+            <div className="title-div content-sub-div">
                 <h1
-                    className="site-title"
+                    className="site-title grid-1-4"
                 >{this.props.user.site_title}</h1>
                 <h2
-                    className="site-subtitle"
+                    className="site-subtitle grid-1-3"
                 >{this.props.user.site_subtitle}</h2>
+                <LocalEditBtn 
+                editMode={this.state.editMode}
+                toggleEditMode={this.toggleEditMode}
+                />
             </div>
             }
             </div>

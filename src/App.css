@@ -197,8 +197,8 @@ select:-webkit-autofill:focus {
   line-height: 2em;
   font-weight: 600;
   text-align: left;
-  width: 90vw;
-  margin: 2.5vh auto;
+  width: 100%;
+  /* margin: 2.5vh 0; */
 }
 
 /* .solo {
@@ -210,7 +210,9 @@ select:-webkit-autofill:focus {
   font-weight: 300;
   text-align: left;
   color: #404040;
-  width: 90vw;
+  width: 100%;
+
+  /* width: 90vw; */
 }
 
 .local-submit-btn {
