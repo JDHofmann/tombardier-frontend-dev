@@ -106,7 +106,6 @@ select:-webkit-autofill:focus {
 /* **** REMOVE FOR PRODUCTION RELEASE **** */
 .site-header {
   width: 100%;
-  margin-left: 2.5vw;
   font-family: Bebas;
   font-size: 1em;
   color: #606060;
@@ -131,13 +130,13 @@ select:-webkit-autofill:focus {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 1vh 2.5vw;
+  padding: 1vh 0;
 }
 
 .header a {
   /* font-size: 1.13em; */
   font-size: calc(16px + (26 - 16) * ((100vw - 300px) / (1600 - 300)));
-  padding: 0 2.5vw;
+  padding-left: 2.5vw;
   color: #404040;
   text-decoration: none;
 }
@@ -166,40 +165,6 @@ select:-webkit-autofill:focus {
 .grid-2-3 {
   grid-column: 2/3;
 }
-/* .local-edit-btn {
-  border-radius: 5px;
-  padding: .25vh .5vw;
-  font-size: 1em;
-  background: #ffffff;
-  border: .1vh solid #606060;
-  transition: .5s;
-  grid-column: 3/4;
-}
-
-.local-edit-btn:hover {
-  background-color:#00a0a0;
-  background: #606060;
-  color: #ffffff;
-}
-
-.local-delete-btn {
-  position: relative;
-  min-width: 25px;
-  border-radius: 5px;
-  padding: .25vh .5vw;
-  font-size: 1em;
-  position: absolute;
-  right: 12.5vw;
-  transition: .5s;
-  background: #ffffff;
-  border: .1vh solid #606060;
-}
-
-.local-delete-btn:hover {
-  background-color:#ff5000;
-  background: #606060;
-  color: #ffffff;
-} */
 
 .delete-project {
   position: relative;
@@ -228,7 +193,6 @@ select:-webkit-autofill:focus {
 }
 
 .site-title {
-  /* font-size: 2.75em; */
   font-size: calc(32px + (50 - 32) * ((100vw - 300px) / (1600 - 300)));
   line-height: 2em;
   font-weight: 600;
@@ -237,12 +201,11 @@ select:-webkit-autofill:focus {
   margin: 2.5vh auto;
 }
 
-.solo {
+/* .solo {
   margin-left: 5vw;
-}
+} */
 
 .site-subtitle {
-  /* font-size: 1.4em; */
   font-size: calc(21px + (36 - 21) * ((100vw - 300px) / (1600 - 300)));
   font-weight: 300;
   text-align: left;

@@ -1,11 +1,17 @@
 import React from 'react'
+import LocalDeleteBtn from './LocalDeleteBtn'
+import LocalEditBtn from './LocalEditBtn'
+
 
 const LinkForm = (props) => {
     return(
         <form 
-            className="edit-grid"
+            className="content-sub-div"
             onSubmit={props.handleSubmit}>
-                <label htmlFor="link_url">Link URL</label>
+                <label 
+                    htmlFor="link_url"
+                    className="grid-1-4"
+                >Link URL</label>
                 <input
                     type="url"
                     title="Please provide a valid url address"
@@ -16,7 +22,10 @@ const LinkForm = (props) => {
                     className="ct-input grid-cl-1-4"
                     placeholder="https://github.com/"
                 />
-                <label htmlFor="link_text">Link Text</label>
+                <label 
+                    htmlFor="link_text"
+                    className="grid-1-4"    
+                >Link Text</label>
                 <input
                     id="link_text"
                     name="link_text"
@@ -25,11 +34,24 @@ const LinkForm = (props) => {
                     className="ct-input"
                     placeholder="link text"
                 />
+                {props.new ? 
                 <button 
-                    className="update star grid-cl-1-2"
-                    type="submit">
-                        {props.new ? "Submit" : "Update"}
-                        </button>
+                className="update star grid-1-4"
+                type="submit">Submit</button> 
+                :
+                <>
+                    <button 
+                    className="update star grid-1-2"
+                    type="submit">Update</button>
+                    <LocalDeleteBtn 
+                        handleDelete={props.handleDelete}
+                    />
+                    <LocalEditBtn 
+                        editMode={props.editMode}
+                        toggleEditMode={props.toggleEditMode}
+                    />
+                </>
+                }
                 </form>
     )
 }

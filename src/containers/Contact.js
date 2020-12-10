@@ -30,14 +30,10 @@ class Contact extends React.Component{
 
     renderUserLinks = () => {
     return this.props.user.user_links.map(ul =>
-        <li 
-            className="ct-row"
-            key={ul.id}>
             <Link 
                 key={ul.link_url}
                 link={ul}
             />
-        </li>
     )}
 
     handleChange = (e) => {
@@ -87,10 +83,6 @@ class Contact extends React.Component{
         return(
             <div className="content-wrapper">
                 <h2 className="section-header">Contact</h2>
-                {/* <LocalEditBtn 
-                    editMode={this.state.editMode}
-                    toggleEditMode={this.toggleEditMode}
-                /> */}
                 { this.state.editMode ? 
                     <>
                     <form 
@@ -122,8 +114,8 @@ class Contact extends React.Component{
                         {this.renderEditButton()}
                     </div>
                 }
-                <ul className="contact-info">
-                    <h4 className="ct-label">Links</h4>
+                <h4 className="section-header">Links</h4>
+                <ul>
                     {this.renderUserLinks()}
                 </ul>
 

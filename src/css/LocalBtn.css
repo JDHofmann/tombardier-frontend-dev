@@ -1,36 +1,32 @@
 
-.local-edit-btn {
-    border-radius: 5px;
-    padding: .25vh .5vw;
-    font-size: 1em;
-    background: #ffffff;
-    border: .1vh solid #606060;
-    transition: .5s;
-    grid-column: 3/4;
-  }
+.local-btn {
+  border-radius: 5px;
+  /* padding: .25vh .5vw; */
+  font-size: 1em;
+  background: none;
+  border: 2px solid #202020;
+  height: 35px;
+  width: 35px;
+  display: inline-block;
+  transition: .3s;
+  align-self: end;
+}
+
+.edit-btn {
+  grid-column: 3/4;
+}
   
-  .local-edit-btn:hover {
-    background-color:#00a0a0;
-    background: #606060;
-    color: #ffffff;
-  }
+.edit-btn:hover, .edit-btn:focus {
+  background: #202020;
+  color: #ffffff;
+}
   
-  .local-delete-btn {
-    position: relative;
-    min-width: 25px;
-    border-radius: 5px;
-    padding: .25vh .5vw;
-    font-size: 1em;
-    position: absolute;
-    right: 12.5vw;
-    transition: .5s;
-    background: #ffffff;
-    border: .1vh solid #606060;
-  }
-  
-  .local-delete-btn:hover {
-    background-color:#ff5000;
-    background: #606060;
-    color: #ffffff;
-  }
+.delete-btn {
+  grid-column: 2/3;
+}
+
+.delete-btn:hover, .delete-btn:focus {
+  background: #F21B1B;
+  color: #ffffff;
+}
 
