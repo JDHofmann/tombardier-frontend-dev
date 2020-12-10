@@ -52,15 +52,7 @@ class Link extends React.Component{
     render(){
         return(
             <>
-            <LocalEditBtn 
-                editMode={this.state.editMode}
-                toggleEditMode={this.toggleEditMode}
-            />
-            <LocalDeleteBtn 
-                handleDelete={this.handleDelete}
-            />
-            {
-                this.state.editMode ? 
+            {this.state.editMode ? 
                 <LinkForm 
                     link_url={this.state.link_url}
                     handleChange={this.handleChange}
@@ -68,15 +60,21 @@ class Link extends React.Component{
                     link_text={this.state.link_text}
                 />
                 :
-                // <NavLink
-                //     key={this.props.link.link_url} 
-                //     to={this.props.link.link_url}>{this.props.link.link_text}</NavLink>
-                <p
-                    className="ct-input link-hover"
-                    onClick={()=>{window.open(this.props.link.link_url, '_blank');}}
-                >{this.props.link.link_text}</p>
-                    
-                }
+                <div>
+                    <a
+                        className="ct-input link-hover"
+                        target="_blank"
+                        href={this.props.link.link_url}
+                    >{this.props.link.link_text}</a>  
+                    <LocalDeleteBtn 
+                        handleDelete={this.handleDelete}
+                    />
+                    <LocalEditBtn 
+                        editMode={this.state.editMode}
+                        toggleEditMode={this.toggleEditMode}
+                    />
+                </div>
+            }
             </>
 
         )

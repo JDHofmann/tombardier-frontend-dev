@@ -18,6 +18,7 @@ export const AdminForm = props => {
             <input
                 type="email"
                 name="email"
+                placeholder="email"
                 title="Please provide a valid email address"
                 value={props.email}
                 onChange={props.handleChange}
@@ -32,6 +33,7 @@ export const AdminForm = props => {
             <input
                 type="password"
                 name="password"
+                placeholder="password"
                 value={props.password}
                 title="Please provide a password with at least 1 number"
                 onChange={props.handleChange}
