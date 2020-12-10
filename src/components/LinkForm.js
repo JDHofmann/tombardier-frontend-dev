@@ -35,9 +35,15 @@ const LinkForm = (props) => {
                     placeholder="link text"
                 />
                 {props.new ? 
+                <>
                 <button 
-                className="update star grid-1-4"
+                className="update star grid-1-3"
                 type="submit">Submit</button> 
+                <button 
+                    className="update star grid-3-4"
+                    onClick={props.hideNewLinkForm}
+                >X</button>
+                </>
                 :
                 <>
                     <button 

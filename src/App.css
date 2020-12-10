@@ -28,7 +28,6 @@ input:focus,
 input:hover, 
 textarea:focus,
 textarea:hover {
-  /* border: .25vh solid #00a000; */
   box-shadow: none;
   border: 2px solid #00a000;
   padding: 3px;
@@ -61,6 +60,7 @@ select:-webkit-autofill:focus {
   /* filter: none; */
   /* transition: background-color 5000s ease-in-out 0s; */
 }
+
 .App {
   min-height: 95vh;
   margin: auto;
@@ -117,15 +117,15 @@ select:-webkit-autofill:focus {
 }
 /* ***************************** */
 
-.page-title {
+/* .page-title {
   font-size: 1.5em;
   line-height: 2em;
   font-weight: 200;
   color: #808080;
   padding-left: 5vw;
-}
+} */
 
-.header {
+/* .header {
   min-height: 7.5vw;
   display: flex;
   justify-content: flex-end;
@@ -134,7 +134,6 @@ select:-webkit-autofill:focus {
 }
 
 .header a {
-  /* font-size: 1.13em; */
   font-size: calc(16px + (26 - 16) * ((100vw - 300px) / (1600 - 300)));
   padding-left: 2.5vw;
   color: #404040;
@@ -145,7 +144,7 @@ select:-webkit-autofill:focus {
   color: #808080;
   font-weight: 400;
   text-decoration: underline;
-}
+} */
 
 .title-div {
   min-height: 15vh;
@@ -168,19 +167,9 @@ select:-webkit-autofill:focus {
 }
 
 .delete-project {
-  position: relative;
-  left: 0;
-  width: 90vw;
-  min-width: 100px;
   max-width: 350px;
   display: block;
   margin: 1.25vh auto;
-  font-size: 1em;
-  height: 5vh;
-  transition: .5s;
-  border: .1vh solid #606060;
-  border-radius: 10px;
-  background: none;
 }
 
 .logout {
@@ -217,10 +206,6 @@ select:-webkit-autofill:focus {
 
 .user-image-container {
   margin: 2.5vh 0;
-}
-
-.over-img {
-
 }
 
 .user-image {
@@ -271,7 +256,7 @@ select:-webkit-autofill:focus {
   transition: .5s;
 }
 
-.margX-5 {
+/* .margX-5 {
   margin-left: 5vw;
   margin-right: 5vw;
 }
@@ -282,7 +267,7 @@ select:-webkit-autofill:focus {
   width: 90vw;
   overflow: visible;
   min-height: 20vh;
-}
+} */
 
 .link-hover {
   text-decoration: underline;
@@ -378,12 +363,16 @@ select:-webkit-autofill:focus {
   min-height: 150px;
 }
 
+.pj-image-container {
+  margin-top: 5vh;
+}
+
 .pj-image {
   display: block;
   margin: auto;
-  width: 90vw;
-  min-width: 100px;
-  max-width: 500px;
+  width: 100%;
+  /* min-width: 100px;
+  max-width: 500px; */
   border-radius: 10px;
   /* margin-bottom: 2.5vh; */
   max-height: 500px;
@@ -436,12 +425,10 @@ select:-webkit-autofill:focus {
   font-weight: 600;
   color: #606060;
   display: block;
-  /* text-align: center; */
 }
 .lgin-input{
   font-size: 14px;
   font-weight: 400;
-  /* color: #606060; */
   display: block;
 }
 
@@ -459,9 +446,9 @@ select:-webkit-autofill:focus {
   right: 5vw;
   display: block;
   text-align: center;
-  width: 15vw;
+  /* width: 15vw;
   min-width: 100px;
-  max-width: 125px;
+  max-width: 125px; */
   height: 3vh;
   font-size: .75em;
   line-height: 3vh;

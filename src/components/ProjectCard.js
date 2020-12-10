@@ -96,31 +96,29 @@ class ProjectCard extends React.Component {
 
     render(){
         return(
-            <div className="text-wrapper">
-                <LocalEditBtn 
-                editMode={this.state.editMode}
-                toggleEditMode={this.toggleEditMode}
-                />
-
+            <div>
             { this.state.editMode ? 
             <>
-            <form onSubmit={this.handleSubmit} >
+            <form 
+                onSubmit={this.handleSubmit} 
+                className="content-sub-div"
+            >
                 <input
-                    className="pj-title"
+                    className="pj-title grid-1-4"
                     name="title"
                     value={this.state.title}
                     placeholder="Your project title"
                     onChange={this.handleChange}
                 />
                 <input
-                    className="pj-subtitle"
+                    className="pj-subtitle grid-1-4"
                     name="subtitle"
                     value={this.state.subtitle}
                     placeholder="project sub-title"
                     onChange={this.handleChange}
                 />
                 <textarea
-                    className="pj-descript"
+                    className="pj-descript grid-1-4"
                     name="description"
                     value={this.state.description}
                     placeholder="tell us about your project"
@@ -128,19 +126,31 @@ class ProjectCard extends React.Component {
                 />
                 <button 
                     type="Submit" 
-                    className="update star"
-                    >Update</button>
+                    className="update star grid-1-3"
+                >Update</button>
+                <LocalEditBtn 
+                    editMode={this.state.editMode}
+                    toggleEditMode={this.toggleEditMode}
+                />
             </form>
             </>
             :
-            <div>
-            <h2 className="pj-title">{this.props.project.title}</h2>
-            <h3 className="pj-subtitle">{this.props.project.subtitle}</h3>
-            <p className="pj-descript">{this.props.project.description}</p>
+            <>
+            <div className="content-sub-div">
+                <h2 className="pj-title grid-1-4">{this.props.project.title}</h2>
+                <h3 className="pj-subtitle grid-1-4">{this.props.project.subtitle}</h3>
+                <p className="pj-descript grid-1-4">{this.props.project.description}</p>
+                <LocalEditBtn 
+                    editMode={this.state.editMode}
+                    toggleEditMode={this.toggleEditMode}
+                />
+            </div>
+
             <ul>
-                <h4>Links</h4>
+                <h4 className="section-header">Links</h4>
                 {this.renderLinks()}
             </ul>
+
             {this.props.currentUser ?
                  this.state.showNewLink ? 
                 <NewLink 
@@ -151,14 +161,15 @@ class ProjectCard extends React.Component {
                 />
                 :
                 <button
-                    className="update"
+                    className="update grid-1-3"
                     onClick={this.showNewLinkForm}
                 >Add New Link</button>
-                
             : null }
-            </div>
+            </>
             }
+
             { this.renderProjectImages() }
+
             { this.state.showNewImage ?
             <NewProjectImage 
                 brandnewProjectImage={this.props.brandnewProjectImage}
@@ -173,11 +184,13 @@ class ProjectCard extends React.Component {
             >Add New Image</button>
             : null
              }
-            <LocalDeleteBtn 
-                handleDelete={this.handleDelete}
-                classAddition="delete-project"
-                deleteProject
-            />
+            { this.props.currentUser ?
+                <button
+                    onClick={this.handleDelete}
+                    className="delete-project update grid-1-4"
+                >Delete Project</button>
+                : null
+            } 
             </div>
         )
     }
