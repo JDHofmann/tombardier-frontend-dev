@@ -35,29 +35,31 @@ class About extends React.Component{
             {/* leave out for mobile */}
             {/* <h2 className="page-title">About</h2> */}
             < UserImage />
-            <LocalEditBtn 
-                editMode={this.state.editMode}
-                toggleEditMode={this.toggleEditMode}
-            />
             { this.state.editMode ? 
-            <>
             <form 
-                className="text-wrapper"
+                className="content-sub-div"
                 onSubmit={this.handleBioSubmit}>
                 <textarea
                     wrap="on"
-                    className="user-bio"
+                    className="user-bio grid-1-4"
                     name="bio"
                     value={this.state.bio}
                     onChange={this.onChangeHandler}
                 ></textarea>
-                <button className="update">Update</button>
+                <button className="update grid-1-3">Update</button>
+                <LocalEditBtn 
+                editMode={this.state.editMode}
+                toggleEditMode={this.toggleEditMode}
+                />
             </form> 
-            </>
             : 
-            <div className="text-wrapper">
-                <p className="user-bio"
+            <div className="content-sub-div">
+                <p className="user-bio grid-1-4"
                 >{this.props.user.bio}</p>
+                <LocalEditBtn 
+                    editMode={this.state.editMode}
+                    toggleEditMode={this.toggleEditMode}
+                />
             </div>
             }
             </>

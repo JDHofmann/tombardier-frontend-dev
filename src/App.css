@@ -149,6 +149,7 @@ select:-webkit-autofill:focus {
 
 .title-div {
   min-height: 15vh;
+  margin: 2.5vh 0 5vh;
 }
 
 .grid-1-4 {
@@ -182,10 +183,6 @@ select:-webkit-autofill:focus {
   background: none;
 }
 
-.over-img {
-  margin-top: 1.25vh; 
-}
-
 .logout {
   width: 15vw;
   font-size: 1em;
@@ -201,9 +198,9 @@ select:-webkit-autofill:focus {
   /* margin: 2.5vh 0; */
 }
 
-/* .solo {
-  margin-left: 5vw;
-} */
+.solo {
+  margin: 2.5vh 0;
+}
 
 .site-subtitle {
   font-size: calc(21px + (36 - 21) * ((100vw - 300px) / (1600 - 300)));
@@ -211,8 +208,6 @@ select:-webkit-autofill:focus {
   text-align: left;
   color: #404040;
   width: 100%;
-
-  /* width: 90vw; */
 }
 
 .local-submit-btn {
@@ -224,10 +219,14 @@ select:-webkit-autofill:focus {
   margin: 2.5vh 0;
 }
 
+.over-img {
+
+}
+
 .user-image {
-  width: 100vw;
+  width: 100%;
   margin: auto;
-  max-width: 500px;
+  /* max-width: 600px; */
   display: block;   
 }
 
@@ -241,37 +240,21 @@ select:-webkit-autofill:focus {
 }
 
 .update{
-  /* border-radius: 10px;
-  display: block;
-  width: 90vw;
-  margin: 2.5vh auto;
-  font-size: 1em;
-  height: 5vh;
-  transition: .5s;
-  background: none;
-  border: .1vh solid #606060;
-  min-width: 100px;
-  max-width: 350px;
-  display: block; */
-
+  border-radius: 5px;
   width: 100%;
   height: 35px;
   line-height: 35px;
   font-size: 1.25em;
   font-size: calc(16px + (28 - 16) * ((100vw - 300px) / (1600 - 300)));
   font-weight: 400;
-  color: #606060;
+  /* color: #606060; */
   align-self: center;
   background: none;
-  border: 2px solid #606060;
+  border: 2px solid #202020;
   transition: .3s;
 }
 .update:hover, .update:focus {
-  background: #e8e8e8;
   border-color: #202020;
-  color: #202020;
-  /* border-color: #00a000; */
-
   background: #202020;
   color: #ffffff;
 }
@@ -416,9 +399,9 @@ select:-webkit-autofill:focus {
   background-color: #00000080;
   text-align: center;
   color: #ffffff;
-  width: 90vw;
-  min-width: 100px;
-  max-width: 500px;
+  width:100%;
+  /* min-width: 100px;
+  max-width: 500px; */
   display: block;
   display: block;
   z-index: 10;
