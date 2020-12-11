@@ -209,9 +209,18 @@ select:-webkit-autofill:focus {
   margin: 1.25vh auto;
 }
 
+.delete-project:hover, .delete-project:focus {
+  color: #ffffff;
+  background: #F21B1B;
+}
+
 .lighter {
   color: #606060;
   border-color: #606060;
+}
+
+.mg-btn-5 {
+  margin-bottom: 5vh;
 }
 
 .link-hover {

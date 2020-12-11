@@ -162,13 +162,13 @@ class ProjectCard extends React.Component {
                 />
                 :
                 <button
-                    className="update grid-1-3"
+                    className="update grid-1-3 mg-btn-5"
                     onClick={this.showNewLinkForm}
                 >Add New Link</button>
             : null }
             </>
             }
-
+            <h4 className="section-header ">Project Images</h4>
             { this.renderProjectImages() }
 
             { this.state.showNewImage ?
