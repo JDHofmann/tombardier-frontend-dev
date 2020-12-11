@@ -40,9 +40,7 @@ class Home extends React.Component{
     render(){
 
         return(
-            <div 
-                // className="text-wrapper"
-            >
+            <div>
             { this.state.editMode ?
             <form 
                 className="title-div content-sub-div"

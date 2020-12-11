@@ -56,7 +56,7 @@ class UserImage extends React.Component{
         </> : null
 
         return(
-            <div className="user-image-container">
+            <div className="image-container">
             { this.state.editMode ? 
             <form 
                 className="content-sub-div"

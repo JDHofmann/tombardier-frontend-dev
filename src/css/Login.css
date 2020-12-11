@@ -1,0 +1,35 @@
+
+.login-form {
+    margin: 10vh auto;
+    width: 90vw;
+    max-width: 350px;
+  }
+  
+  .login-legend {
+    text-align: center;
+    font-size: 1.15em;
+    font-weight: 600;
+    border-bottom: 2px solid #c0c0c0;
+    margin-bottom: 5vh;
+  }
+  
+  .lgin-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #606060;
+    display: block;
+  }
+  .lgin-input{
+    font-size: 14px;
+    font-weight: 400;
+    display: block;
+  }
+  
+  .lgin-input:invalid {
+    border: .25vh solid #ff0000;
+  }
+  .lgin-row {
+    margin: 2vh auto;
+    width: 66%;
+    text-align: center;
+  }

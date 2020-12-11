@@ -10,28 +10,30 @@ const LinkForm = (props) => {
             onSubmit={props.handleSubmit}>
                 <label 
                     htmlFor="link_url"
-                    className="grid-1-4"
+                    className="grid-1-4 content-row-label"
                 >Link URL</label>
                 <input
+                    // wrap="soft"
+                    // rows="1"
                     type="url"
                     title="Please provide a valid url address"
                     id="link_url"
                     name="link_url"
                     value={props.link_url}
                     onChange={props.handleChange}
-                    className="ct-input grid-cl-1-4"
+                    className="grid-1-4 content-row"
                     placeholder="https://github.com/"
                 />
                 <label 
                     htmlFor="link_text"
-                    className="grid-1-4"    
+                    className="grid-1-4 content-row-label"    
                 >Link Text</label>
                 <input
                     id="link_text"
                     name="link_text"
                     value={props.link_text}
                     onChange={props.handleChange}
-                    className="ct-input"
+                    className="grid-1-4 content-row"
                     placeholder="link text"
                 />
                 {props.new ? 

@@ -64,9 +64,9 @@ class Link extends React.Component{
 
                 />
                 :
-                <div className="content-sub-div">
+                <div className="content-sub-div ">
                     <a
-                        className="grid-1-2 link-hover"
+                        className="grid-1-2 link-hover content-row"
                         target="_blank"
                         href={this.props.link.link_url}
                     >{this.props.link.link_text}</a>  
