@@ -1,5 +1,3 @@
-
-
 # Tombardier Frontend
 
 Tombardier - Portfolio Building Made Simple
@@ -20,7 +18,24 @@ Simply run npm install to install bestbey's frontend.
 npm install
 ```
 
-# Getting Started with Tombardier Front-End
+# Image Storage
+
+If you'd like to configure Tombardier with your own image storage, ensure you update all the files below:
+
+once you set up your cloud storage service:
+    - go to config/storage.yml 
+        - add your service underneath the local sections
+        - namespace all your details under a title for the serivice
+    - comment out config/environments/development
+        line 29:
+              config.active_storage.service = :local
+        - then add your servie title from config/storage.yml
+    - comment out config/environments/production
+        line 33:
+              config.active_storage.service = :local
+        - then add your servie title from config/storage.yml
+
+# Getting Started with Tombardier Frontend
 
 Once your Rails server is running
 
