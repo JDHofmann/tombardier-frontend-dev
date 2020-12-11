@@ -4,9 +4,10 @@ import { updateProject, createProjectLink, newProjectImage, brandnewProjectImage
 import NewProjectImage from './NewProjectImage'
 import ProjectImages from './ProjectImages'
 import LocalEditBtn from '../components/LocalEditBtn'
-import LocalDeleteBtn from '../components/LocalDeleteBtn'
+// import LocalDeleteBtn from '../components/LocalDeleteBtn'
 import Link from './Link'
 import NewLink from './NewLink'
+import '../css/ProjectCard.css'
 
 
 
@@ -70,7 +71,7 @@ class ProjectCard extends React.Component {
     renderLinks = () => {
         return this.props.project.links.map(pl =>
             <li
-                className="ct-row"
+                className="content-row"
                 key={pl.id}
             >
                 <Link 

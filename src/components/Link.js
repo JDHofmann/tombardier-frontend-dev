@@ -52,7 +52,9 @@ class Link extends React.Component{
     render(){
         return(
             <li>
-            {this.state.editMode ? 
+            {this.state.editMode ?
+                <>
+                <h4 className="section-header lighter">Update Link</h4> 
                 <LinkForm 
                     link_url={this.state.link_url}
                     handleChange={this.handleChange}
@@ -61,8 +63,8 @@ class Link extends React.Component{
                     toggleEditMode={this.toggleEditMode}
                     handleDelete={this.handleDelete}
                     editMode={this.state.editMode}
-
                 />
+                </>
                 :
                 <div className="content-sub-div ">
                     <a
