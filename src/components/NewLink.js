@@ -41,6 +41,7 @@ class NewLink extends React.Component{
                 link_text={this.state.link_text}
                 handleChange={this.handleChange}
                 handleSubmit={this.handleSubmit}
+                hideNewLinkForm={this.props.hideNewLinkForm}
                 new
             />
             </>

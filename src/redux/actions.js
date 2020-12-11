@@ -27,12 +27,17 @@ export const submitLogin = (loginObj) => {
             .then(r => r.json())
             .then(data => {
             console.log("data", data)
-            // console.log("token: ", data.jwt)
-            localStorage.setItem("token", data.jwt)
-            dispatch({
-                type: 'SET_CURRENT_USER',
-                currentUser: data.user
-            })
+            // if(!data.message === "Invalid username or password"){
+                localStorage.setItem("token", data.jwt)
+                dispatch({
+                    type: 'SET_CURRENT_USER',
+                    currentUser: data.user
+                })
+            // } else {
+            //     dispatch({
+            //         type: 'REMOVE_CURRENT_USER'
+            //     })
+            // }
         })
     }
 }
@@ -54,6 +59,24 @@ export const fetchCurrentUser = (token) => {
             type: 'SET_CURRENT_USER',
             currentUser: data
         }))
+    }
+}
+
+export const editAccountInfo = (patchObj) => {
+    const token = localStorage.getItem("token")
+    console.log(patchObj)
+    return (dispatch) => {
+        fetch("http://localhost:3000/users/10", {
+            method: "PATCH",
+            headers: {
+                "content-type":"application/json",
+                "accept":"application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify(patchObj)
+        })
+        .then(resp => resp.json())
+        .then(data => dispatch(fetchUser()))
     }
 }
 

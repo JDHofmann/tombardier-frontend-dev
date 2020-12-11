@@ -60,8 +60,8 @@ export default class ProjectsIndex extends React.Component{
                             user={this.props.user}
                             editSiteInfo={this.props.editSiteInfo}
                         />
-                        <h3 className="pj-header">Projects</h3>
-                        <div className="text-wrapper">
+                        <h3 className="section-header">Projects</h3>
+                        <div className="">
                             {this.renderProjectLinks()}
                         {this.props.currentUser ?
                         <button 

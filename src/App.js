@@ -2,14 +2,15 @@ import './App.css';
 import React from 'react'
 import { connect } from 'react-redux';
 import {  Route, Switch } from 'react-router-dom';
-import Header from './components/Header';
+import Header from './containers/Header';
 // import Home from './components/Home';
 import Footer from './components/Footer';
 import ProjectsIndex from './containers/ProjectsIndex';
 import Contact from './containers/Contact';
 import About from './containers/About';
-import { fetchUser, editSiteInfo, createProject, submitLogin, fetchCurrentUser, handleLogout } from './redux/actions'
+import { fetchUser, editAccountInfo, editSiteInfo, createProject, submitLogin, fetchCurrentUser, handleLogout } from './redux/actions'
 import Login from './components/Login';
+import Admin from './components/Admin'
 
 
 class App extends React.Component{
@@ -48,6 +49,18 @@ class App extends React.Component{
               />
             }
           />
+          { this.props.currentUser ?
+          <Route 
+            path="/admin"
+            render={ () =>
+              <Admin 
+                currentUser={this.props.currentUser}
+                editAccountInfo={this.props.editAccountInfo}
+              />
+            }
+          />
+          : null
+          }
           <Route 
             path="/contact" 
             render={ () => <>
@@ -122,6 +135,7 @@ class App extends React.Component{
 const mdp = dispatch => {
   return {
     fetchUser: () => dispatch(fetchUser()),
+    editAccountInfo: (patchObj) => dispatch(editAccountInfo(patchObj)),
     editSiteInfo: (patchObj) => dispatch(editSiteInfo(patchObj)),
     createProject: (userId) => dispatch(createProject(userId)),
     submitLogin: (loginObj) => dispatch(submitLogin(loginObj)),

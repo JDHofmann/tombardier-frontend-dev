@@ -36,13 +36,13 @@ class NewProjectImage extends React.Component {
 
     renderPreview = () => {
         return this.state.tempImage ? 
-        <div>
+        <div className="content-sub-div">
         <img 
-            className="pj-image"
+            className="pj-image grid-1-4"
             alt="" 
             src={this.state.tempImage}>
             </img>
-                <p className="image-prev-statement">How does that look?</p>
+            <p className="image-prev-statement grid-1-4">How does that look?</p>
         </div> : null
     }
 
@@ -55,6 +55,7 @@ class NewProjectImage extends React.Component {
                     preview={this.preview}
                     handleFileChange={this.handleFileChange}
                     handleImageSubmit={this.handleImageSubmit}
+                    hideNewImageForm={this.props.hideNewImageForm}
                 />
             </div>
         )

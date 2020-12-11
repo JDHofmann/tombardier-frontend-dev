@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { editLinkInfo, createUserLink, deleteUserLink, editProjectLink, deleteProjectLink } from '../redux/actions'
 import LocalEditBtn from './LocalEditBtn'
-import LocalDeleteBtn from './LocalDeleteBtn';
+// import LocalDeleteBtn from './LocalDeleteBtn';
 import LinkForm from './LinkForm';
 
 
@@ -51,33 +51,35 @@ class Link extends React.Component{
 
     render(){
         return(
-            <>
-            <LocalEditBtn 
-                editMode={this.state.editMode}
-                toggleEditMode={this.toggleEditMode}
-            />
-            <LocalDeleteBtn 
-                handleDelete={this.handleDelete}
-            />
-            {
-                this.state.editMode ? 
+            <li>
+            {this.state.editMode ? 
                 <LinkForm 
                     link_url={this.state.link_url}
                     handleChange={this.handleChange}
                     handleSubmit={this.handleSubmit}
                     link_text={this.state.link_text}
+                    toggleEditMode={this.toggleEditMode}
+                    handleDelete={this.handleDelete}
+                    editMode={this.state.editMode}
+
                 />
                 :
-                // <NavLink
-                //     key={this.props.link.link_url} 
-                //     to={this.props.link.link_url}>{this.props.link.link_text}</NavLink>
-                <p
-                    className="ct-input link-hover"
-                    onClick={()=>{window.open(this.props.link.link_url, '_blank');}}
-                >{this.props.link.link_text}</p>
-                    
-                }
-            </>
+                <div className="content-sub-div ">
+                    <a
+                        className="grid-1-2 link-hover content-row"
+                        target="_blank"
+                        href={this.props.link.link_url}
+                    >{this.props.link.link_text}</a>  
+                    {/* <LocalDeleteBtn 
+                        handleDelete={this.handleDelete}
+                    /> */}
+                    <LocalEditBtn 
+                        editMode={this.state.editMode}
+                        toggleEditMode={this.toggleEditMode}
+                    />
+                </div>
+            }
+            </li>
 
         )
     }

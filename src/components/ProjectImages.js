@@ -1,6 +1,5 @@
 import React from 'react'
 import LocalEditBtn from '../components/LocalEditBtn'
-import LocalDeleteBtn from '../components/LocalDeleteBtn'
 import ProjectImageForm from './ProjectImageForm';
 
 
@@ -64,14 +63,7 @@ class ProjectImages extends React.Component {
 
     render(){
         return(
-            <div className="image-container">
-                <LocalEditBtn 
-                editMode={this.state.editMode}
-                toggleEditMode={this.toggleEditMode}
-                />
-                <LocalDeleteBtn 
-                    handleDelete={this.handleDelete}
-                />
+            <div className="pj-image-container">
                 { this.state.editMode ? 
                 <>
                     {this.renderPreview()}
@@ -79,17 +71,25 @@ class ProjectImages extends React.Component {
                     preview={this.preview}
                     handleFileChange={this.handleFileChange}
                     handleImageSubmit={this.handleImageSubmit}
+                    handleDelete={this.handleDelete}
                     />
                 </>
                 :
-                 <>
-                <img
-                    className="pj-image"
-                    alt="" 
-                    src={`http://localhost:3000/${this.props.image.image}`}></img>
-                {/* <p>{this.props.image.image_caption}</p> */}
-                </>
+                 <div className="content-sub-div">
+                    <img
+                        className="pj-image grid-1-4"
+                        alt="" 
+                        src={`http://localhost:3000/${this.props.image.image}`}
+                    ></img>
+                    <LocalEditBtn 
+                    editMode={this.state.editMode}
+                    toggleEditMode={this.toggleEditMode}
+                    />
+                </div>
                  }
+                {/* <LocalDeleteBtn 
+                    handleDelete={this.handleDelete}
+                /> */}
             </div>
         )
     }
