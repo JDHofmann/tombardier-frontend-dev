@@ -3,7 +3,6 @@ import React from 'react'
 import { connect } from 'react-redux';
 import {  Route, Switch } from 'react-router-dom';
 import Header from './containers/Header';
-// import Home from './components/Home';
 import Footer from './components/Footer';
 import ProjectsIndex from './containers/ProjectsIndex';
 import Contact from './containers/Contact';
@@ -35,10 +34,6 @@ class App extends React.Component{
       <>
       <div className="App">
         <Header />
-        {/* <Home 
-                    user={this.props.user}
-                    editSiteInfo={this.props.editSiteInfo}
-                /> */}
         <Switch>
           <Route 
             path="/login"
@@ -98,11 +93,6 @@ class App extends React.Component{
             render={(routerProps) => 
               <>
                 { this.props.user ? 
-                <>
-                {/* <Home 
-                    user={this.props.user}
-                    editSiteInfo={this.props.editSiteInfo}
-                /> */}
                 <ProjectsIndex 
                   renderTitle={this.renderTitle}
                   history={routerProps.history}
@@ -112,7 +102,6 @@ class App extends React.Component{
                   createProject={this.props.createProject}
                   editSiteInfo={this.props.editSiteInfo}
                   />
-                  </>
                 : null
                 }
               </>

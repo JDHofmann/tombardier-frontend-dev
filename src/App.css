@@ -145,20 +145,12 @@ select:-webkit-autofill:focus {
 .grid-2-3 {
   grid-column: 2/3;
 }
-
-.delete-project {
-  /* max-width: 350px; */
-  display: block;
-  margin: 1.25vh auto;
-}
-
 .site-title {
   font-size: calc(32px + (50 - 32) * ((100vw - 300px) / (1600 - 300)));
   line-height: 2em;
   font-weight: 600;
   text-align: left;
   width: 100%;
-  /* margin: 2.5vh 0; */
 }
 
 .solo {
@@ -171,11 +163,6 @@ select:-webkit-autofill:focus {
   text-align: left;
   color: #404040;
   width: 100%;
-}
-
-.local-submit-btn {
-  font-size: 1em;
-  height: 5vh;
 }
 
 .image-container {
@@ -215,16 +202,25 @@ select:-webkit-autofill:focus {
   background: #202020;
   color: #ffffff;
 }
-.star {
-  background: #d8d8d8;
+
+.delete-project {
+  /* max-width: 350px; */
+  display: block;
+  margin: 1.25vh auto;
 }
 
-.add {
-  width: 90vw;
-  margin: 1.25vh 5vh;
-  font-size: 1em;
-  height: 5vh;
-  transition: .5s;
+.delete-project:hover, .delete-project:focus {
+  color: #ffffff;
+  background: #F21B1B;
+}
+
+.lighter {
+  color: #606060;
+  border-color: #606060;
+}
+
+.mg-btn-5 {
+  margin-bottom: 5vh;
 }
 
 .link-hover {
@@ -232,20 +228,46 @@ select:-webkit-autofill:focus {
 }
 
 .link-hover:hover {
-  font-weight: 600;
+  color: #606060;
 }
 
-.contact {
-  margin: 2.5vh auto;
+
+.image-prev-statement {
+  position: relative;
+  font-size: 1em;
+  line-height: 5vh;
+  background-color: #00000080;
+  text-align: center;
+  color: #ffffff;
+  width:100%;
+  display: block;
+  display: block;
+  z-index: 10;
+  margin: -5vh auto 2.5vh;
 }
 
-.pj-link-card {
+/* .local-submit-btn {
+  font-size: 1em;
+  height: 5vh;
+} */
+
+
+/* .add {
+  width: 90vw;
+  margin: 1.25vh 5vh;
+  font-size: 1em;
+  height: 5vh;
+  transition: .5s;
+}  */
+
+/* .pj-link-card {
   margin-bottom: 5vh;
   border-bottom: 2px solid #c0c0c0;
   border-radius: 0;
   display: grid;
-}
+} */
 
+/* 
 .pj-header {
   margin: 7.5vh 5vw 2.5vh;
   
@@ -287,21 +309,8 @@ select:-webkit-autofill:focus {
   object-position: center;
   object-fit: cover;
   box-shadow: 1px 1px 6px #c0c0c0;
-}
+} */
 
-.image-prev-statement {
-  position: relative;
-  font-size: 1em;
-  line-height: 5vh;
-  background-color: #00000080;
-  text-align: center;
-  color: #ffffff;
-  width:100%;
-  display: block;
-  display: block;
-  z-index: 10;
-  margin: -5vh auto 2.5vh;
-}
 
 
 /* .ct-label {

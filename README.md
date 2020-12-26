@@ -45,12 +45,3 @@ Start up your react app and enjoy
 npm start
 ```
 
-
-<!-- npm install:
-    - redux
-    - redux-thunk
-    - react-redux
-    - activestorage
-    - react-router-dom
-
-## Usage -->
