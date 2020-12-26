@@ -1,0 +1,38 @@
+/* .logout {
+    width: 15vw;
+    font-size: 1em;
+    margin-right: 2.5vw;
+  } */
+.footer {
+  background: #202020;
+  padding: 1vh auto;
+  min-height: 5vh;
+}
+
+.log {
+position: absolute;
+right: 5vw;
+display: block;
+text-align: center;
+height: 3vh;
+font-size: .75em;
+line-height: 3vh;
+margin: 1vh auto;
+background: none;
+color: #c0c0c0;
+}
+.log:hover {
+color: #ffa000;
+}
+
+.edit {
+right: 20vw;
+}
+
+.tombar {
+line-height: 5vh;
+margin: auto 5vw;
+font-size: .75em;
+color: #ffffff;
+font-family: 'Bebas Neue', cursive;
+}

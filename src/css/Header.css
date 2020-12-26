@@ -1,0 +1,21 @@
+.header {
+    min-height: 7.5vw;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1vh 0;
+  }
+  
+  .header a {
+    /* font-size: 1.13em; */
+    font-size: calc(16px + (26 - 16) * ((100vw - 300px) / (1600 - 300)));
+    padding-left: 2.5vw;
+    color: #404040;
+    text-decoration: none;
+  }
+  
+  .header a:hover {
+    color: #808080;
+    font-weight: 400;
+    text-decoration: underline;
+  }

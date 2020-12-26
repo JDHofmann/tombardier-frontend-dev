@@ -1,36 +1,29 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
+import '../css/Footer.css'
 
 const Footer = (props) => {
 
-    // const styling = {
-    //     backgroundColor: "#f0f0ff",
-    //     display: "flex"
-    // }
-
-    // const startEditModeHandler = () => {
-    //     props.startEditMode()
-    // }
-
-    // const startViewModeHandler = () => {
-    //     props.startViewMode()
-    // }
-
     return (
-        <footer className="header">
-            {props.user ? 
-            <>
-                {/* <button
-                    onClick={startEditModeHandler}
-                >Edit Mode</button>
-                <button
-                    onClick={startViewModeHandler}
-                >View Mode</button> */}
-                <button className="logout">Logout</button>
-            </> : <button>Login</button>
-            }
-            
-            
-
+        <footer className="footer">
+         { props.currentUser ? 
+         <>
+            <button 
+            className="log" 
+            onClick={props.handleLogout}
+            >Logout</button>
+            <NavLink 
+            className="log edit"
+            to="/admin"
+            >Edit Account</NavLink>
+         </>
+         :
+         <NavLink 
+         className="log"
+         to="/login"
+         >Admin</NavLink>
+        }
+        <p className="tombar">powered by Tombardier</p>
         </footer>
     )
 }

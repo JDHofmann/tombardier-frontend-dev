@@ -2,7 +2,7 @@ import { combineReducers } from "redux"
 
 const defaultState = {
     user: null,
-    // editMode: false,
+    currentUser: null
     // us
 }
 
@@ -14,9 +14,22 @@ const userReducer = (
         case 'LOAD_USER':
             return action.user
 
-        // case 'UPDATE_USER':
-        //     return action.updatedUser
+        default :
+            return state
+    }
+}
 
+const currentUserReducer = (
+    state = defaultState.currentUser,
+    action
+) => {
+    switch (action.type){
+        case 'SET_CURRENT_USER':
+            return action.currentUser
+
+        case 'REMOVE_CURRENT_USER':
+            localStorage.removeItem("token")
+            return null
         default :
             return state
     }
@@ -24,7 +37,7 @@ const userReducer = (
 
 const rootReducer = combineReducers({
     user: userReducer,
-    // editMode: editModeReducer
+    currentUser: currentUserReducer
 })
 
 export default rootReducer

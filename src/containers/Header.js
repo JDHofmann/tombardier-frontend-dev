@@ -1,20 +1,13 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
+import '../css/Header.css'
 
 const Header = () => {
 
-    // const styling = {
-    //     backgroundColor: "#fff0f0",
-    //     display: "flex",
-    //     justifyContent: "center",
-    //     alignItems: "center",
-    //     height: "7.5vh"
-    // }
-
     return(
         <header 
-            // style={styling} 
             className="header flex-center">
+                <p className="site-header"><span>Tombardier</span> portfolio building made simple</p>
             <NavLink
                 exact
                 to="/"

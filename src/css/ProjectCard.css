@@ -1,0 +1,42 @@
+.pj-header {
+    margin: 7.5vh 5vw 2.5vh;
+    
+    border-bottom: 2px solid #606060;
+    border-radius: 0;
+}
+
+.pj-title {
+font-size: 1.5em;
+margin: 2.5vh 0 .75vh;
+width: 100%;
+font-weight: 600;
+}
+
+.pj-subtitle {
+font-size: 1.20em;
+font-weight: 200;
+margin: .75vh 0;
+width: 100%;
+color: #606060;
+}
+
+.pj-descript {
+margin: 2.5vh 0;
+width: 100%;
+min-height: 150px;
+}
+
+.pj-image-container {
+margin-top: 5vh;
+}
+
+.pj-image {
+display: block;
+margin: auto;
+width: 100%;
+border-radius: 10px;
+max-height: 500px;
+object-position: center;
+object-fit: cover;
+box-shadow: 1px 1px 6px #c0c0c0;
+}

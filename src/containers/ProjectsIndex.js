@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch} from 'react-router-dom'
 import ProjectLinkCard from '../components/ProjectLinkCard'
 import ProjectCard from '../components/ProjectCard'
 import Home from '../components/Home';
@@ -9,9 +9,9 @@ export default class ProjectsIndex extends React.Component{
 
     renderProjectLinks = () => {
         return this.props.projects.map( p => 
-            <div className="pl-link">
+            <div key={p.project_id} className="pl-link">
                 <ProjectLinkCard
-                    key={p.title}
+                    key={p.project_id}
                     project={p}
                 /> 
             </div>)
@@ -25,6 +25,7 @@ export default class ProjectsIndex extends React.Component{
             user_id: this.props.user.id
         }
         this.props.createProject(newProjObj)
+        // this.props.history.push(`${this.props.projects[this.props.projects.length -1].project_id}`)
     }
 
     render(){
@@ -38,10 +39,14 @@ export default class ProjectsIndex extends React.Component{
                         project = this.props.projects.find( proj => proj.project_id === id)
                         if(project){
                             return ( 
+                                <>
+                                {this.props.renderTitle()}
                             <ProjectCard 
+                                history={this.props.history}
                                 project={project}
                                 key={project.project_id}
                             />
+                            </>
                             )
                         } 
                     }
@@ -55,12 +60,15 @@ export default class ProjectsIndex extends React.Component{
                             user={this.props.user}
                             editSiteInfo={this.props.editSiteInfo}
                         />
-                        <div className="text-wrapper">
+                        <h3 className="section-header">Projects</h3>
+                        <div className="">
                             {this.renderProjectLinks()}
+                        {this.props.currentUser ?
                         <button 
                             onClick={this.addNewProject}
                             className="update"
                         >Add New Project</button>
+                        : null }
                         </div>
                         </>
                     }

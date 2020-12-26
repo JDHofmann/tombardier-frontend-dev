@@ -1,5 +1,5 @@
 import React from 'react'
-import { LocalEditBtn } from './LocalEditBtn'
+import LocalEditBtn from './LocalEditBtn'
 import { connect } from 'react-redux';
 import { newUserImage } from '../redux/actions'
 
@@ -39,44 +39,55 @@ class UserImage extends React.Component{
           formData.append('user[image]', this.state.image)
         }
         this.props.newUserImage(formData)
+        this.setState({
+            editMode: false
+        })
     }
 
     render(){
         const preview = this.state.tempImage ? 
-        <div>
+        <>
         <img
              alt="" 
              src={this.state.tempImage}
-             className="user-image "
+             className="user-image grid-1-4"
              ></img>
-        <p className="image-prev-statement">How does that look?</p>
-        </div> : null
+        <p className="image-prev-statement grid-1-4">How does that look?</p>
+        </> : null
 
         return(
-            <div className="user-image-container">
-            <LocalEditBtn 
-                classAddition="over-img"
-                editMode={this.state.editMode}
-                toggleEditMode={this.toggleEditMode}
-            />
+            <div className="image-container">
             { this.state.editMode ? 
             <form 
+                className="content-sub-div"
                 onSubmit={this.handleImageSubmit}
                 >
                 { preview }
                 <input
-                    className="image-upload-input margX-5"
+                    className="image-upload-input grid-1-4"
                     name="image"
                     type="file"
                     onChange={this.handleFileChange}
                 ></input>
-                <button className="update margX-5">Update</button>
+                <button className="update grid-1-3">Update</button>
+                <LocalEditBtn 
+                editMode={this.state.editMode}
+                toggleEditMode={this.toggleEditMode}
+                />
             </form>
             : 
+            <div 
+                className="content-sub-div"
+            >
             <img
-                    className="user-image"
-                    alt="" 
-                    src={`http://localhost:3000/${this.props.image}`}></img>
+                className="user-image grid-1-4"
+                alt="" 
+                src={`http://localhost:3000/${this.props.image}`}></img>
+            <LocalEditBtn 
+                editMode={this.state.editMode}
+                toggleEditMode={this.toggleEditMode}
+            />
+            </div>
             }
             </div>
         )

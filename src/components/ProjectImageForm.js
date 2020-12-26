@@ -1,4 +1,6 @@
 import React from'react'
+import LocalDeleteBtn from '../components/LocalDeleteBtn'
+
 
 const ProjectImageForm = props => {
 
@@ -7,7 +9,10 @@ const ProjectImageForm = props => {
     }
 
     return(
-        <form onSubmit={props.handleImageSubmit}>
+        <form 
+            className="content-sub-div"
+            onSubmit={props.handleImageSubmit}
+        >
             { props.preview }
             <input
                 className="image-upload-input"
@@ -16,8 +21,15 @@ const ProjectImageForm = props => {
                 onChange={changeHandle}
             ></input>
             <button 
-                className="update"
+                className="update star grid-1-2"
             >Update</button>
+            <LocalDeleteBtn 
+                    handleDelete={props.handleDelete}
+            />
+            <button
+                className="update grid-3-4"
+                onClick={props.hideNewImageForm}
+            >X</button>
         </form>
     )
 }

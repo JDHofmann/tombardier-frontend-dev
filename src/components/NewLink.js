@@ -35,12 +35,13 @@ class NewLink extends React.Component{
     render(){
         return(
             <>
-            <h4 className="ct-label">Add a New Link</h4>
+            <h4 className="section-header lighter ">Add a New Link</h4>
             <LinkForm 
                 link_url={this.state.link_url}
                 link_text={this.state.link_text}
                 handleChange={this.handleChange}
                 handleSubmit={this.handleSubmit}
+                hideNewLinkForm={this.props.hideNewLinkForm}
                 new
             />
             </>
