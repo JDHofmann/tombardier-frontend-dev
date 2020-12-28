@@ -3,7 +3,7 @@
 export const fetchUser = () => {
     // console.log("fetching user")
     return (dispatch) => {
-        fetch("http://localhost:3000/users/10")
+        fetch("http://localhost:3000/users/1")
         .then(resp => resp.json())
         .then(userData => dispatch({
             type: 'LOAD_USER',
@@ -26,7 +26,7 @@ export const submitLogin = (loginObj) => {
             })
             .then(r => r.json())
             .then(data => {
-            console.log("data", data)
+            // console.log("data", data)
             // if(!data.message === "Invalid username or password"){
                 localStorage.setItem("token", data.jwt)
                 dispatch({
@@ -66,7 +66,7 @@ export const editAccountInfo = (patchObj) => {
     const token = localStorage.getItem("token")
     console.log(patchObj)
     return (dispatch) => {
-        fetch("http://localhost:3000/users/10", {
+        fetch("http://localhost:3000/users/1", {
             method: "PATCH",
             headers: {
                 "content-type":"application/json",
@@ -84,7 +84,7 @@ export const editSiteInfo = (patchObj) => {
     const token = localStorage.getItem("token")
     console.log(patchObj)
     return (dispatch) => {
-        fetch("http://localhost:3000/users/10", {
+        fetch("http://localhost:3000/users/1", {
             method: "PATCH",
             headers: {
                 "content-type":"application/json",
@@ -157,7 +157,7 @@ export const newUserImage = (imageformData) => {
             },
             body: imageformData
         }
-        fetch("http://localhost:3000/users/10", options)
+        fetch("http://localhost:3000/users/1", options)
         .then(resp => resp.json())
         .then(useless => dispatch(fetchUser()))
     }
