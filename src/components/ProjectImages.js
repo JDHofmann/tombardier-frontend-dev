@@ -87,9 +87,6 @@ class ProjectImages extends React.Component {
                     />
                 </div>
                  }
-                {/* <LocalDeleteBtn 
-                    handleDelete={this.handleDelete}
-                /> */}
             </div>
         )
     }
