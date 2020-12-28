@@ -175,6 +175,10 @@ select:-webkit-autofill:focus {
   display: block;   
 }
 
+.user-bio {
+  margin: 5vh auto;
+}
+
 .image-upload-input {
   width: 90vw;
   min-width: 100px;

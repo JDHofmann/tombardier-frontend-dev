@@ -68,8 +68,8 @@ class Link extends React.Component{
                 :
                 <div className="content-sub-div ">
                     <a
+                        title={this.props.link.link_url}
                         className="grid-1-2 link-hover content-row"
-                        target="_blank"
                         href={this.props.link.link_url}
                     >{this.props.link.link_text}</a>  
                     {/* <LocalDeleteBtn 
