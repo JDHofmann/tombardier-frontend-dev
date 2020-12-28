@@ -207,6 +207,10 @@ select:-webkit-autofill:focus {
   color: #ffffff;
 }
 
+.new-pj{
+  margin-bottom: 5vh;
+}
+
 .delete-project {
   /* max-width: 350px; */
   display: block;

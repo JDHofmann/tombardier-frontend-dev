@@ -66,7 +66,7 @@ export default class ProjectsIndex extends React.Component{
                         {this.props.currentUser ?
                         <button 
                             onClick={this.addNewProject}
-                            className="update"
+                            className="update new-pj"
                         >Add New Project</button>
                         : null }
                         </div>
