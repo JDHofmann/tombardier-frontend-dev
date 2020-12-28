@@ -71,10 +71,7 @@ class Link extends React.Component{
                         title={this.props.link.link_url}
                         className="grid-1-2 link-hover content-row"
                         href={this.props.link.link_url}
-                    >{this.props.link.link_text}</a>  
-                    {/* <LocalDeleteBtn 
-                        handleDelete={this.handleDelete}
-                    /> */}
+                    >{this.props.link.link_text}</a>
                     <LocalEditBtn 
                         editMode={this.state.editMode}
                         toggleEditMode={this.toggleEditMode}
